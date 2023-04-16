@@ -7,4 +7,6 @@
     <string name="ChunLi">Чжун Ли</string>
     <string name="element">element</string>
     <string name="weapon">weapon</string>
+    <string name="search">Search</string>
+    <string name="filter">filter</string>
 </resources>
