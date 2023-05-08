@@ -9,4 +9,10 @@
     <string name="weapon">weapon</string>
     <string name="search">Search</string>
     <string name="filter">filter</string>
+    <string name="first_fragment_label">character fragment</string>
+    <string name="home">Home</string>
+    <string name="weapons">Weapons</string>
+    <string name="characters">Characters</string>
+    <string name="artifacts">Artifacts</string>
+    <string name="empty" />
 </resources>

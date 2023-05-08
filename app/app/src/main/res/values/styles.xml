@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Widget.App.SearchBar" parent="Widget.Material3.Toolbar">
-        <item name="titleTextAppearance">@style/TextAppearance.Material3.TitleLarge</item>
+        <item name="android:titleTextAppearance">@style/TextAppearance.Material3.TitleLarge</item>
         <item name="android:textSize">44sp</item>
     </style>
 </resources>

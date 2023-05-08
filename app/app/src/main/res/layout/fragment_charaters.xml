@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".CharactersFragment">
+    tools:context=".ui.characters.CharactersFragment">
     <include
         android:id="@+id/default_appbar"
         layout="@layout/search_header"

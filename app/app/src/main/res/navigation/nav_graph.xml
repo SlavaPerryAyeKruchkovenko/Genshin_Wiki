@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/CharacterFragment">
+    <fragment
+        android:id="@+id/CharacterFragment"
+        android:name="com.example.genshin_wiki.ui.characters.CharactersFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_charaters">
+    </fragment>
+</navigation>
