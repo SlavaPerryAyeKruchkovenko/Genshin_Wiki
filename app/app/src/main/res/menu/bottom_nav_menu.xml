@@ -3,20 +3,24 @@
     <item
         android:id="@+id/navigation_home"
         android:title="@string/empty"
+        android:enabled="true"
         android:icon="@drawable/home"
         />
     <item
         android:id="@+id/navigation_weapons"
+        android:enabled="true"
         android:title="@string/empty"
         android:icon="@drawable/weapons"
         />
     <item
         android:id="@+id/navigation_characters"
+        android:enabled="true"
         android:title="@string/empty"
         android:icon="@drawable/characters"
         />
     <item
         android:id="@+id/navigation_artifacts"
+        android:enabled="true"
         android:title="@string/empty"
         android:icon="@drawable/artifacts"
         />
