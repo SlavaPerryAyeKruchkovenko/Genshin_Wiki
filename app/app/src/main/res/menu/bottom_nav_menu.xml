@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/navigation_home"
-        android:title="@string/empty"
+        android:title="@string/home"
         android:enabled="true"
         android:icon="@drawable/home"
+        app:showAsAction="ifRoom"
+        android:tooltipText="@string/home"
         />
     <item
         android:id="@+id/navigation_weapons"
         android:enabled="true"
-        android:title="@string/empty"
-        android:icon="@drawable/weapons"
+        android:title="@string/weapons"
+        android:icon="@drawable/recnagle_weapon_rounded"
+        app:showAsAction="ifRoom"
+        android:tooltipText="@string/weapons"
         />
     <item
         android:id="@+id/navigation_characters"
         android:enabled="true"
-        android:title="@string/empty"
+        android:title="@string/characters"
         android:icon="@drawable/characters"
+        app:showAsAction="ifRoom"
+        android:tooltipText="@string/characters"
         />
     <item
         android:id="@+id/navigation_artifacts"
         android:enabled="true"
-        android:title="@string/empty"
+        android:title="@string/artifacts"
         android:icon="@drawable/artifacts"
+        app:showAsAction="ifRoom"
+        android:tooltipText="@string/artifacts"
         />
 </menu>
