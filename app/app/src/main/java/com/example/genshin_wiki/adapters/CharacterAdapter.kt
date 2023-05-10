@@ -3,6 +3,7 @@ package com.example.genshin_wiki.adapters
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -40,16 +41,37 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
     inner class CharacterProfileHolder(private val binding: CharacterProfileBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: CharacterProfile) = with(binding) {
+            loadImage(profile.image, profileImage)
+            nameText.text = profile.name
+            loadImage(profile.element.image, elementImage)
+            loadImage(profile.weaponType.image, weaponImage)
+            loadStars(profile.countOfStar,starsImage)
+        }
+
+        private fun loadImage(image: String, imageView: ImageView) {
             try {
-                Picasso.get().load(profile.image)
+                Picasso.get().load(image)
                     .placeholder(R.drawable.loader_animation)
                     .error(R.drawable.broken_image)
-                    .into(profileImage)
+                    .into(imageView)
             } catch (ex: Exception) {
                 Log.e("Error", ex.message.toString())
                 ex.printStackTrace()
             }
-            nameText.text = profile.name
+        }
+
+        private fun loadStars(stars: Int, imageView: ImageView) {
+            when (stars) {
+                5 -> {
+                    imageView.setImageResource(R.drawable.five_stars)
+                }
+                4 -> {
+                    imageView.setImageResource(R.drawable.fourth_stars)
+                }
+                else -> {
+                    imageView.setImageResource(R.drawable.broken_image)
+                }
+            }
         }
     }
 

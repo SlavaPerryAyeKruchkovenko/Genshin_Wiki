@@ -22,7 +22,7 @@ class Mock {
                 "1",
                 "https://drive.google.com/uc?export=view&id=10yvtmTVxxPuSah6VyNbPDE-boxKOZ0JD",
                 "Яо Яо",
-                5,
+                4,
                 getWeaponType(WeaponTypes.POLEARM),
                 getWeaponElement(Elements.DENDRO)
             ),
