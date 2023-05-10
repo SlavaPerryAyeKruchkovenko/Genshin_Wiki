@@ -32,9 +32,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/filter"
+        android:backgroundTintMode="multiply"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/app_bar"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/filter" />
+        android:contentDescription="@string/filter"
+        app:tint="?attr/colorPrimaryFixed" />
 
 </LinearLayout>

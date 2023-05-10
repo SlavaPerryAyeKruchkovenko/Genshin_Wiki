@@ -27,7 +27,7 @@
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:width">70dp</item>
         <item name="android:height">60dp</item>
-        <item name="android:color">?attr/colorOnPrimary</item>
+        <item name="android:color">?attr/colorOnPrimaryContainer</item>
         <item name="shapeAppearance">@style/ShapeAppearance.M3.Sys.Shape.Corner.LowCorner</item>
     </style>
     <style name="ShapeAppearance.M3.Sys.Shape.Corner.LowCorner" parent="">
