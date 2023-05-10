@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Widget.App.SearchBar" parent="Widget.Material3.Toolbar">
-        <item name="android:titleTextAppearance">@style/TextAppearance.Material3.TitleLarge</item>
-        <item name="android:textSize">44sp</item>
+    <style name="Widget.Material3.SearchBar.person" parent="Widget.Material3.SearchBar">
+        <item name="android:textAppearance">@style/TextAppearance.Material3.SearchBar.MyTitle</item>
+        <item name="android:backgroundTint">?attr/colorSecondary</item>
+        <item name="tintNavigationIcon">false</item>
+    </style>
+    <style name="TextAppearance.Material3.SearchBar.MyTitle" parent="TextAppearance.Material3.SearchBar">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textColorHint">?attr/colorOnSecondary</item>
+    </style>
+    <style name="Widget.Material3.BottomNavigationView.NavBar" parent="Widget.Material3.BottomNavigationView">
+        <item name="labelVisibilityMode">unlabeled</item>
+        <item name="android:background">?attr/colorPrimaryContainer</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+        <item name="elevation">3dp</item>
+        <item name="itemIconSize">36dp</item>
+        <item name="itemRippleColor">@color/nav_bar_ripple_color</item>
+        <item name="itemIconTint">@color/nav_bar_items_color</item>
+        <item name="itemActiveIndicatorStyle">@style/App.Custom.Indicator</item>
+    </style>
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorSurface">?attr/colorSecondaryVariant</item>
+        <item name="colorOnSurfaceVariant">?attr/colorOnSecondary</item>
+    </style>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:width">70dp</item>
+        <item name="android:height">60dp</item>
+        <item name="android:color">?attr/colorOnPrimaryContainer</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.M3.Sys.Shape.Corner.LowCorner</item>
+    </style>
+    <style name="ShapeAppearance.M3.Sys.Shape.Corner.LowCorner" parent="">
+        <item name="cornerFamily">?attr/shapeCornerFamily</item>
+        <item name="cornerSize">15dp</item>
     </style>
 </resources>
