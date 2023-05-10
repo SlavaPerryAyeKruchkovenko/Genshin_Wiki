@@ -13,7 +13,7 @@
         android:id="@+id/navigation_weapons"
         android:enabled="true"
         android:title="@string/weapons"
-        android:icon="@drawable/recnagle_weapon_rounded"
+        android:icon="@drawable/weapons"
         app:showAsAction="ifRoom"
         android:tooltipText="@string/weapons"
         />
