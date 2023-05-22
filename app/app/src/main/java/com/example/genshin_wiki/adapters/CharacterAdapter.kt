@@ -41,11 +41,11 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
     inner class CharacterProfileHolder(private val binding: CharacterProfileBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: CharacterProfile) = with(binding) {
-            loadImage(profile.image, profileImage)
-            nameText.text = profile.name
-            loadImage(profile.element.image, elementImage)
-            loadImage(profile.weaponType.image, weaponImage)
-            loadStars(profile.countOfStar,starsImage)
+            loadImage(profile.image, character)
+            name.text = profile.name
+            loadImage(profile.element.image, element)
+            loadImage(profile.weaponType.image, weaponType)
+            loadStars(profile.countOfStar, stars)
         }
 
         private fun loadImage(image: String, imageView: ImageView) {
