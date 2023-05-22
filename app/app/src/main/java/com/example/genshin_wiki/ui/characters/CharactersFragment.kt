@@ -5,22 +5,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.genshin_wiki.R
+import com.example.genshin_wiki.adapters.CharacterAdapter
+import com.example.genshin_wiki.databinding.CharacterProfileBinding
+import com.example.genshin_wiki.databinding.FragmentCharatersBinding
+import com.example.genshin_wiki.models.CharacterProfile
 
 class CharactersFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
+    private var _binding: FragmentCharatersBinding? = null
+    private val binding get() = _binding!!
+    private val characterAdapter = CharacterAdapter()
+    private val viewModel = CharactersViewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_charaters, container, false)
+    ): View {
+        _binding = FragmentCharatersBinding.inflate(inflater, container, false)
+        init()
+        viewModel.init()
+        return binding.root
+    }
+    private fun init(){
+        /*(activity?.application as ToolsApp).component.inject(this)*/
+        binding.characters.layoutManager = GridLayoutManager(
+            context,
+            2
+        )
+        binding.characters.adapter = characterAdapter
+        val observer = Observer<List<CharacterProfile>> { newValue ->
+            characterAdapter.submitList(newValue)
+        }
+        viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
 }

@@ -1,4 +1,6 @@
 package com.example.genshin_wiki.models
 
-class WeaponType(id: String, name: String, image: String) {
-}
+data class WeaponType(
+    val id: String,
+    val name: String,
+    val image: String)

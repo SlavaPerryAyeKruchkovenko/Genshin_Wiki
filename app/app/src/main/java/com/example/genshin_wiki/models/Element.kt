@@ -1,4 +1,6 @@
 package com.example.genshin_wiki.models
 
-class Element(id: String, name: String, image: String) {
-}
+data class Element(
+    val id: String,
+    val name: String,
+    val image: String)
