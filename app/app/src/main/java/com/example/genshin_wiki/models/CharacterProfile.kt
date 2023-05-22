@@ -1,11 +1,11 @@
 package com.example.genshin_wiki.models
 
-data class CharacterProfile(
-    val id: String,
-    val characterId: String,
-    val image: String,
-    val name: String,
-    val countOfStar: Int,
-    val weaponType: WeaponType,
-    val element: Element
-)
+class CharacterProfile(
+    id: String,
+    characterId: String,
+    image: String,
+    name: String,
+    element: Element
+) : Profile(id) {
+
+}
