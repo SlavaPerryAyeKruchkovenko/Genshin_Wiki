@@ -10,4 +10,10 @@
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_charaters">
     </fragment>
+    <fragment
+        android:id="@+id/WeaponsFragment"
+        android:name="com.example.genshin_wiki.ui.weapons.WeaponsFragment"
+        android:label="@string/weapons_fragment"
+        tools:layout="@layout/fragment_weapons">
+    </fragment>
 </navigation>

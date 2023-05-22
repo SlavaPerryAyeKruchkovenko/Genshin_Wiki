@@ -5,7 +5,7 @@ data class CharacterProfile(
     val characterId: String,
     val image: String,
     val name: String,
-    val countOfStar: Int,
+    val stars: Int,
     val weaponType: WeaponType,
     val element: Element
 )

@@ -15,12 +15,12 @@ import com.squareup.picasso.Picasso
 class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(MyDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
-        return R.id.characters_fragment
+        return R.id.CharacterFragment
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            R.id.characters_fragment -> {
+            R.id.CharacterFragment -> {
                 val binding = CharacterProfileBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent, false
@@ -33,7 +33,7 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder.itemViewType) {
-            R.id.characters_fragment -> (holder as CharacterProfileHolder).bind(getItem(position))
+            R.id.CharacterFragment -> (holder as CharacterProfileHolder).bind(getItem(position))
             else -> throw IllegalStateException("Unknown item view type ${holder.itemViewType}")
         }
     }
@@ -45,7 +45,7 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
             name.text = profile.name
             loadImage(profile.element.image, element)
             loadImage(profile.weaponType.image, weaponType)
-            loadStars(profile.countOfStar, stars)
+            loadStars(profile.stars, stars)
         }
 
         private fun loadImage(image: String, imageView: ImageView) {
