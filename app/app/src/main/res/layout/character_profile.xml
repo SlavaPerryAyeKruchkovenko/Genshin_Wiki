@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="?attr/colorPrimary"
-            android:padding="6dp">
+            android:padding="10dp">
 
             <ImageView
                 android:maxHeight="150dp"
