@@ -15,4 +15,6 @@
     <string name="characters">Characters</string>
     <string name="artifacts">Artifacts</string>
     <string name="empty" />
+    <string name="Homa">Staff of Homa</string>
+    <string name="weapons_fragment">weapons fragment</string>
 </resources>

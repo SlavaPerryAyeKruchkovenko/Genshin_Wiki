@@ -5,15 +5,36 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.genshin_wiki.R
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.genshin_wiki.adapters.WeaponsAdapter
+import com.example.genshin_wiki.databinding.FragmentWeaponsBinding
+import com.example.genshin_wiki.models.Weapon
 
 class WeaponsFragment : Fragment() {
-
+    private var _binding: FragmentWeaponsBinding? = null
+    private val binding get() = _binding!!
+    private val weaponsAdapter = WeaponsAdapter()
+    private val viewModel = WeaponsViewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weapons, container, false)
+    ): View {
+        _binding = FragmentWeaponsBinding.inflate(inflater, container, false)
+        init()
+        viewModel.init()
+        return binding.root
+    }
+
+    private fun init() {
+        binding.weapons.layoutManager = GridLayoutManager(
+            context,
+            2
+        )
+        binding.weapons.adapter = weaponsAdapter
+        val observer = Observer<List<Weapon>> { newValue ->
+            weaponsAdapter.submitList(newValue)
+        }
+        viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
 }
