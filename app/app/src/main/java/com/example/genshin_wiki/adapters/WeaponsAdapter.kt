@@ -14,12 +14,12 @@ import com.squareup.picasso.Picasso
 
 class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallback()) {
     override fun getItemViewType(position: Int): Int {
-        return R.id.WeaponsFragment
+        return R.id.navigation_weapons
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-            R.id.WeaponsFragment -> {
+            R.id.navigation_weapons -> {
                 val binding = WeaponProfileBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent, false
@@ -32,7 +32,7 @@ class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallba
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder.itemViewType) {
-            R.id.characters_fragment -> (holder as WeaponsProfileHolder).bind(getItem(position))
+            R.id.navigation_weapons -> (holder as WeaponsProfileHolder).bind(getItem(position))
             else -> throw IllegalStateException("Unknown item view type ${holder.itemViewType}")
         }
     }
