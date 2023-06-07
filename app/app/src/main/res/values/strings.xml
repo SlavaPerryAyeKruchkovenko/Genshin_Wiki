@@ -17,4 +17,7 @@
     <string name="empty" />
     <string name="Homa">Staff of Homa</string>
     <string name="weapons_fragment">weapons fragment</string>
+    <string name="pitch">pitch</string>
+    <string name="value_example">153</string>
+    <string name="reset">reset</string>
 </resources>
