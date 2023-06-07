@@ -20,4 +20,7 @@
     <string name="pitch">pitch</string>
     <string name="value_example">153</string>
     <string name="reset">reset</string>
+    <string name="resource">resource</string>
+    <string name="resource_label_example">Forgotten Canyon, Mondstadt</string>
+    <string name="monday">Monday</string>
 </resources>

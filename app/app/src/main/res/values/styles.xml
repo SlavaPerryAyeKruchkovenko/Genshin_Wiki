@@ -19,6 +19,13 @@
         <item name="android:textColor">?attr/colorPrimaryFixed</item>
         <item name="android:textColorHint">?attr/colorOnSecondary</item>
     </style>
+    <style name="ResourceText" parent="BigText">
+        <item name="fontFamily">Ubuntu</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="DangerTitle" parent="ResourceText">
+        <item name="android:textSize">24sp</item>
+    </style>
     <style name="ResetBtn" parent="Widget.Material3.Button">
         <item name="backgroundTint">?attr/colorOnPrimarySurface</item>
         <item name="fontFamily">Ubuntu</item>
