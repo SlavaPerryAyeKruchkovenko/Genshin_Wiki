@@ -1,9 +1,6 @@
 package com.example.genshin_wiki.repository
 
-import com.example.genshin_wiki.models.CharacterProfile
-import com.example.genshin_wiki.models.Element
-import com.example.genshin_wiki.models.Weapon
-import com.example.genshin_wiki.models.WeaponType
+import com.example.genshin_wiki.models.*
 import com.example.genshin_wiki.models.enums.Stats
 
 class Mock {
@@ -18,6 +15,7 @@ class Mock {
     fun getCharacters(): List<CharacterProfile> = getMockCharacters()
 
     fun getWeapons(): List<Weapon> = getMockWeapons()
+    fun getResources(): List<DungeonResource> = getMockResources()
     private fun getMockWeapons(): List<Weapon> {
         return listOf(
             Weapon(
@@ -85,6 +83,59 @@ class Mock {
                 getWeaponType(WeaponTypes.BOW),
                 getWeaponElement(Elements.PYRO)
             ),
+        )
+    }
+
+    private fun getMockResources(): List<DungeonResource> {
+        return listOf(
+            DungeonResource(
+                "1",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
+            ),
+            DungeonResource(
+                "2",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1qdcMY0nDq8crRax0u3Lppa4a0qjDwr9h/view",
+            ),
+            DungeonResource(
+                "3",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
+            ),
+            DungeonResource(
+                "4",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1qdcMY0nDq8crRax0u3Lppa4a0qjDwr9h/view",
+            ),
+            DungeonResource(
+                "5",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
+            ),
+            DungeonResource(
+                "6",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1qdcMY0nDq8crRax0u3Lppa4a0qjDwr9h/view",
+            ),
+            DungeonResource(
+                "7",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
+            ),
+            DungeonResource(
+                "8",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1qdcMY0nDq8crRax0u3Lppa4a0qjDwr9h/view",
+            )
         )
     }
 
