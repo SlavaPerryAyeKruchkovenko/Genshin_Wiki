@@ -131,7 +131,7 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/mondstadt"
                             android:layout_width="0dp"
-                            android:layout_height="12dp"
+                            android:layout_height="@dimen/swipe_btn_height"
                             android:layout_marginEnd="4dp"
                             android:layout_weight="1"
                             android:backgroundTint="?attr/colorOnPrimary" />
@@ -139,7 +139,7 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/li_yue"
                             android:layout_width="0dp"
-                            android:layout_height="12dp"
+                            android:layout_height="@dimen/swipe_btn_height"
                             android:layout_marginHorizontal="4dp"
                             android:layout_weight="1"
                             android:backgroundTint="?attr/colorOnPrimary" />
@@ -147,7 +147,7 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/inadzuma"
                             android:layout_width="0dp"
-                            android:layout_height="12dp"
+                            android:layout_height="@dimen/swipe_btn_height"
                             android:layout_marginHorizontal="4dp"
                             android:layout_weight="1"
                             android:backgroundTint="?attr/colorOnPrimary"
@@ -156,7 +156,7 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/sumeru"
                             android:layout_width="0dp"
-                            android:layout_height="12dp"
+                            android:layout_height="@dimen/swipe_btn_height"
                             android:layout_marginStart="4dp"
                             android:layout_weight="1"
                             android:backgroundTint="?attr/colorOnPrimary" />
