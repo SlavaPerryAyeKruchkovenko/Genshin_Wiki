@@ -50,7 +50,39 @@ class Mock {
                 Stats.ATK,
                 Stats.ER_PER,
                 "https://drive.google.com/file/d/1eyiEvFWJSdS3-0yuWgXHpKp82E9_4Bad/view"
+            ),Weapon(
+                "4",
+                "Calamity Queller",
+                "test",
+                getWeaponType(WeaponTypes.POLEARM),
+                "Extinguishing Precept",
+                5,
+                Stats.ATK,
+                Stats.ATK_PER,
+                "https://drive.google.com/file/d/1kABfbqHoLSHFRi-bnfLNK5cnIo3hVS3T/view"
             ),
+            Weapon(
+                "5",
+                "Staff of Homa",
+                "A “firewood staff” that was once used in ancient and long-lost rituals.",
+                getWeaponType(WeaponTypes.POLEARM),
+                "test",
+                5,
+                Stats.ATK,
+                Stats.CRIT_DMG,
+                "https://drive.google.com/file/d/1alsqPm_g-dJus2YPtJuuQy_uon7R11K3/view"
+            ),
+            Weapon(
+                "6",
+                "Engulfing Lightning",
+                "A naginata used to ''cut grass.'' Any army that stands before this weapon will probably be likewise cut down...",
+                getWeaponType(WeaponTypes.POLEARM),
+                "test",
+                5,
+                Stats.ATK,
+                Stats.ER_PER,
+                "https://drive.google.com/file/d/1eyiEvFWJSdS3-0yuWgXHpKp82E9_4Bad/view"
+            )
         )
     }
 

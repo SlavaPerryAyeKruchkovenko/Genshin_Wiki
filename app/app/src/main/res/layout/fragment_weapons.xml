@@ -13,6 +13,7 @@
         android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:paddingBottom="60dp"
         android:id="@+id/weapons"
         android:layout_width="match_parent"
         android:layout_height="0dp"

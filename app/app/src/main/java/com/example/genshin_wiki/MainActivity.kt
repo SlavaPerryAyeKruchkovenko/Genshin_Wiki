@@ -26,15 +26,6 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container)
                     as NavHostFragment
         val navController = navHostFragment.navController
-        /*val nabBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.home_fragment,
-                R.id.weapons_fragment,
-                R.id.characters_fragment,
-                R.id.navigation_artifacts
-            )
-        )
-        setupActionBarWithNavController(navController, nabBarConfiguration)*/
         navView.setupWithNavController(navController)
     }
 }
