@@ -1,8 +1,8 @@
 package com.example.genshin_wiki.ui.home
 
 import android.content.res.ColorStateList
+import android.icu.util.Calendar
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +15,7 @@ import com.example.genshin_wiki.adapters.DungeonAdapter
 import com.example.genshin_wiki.databinding.FragmentHomeBinding
 import com.example.genshin_wiki.layouts.DungeonLayout
 import com.example.genshin_wiki.models.DungeonResource
+import com.example.genshin_wiki.models.enums.Day
 import com.google.android.material.button.MaterialButton
 
 class HomeFragment : Fragment() {
@@ -34,9 +35,22 @@ class HomeFragment : Fragment() {
     }
 
     private fun init() {
+        initDayOfWeek()
         initDungeonView()
         initPitchView()
         initAdapterBtn()
+    }
+
+    private fun initDayOfWeek() {
+        val calendar = Calendar.getInstance()
+        val dayOfWeek = Day.values()[calendar.get(Calendar.DAY_OF_WEEK) - 1]
+
+        val dayObserver = Observer<Day> { newValue ->
+            viewModel.initDungeonResource()
+            binding.dayOfWeek.text = getString(newValue.value)
+        }
+        viewModel.dayOfWeekData.observe(viewLifecycleOwner, dayObserver)
+        viewModel.setCurrentDay(dayOfWeek)
     }
 
     private fun initDungeonView() {
