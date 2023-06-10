@@ -7,4 +7,6 @@
     <dimen name="small_image_size">60dp</dimen>
     <dimen name="stars_image_width">80dp</dimen>
     <dimen name="starts_image_height">20dp</dimen>
+    <dimen name="big_text_size">24sp</dimen>
+    <dimen name="recycle_element_margin">20dp</dimen>
 </resources>
