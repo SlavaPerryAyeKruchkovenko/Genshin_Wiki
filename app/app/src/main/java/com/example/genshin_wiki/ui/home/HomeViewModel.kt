@@ -21,10 +21,11 @@ class HomeViewModel : ViewModel() {
     }
 
     fun changeAdapterPosition(position: Int) {
-        if(position in 0..3){
-            adapterPositionData.postValue(position)
-        }
-        else{
+        if (position in 0..3) {
+            if(position != adapterPositionData.value){
+                adapterPositionData.postValue(position)
+            }
+        } else {
             throw IndexOutOfBoundsException("incorrect index $position of adapter")
         }
     }

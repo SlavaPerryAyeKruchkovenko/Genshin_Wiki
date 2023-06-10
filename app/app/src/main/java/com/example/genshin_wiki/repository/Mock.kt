@@ -135,38 +135,38 @@ class Mock {
             DungeonResource(
                 "3",
                 "dungeon",
-                "mondstadt",
+                "li yue",
                 "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
             ),
             DungeonResource(
                 "4",
                 "dungeon",
-                "mondstadt",
-                "https://drive.google.com/file/d/1qdcMY0nDq8crRax0u3Lppa4a0qjDwr9h/view",
+                "li yue",
+                "https://drive.google.com/file/d/1aKpmkVNvDZNS5VotyFf-9dXtbnYqo89J/view",
             ),
             DungeonResource(
                 "5",
                 "dungeon",
-                "mondstadt",
+                "inadzuma",
                 "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
             ),
             DungeonResource(
                 "6",
                 "dungeon",
-                "mondstadt",
-                "https://drive.google.com/file/d/1qdcMY0nDq8crRax0u3Lppa4a0qjDwr9h/view",
+                "inadzuma",
+                "https://drive.google.com/file/d/1WCAjHc6OLszh3fXhyfHHEubB07iQOPz2/view",
             ),
             DungeonResource(
                 "7",
                 "dungeon",
-                "mondstadt",
-                "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
+                "sumeru",
+                "https://drive.google.com/file/d/1Fb_X3fhKihgKsxXhdseCRMozx8DelziO/view",
             ),
             DungeonResource(
                 "8",
                 "dungeon",
-                "mondstadt",
-                "https://drive.google.com/file/d/1qdcMY0nDq8crRax0u3Lppa4a0qjDwr9h/view",
+                "sumeru",
+                "https://drive.google.com/file/d/1Fb_X3fhKihgKsxXhdseCRMozx8DelziO/view",
             )
         )
     }

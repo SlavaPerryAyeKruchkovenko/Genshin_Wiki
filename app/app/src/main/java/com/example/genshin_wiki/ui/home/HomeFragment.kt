@@ -9,10 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.DungeonAdapter
 import com.example.genshin_wiki.databinding.FragmentHomeBinding
+import com.example.genshin_wiki.layouts.DungeonLayout
 import com.example.genshin_wiki.models.DungeonResource
 import com.google.android.material.button.MaterialButton
 
@@ -20,8 +21,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel = HomeViewModel()
-    private val adapter = DungeonAdapter()
-
+    private val dungeonAdapter = DungeonAdapter()
+    private var canScroll = true
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,21 +34,40 @@ class HomeFragment : Fragment() {
     }
 
     private fun init() {
-        binding.resources.layoutManager = GridLayoutManager(
-            context,
-            2,
-            GridLayoutManager.HORIZONTAL,
-            false
-        )
-        binding.resources.adapter = adapter
         initDungeonView()
         initPitchView()
         initAdapterBtn()
     }
 
     private fun initDungeonView() {
+
+        val dungeonRecycle = binding.resources
+        val scrollListener = object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                try {
+                    if (dy == 0 && canScroll) {
+                        val position =
+                            (recyclerView.layoutManager as DungeonLayout).findFirstVisibleItemPosition()
+                        viewModel.changeAdapterPosition(position / 2)
+                    }
+                } catch (_: Exception) {
+                }
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == 0 && !canScroll) {
+                    canScroll = true
+                }
+            }
+        }
+        dungeonRecycle.apply {
+            layoutManager = DungeonLayout(context)
+            adapter = dungeonAdapter
+            addOnScrollListener(scrollListener)
+            isNestedScrollingEnabled = false
+        }
         val dungeonObserver = Observer<List<DungeonResource>> { newValue ->
-            adapter.submitList(newValue)
+            dungeonAdapter.submitList(newValue)
         }
         viewModel.liveData.observe(viewLifecycleOwner, dungeonObserver)
     }
@@ -65,6 +85,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initAdapterBtn() {
+        val dungeonRecycle = binding.resources
         val mondstadt = binding.mondstadt
         val liYue = binding.liYue
         val inadzuma = binding.inadzuma
@@ -85,6 +106,7 @@ class HomeFragment : Fragment() {
         }
 
         val positionObserver = Observer<Int> { newValue ->
+            dungeonRecycle.smoothScrollToPosition(newValue * 2)
             when (newValue) {
                 0 -> changePosition(mondstadt)
                 1 -> changePosition(liYue)
@@ -93,10 +115,22 @@ class HomeFragment : Fragment() {
                 else -> changePosition(mondstadt)
             }
         }
-        mondstadt.setOnClickListener { viewModel.changeAdapterPosition(0) }
-        liYue.setOnClickListener { viewModel.changeAdapterPosition(1) }
-        inadzuma.setOnClickListener { viewModel.changeAdapterPosition(2) }
-        sumeru.setOnClickListener { viewModel.changeAdapterPosition(3) }
+        mondstadt.setOnClickListener {
+            viewModel.changeAdapterPosition(0)
+            canScroll = false
+        }
+        liYue.setOnClickListener {
+            viewModel.changeAdapterPosition(1)
+            canScroll = false
+        }
+        inadzuma.setOnClickListener {
+            viewModel.changeAdapterPosition(2)
+            canScroll = false
+        }
+        sumeru.setOnClickListener {
+            viewModel.changeAdapterPosition(3)
+            canScroll = false
+        }
         viewModel.adapterPositionData.observe(viewLifecycleOwner, positionObserver)
     }
 }
