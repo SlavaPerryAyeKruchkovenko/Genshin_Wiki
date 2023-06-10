@@ -1,9 +1,6 @@
 package com.example.genshin_wiki.repository
 
-import com.example.genshin_wiki.models.CharacterProfile
-import com.example.genshin_wiki.models.Element
-import com.example.genshin_wiki.models.Weapon
-import com.example.genshin_wiki.models.WeaponType
+import com.example.genshin_wiki.models.*
 import com.example.genshin_wiki.models.enums.Stats
 
 class Mock {
@@ -18,6 +15,7 @@ class Mock {
     fun getCharacters(): List<CharacterProfile> = getMockCharacters()
 
     fun getWeapons(): List<Weapon> = getMockWeapons()
+    fun getResources(): List<DungeonResource> = getMockResources()
     private fun getMockWeapons(): List<Weapon> {
         return listOf(
             Weapon(
@@ -52,7 +50,39 @@ class Mock {
                 Stats.ATK,
                 Stats.ER_PER,
                 "https://drive.google.com/file/d/1eyiEvFWJSdS3-0yuWgXHpKp82E9_4Bad/view"
+            ),Weapon(
+                "4",
+                "Calamity Queller",
+                "test",
+                getWeaponType(WeaponTypes.POLEARM),
+                "Extinguishing Precept",
+                5,
+                Stats.ATK,
+                Stats.ATK_PER,
+                "https://drive.google.com/file/d/1kABfbqHoLSHFRi-bnfLNK5cnIo3hVS3T/view"
             ),
+            Weapon(
+                "5",
+                "Staff of Homa",
+                "A “firewood staff” that was once used in ancient and long-lost rituals.",
+                getWeaponType(WeaponTypes.POLEARM),
+                "test",
+                5,
+                Stats.ATK,
+                Stats.CRIT_DMG,
+                "https://drive.google.com/file/d/1alsqPm_g-dJus2YPtJuuQy_uon7R11K3/view"
+            ),
+            Weapon(
+                "6",
+                "Engulfing Lightning",
+                "A naginata used to ''cut grass.'' Any army that stands before this weapon will probably be likewise cut down...",
+                getWeaponType(WeaponTypes.POLEARM),
+                "test",
+                5,
+                Stats.ATK,
+                Stats.ER_PER,
+                "https://drive.google.com/file/d/1eyiEvFWJSdS3-0yuWgXHpKp82E9_4Bad/view"
+            )
         )
     }
 
@@ -85,6 +115,59 @@ class Mock {
                 getWeaponType(WeaponTypes.BOW),
                 getWeaponElement(Elements.PYRO)
             ),
+        )
+    }
+
+    private fun getMockResources(): List<DungeonResource> {
+        return listOf(
+            DungeonResource(
+                "1",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
+            ),
+            DungeonResource(
+                "2",
+                "dungeon",
+                "mondstadt",
+                "https://drive.google.com/file/d/1qdcMY0nDq8crRax0u3Lppa4a0qjDwr9h/view",
+            ),
+            DungeonResource(
+                "3",
+                "dungeon",
+                "li yue",
+                "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
+            ),
+            DungeonResource(
+                "4",
+                "dungeon",
+                "li yue",
+                "https://drive.google.com/file/d/1aKpmkVNvDZNS5VotyFf-9dXtbnYqo89J/view",
+            ),
+            DungeonResource(
+                "5",
+                "dungeon",
+                "inadzuma",
+                "https://drive.google.com/file/d/1wlJoO3CuWu5GuExYbaXPDhMocb3N2hpk/view",
+            ),
+            DungeonResource(
+                "6",
+                "dungeon",
+                "inadzuma",
+                "https://drive.google.com/file/d/1WCAjHc6OLszh3fXhyfHHEubB07iQOPz2/view",
+            ),
+            DungeonResource(
+                "7",
+                "dungeon",
+                "sumeru",
+                "https://drive.google.com/file/d/1Fb_X3fhKihgKsxXhdseCRMozx8DelziO/view",
+            ),
+            DungeonResource(
+                "8",
+                "dungeon",
+                "sumeru",
+                "https://drive.google.com/file/d/1Fb_X3fhKihgKsxXhdseCRMozx8DelziO/view",
+            )
         )
     }
 
