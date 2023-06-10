@@ -37,7 +37,6 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
             else -> throw IllegalStateException("Unknown item view type ${holder.itemViewType}")
         }
     }
-
     inner class CharacterProfileHolder(private val binding: CharacterProfileBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: CharacterProfile) = with(binding) {

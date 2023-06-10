@@ -37,7 +37,6 @@ class DungeonAdapter : ListAdapter<DungeonResource, RecyclerView.ViewHolder>(MyD
     override fun getItemViewType(position: Int): Int {
         return R.id.dungeon_panel
     }
-
     inner class DungeonHolder(private val binding: DungeonResourceBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(resource: DungeonResource) = with(binding) {
@@ -51,7 +50,7 @@ class DungeonAdapter : ListAdapter<DungeonResource, RecyclerView.ViewHolder>(MyD
                 val imageId = googleImage.split("/")[5]
                 val image = "https://drive.google.com/uc?export=view&id=${imageId}"
                 Picasso.get().load(image)
-                    .placeholder(R.drawable.loader_animation)
+                    .placeholder(R.drawable.loader_dungeon_animation)
                     .error(R.drawable.broken_image)
                     .into(imageView)
             } catch (ex: Exception) {

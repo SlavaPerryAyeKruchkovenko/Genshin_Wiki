@@ -13,7 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="15dp">
+        app:cardCornerRadius="@dimen/profile_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
@@ -22,27 +22,37 @@
             android:background="?attr/colorPrimary"
             android:padding="10dp">
 
-            <ImageView
-                android:maxHeight="150dp"
-                android:id="@+id/character"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:contentDescription="@string/profile"
-                android:src="@drawable/profile"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/character_block"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/profile_radius"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/character"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:contentDescription="@string/profile"
+                    android:maxHeight="@dimen/image_size"
+                    android:src="@drawable/profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </com.google.android.material.card.MaterialCardView>
 
             <ImageView
                 android:id="@+id/stars"
-                android:layout_width="80dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/stars_image_width"
+                android:layout_height="@dimen/starts_image_height"
                 android:contentDescription="@string/stars"
                 android:paddingTop="6dp"
                 android:src="@drawable/five_stars"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/character" />
+                app:layout_constraintTop_toBottomOf="@+id/character_block" />
 
             <TextView
                 android:id="@+id/name"
@@ -51,7 +61,7 @@
                 android:paddingTop="6dp"
                 android:text="@string/ChunLi"
                 android:textAlignment="center"
-                android:textSize="16sp"
+                android:textSize="@dimen/default_text_size"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,15 +79,15 @@
 
                 <ImageView
                     android:id="@+id/element"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/small_image_size"
+                    android:layout_height="@dimen/small_image_size"
                     android:contentDescription="@string/element"
                     android:src="@drawable/element" />
 
                 <ImageView
                     android:id="@+id/weapon_type"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/small_image_size"
+                    android:layout_height="@dimen/small_image_size"
                     android:layout_marginStart="4dp"
                     android:contentDescription="@string/weapon"
                     android:src="@drawable/weapon" />
