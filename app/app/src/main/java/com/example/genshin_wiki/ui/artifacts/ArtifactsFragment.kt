@@ -5,27 +5,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.genshin_wiki.R
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.genshin_wiki.adapters.ArtifactAdapter
+import com.example.genshin_wiki.databinding.FragmentArtifactsBinding
+import com.example.genshin_wiki.models.Artifact
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ArtifactsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ArtifactsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
+    private var _binding: FragmentArtifactsBinding? = null
+    private val binding get() = _binding!!
+    private val characterAdapter = ArtifactAdapter()
+    private val viewModel = ArtifactViewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_artifacts, container, false)
+    ): View {
+        _binding = FragmentArtifactsBinding.inflate(inflater, container, false)
+        init()
+        viewModel.init()
+        return binding.root
+    }
+
+    private fun init() {
+        binding.artifacts.layoutManager = GridLayoutManager(
+            context,
+            2
+        )
+        binding.artifacts.adapter = characterAdapter
+        val observer = Observer<List<Artifact>> { newValue ->
+            characterAdapter.submitList(newValue)
+        }
+        viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
 }

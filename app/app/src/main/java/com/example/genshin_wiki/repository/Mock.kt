@@ -13,9 +13,9 @@ class Mock {
     }
 
     fun getCharacters(): List<CharacterProfile> = getMockCharacters()
-
     fun getWeapons(): List<Weapon> = getMockWeapons()
     fun getResources(): List<DungeonResource> = getMockResources()
+    fun getArtifacts(): List<Artifact> = getMockArtifacts()
     private fun getMockWeapons(): List<Weapon> {
         return listOf(
             Weapon(
@@ -248,5 +248,34 @@ class Mock {
                 Element("1", "10oEiogG0fguDv3qnGeZDGDffXbUxPJ1R", "")
             }
         }
+    }
+
+    private fun getMockArtifacts(): List<Artifact>{
+        return listOf(
+            Artifact(
+                "1",
+                "https://drive.google.com/file/d/16EH-ODMcaLMQ0dDZWfVc6j4YZUxNIIuQ/view",
+                "Emblem of Severed Fate",
+                5,
+            ),
+            Artifact(
+                "2",
+                "https://drive.google.com/file/d/1YiA9rL236gLIwBAaamyYi4qG0GCZmwnn/view",
+                "Shimenawa's Reminiscence",
+                5,
+            ),
+            Artifact(
+                "3",
+                "https://drive.google.com/file/d/1hx9dnxVKuXMfLiNJd-lqD65CjUkp845J/view",
+                "Deepwood Memories",
+                5,
+            ),
+            Artifact(
+                "4",
+                "https://drive.google.com/file/d/1Ru7Jxi3z8lTnNs5f0Ufr2znsSAikHXWI/view",
+                "Scholar",
+                4,
+            ),
+        )
     }
 }

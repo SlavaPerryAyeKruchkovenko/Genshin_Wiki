@@ -46,9 +46,10 @@ class ArtifactAdapter : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCal
             name.text = artifactObj.name
             loadStars(artifactObj.stars, stars)
         }
-
-        private fun loadImage(image: String, imageView: ImageView) {
+        private fun loadImage(googleImage: String, imageView: ImageView) {
             try {
+                val imageId = googleImage.split("/")[5]
+                val image = "https://drive.google.com/uc?export=view&id=${imageId}"
                 Picasso.get().load(image)
                     .placeholder(R.drawable.loader_animation)
                     .error(R.drawable.broken_image)
@@ -66,6 +67,15 @@ class ArtifactAdapter : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCal
                 }
                 4 -> {
                     imageView.setImageResource(R.drawable.fourth_stars)
+                }
+                3 -> {
+                    imageView.setImageResource(R.drawable.three_stars)
+                }
+                2 -> {
+                    imageView.setImageResource(R.drawable.three_stars)
+                }
+                1 -> {
+                    imageView.setImageResource(R.drawable.three_stars)
                 }
                 else -> {
                     imageView.setImageResource(R.drawable.broken_image)
