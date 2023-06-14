@@ -13,4 +13,9 @@
     <color name="blue_500">#1A237E</color>
     <color name="blue_300">#3F51B5</color>
     <color name="blue_200">#C5CAE9</color>
+    <color name="stars_5">#bf7442</color>
+    <color name="stars_4">#a27bb3</color>
+    <color name="stars_3">#3b83bd</color>
+    <color name="stars_2">#4ba383</color>
+    <color name="stars_1">#798c99</color>
 </resources>

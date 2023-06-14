@@ -1,16 +1,14 @@
 package com.example.genshin_wiki.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
+import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.WeaponProfileBinding
 import com.example.genshin_wiki.models.Weapon
-import com.squareup.picasso.Picasso
 
 class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallback()) {
     override fun getItemViewType(position: Int): Int {
@@ -40,47 +38,18 @@ class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallba
     inner class WeaponsProfileHolder(private val binding: WeaponProfileBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: Weapon) = with(binding) {
-            loadImage(profile.image, weapon)
             name.text = profile.name
-            loadImage(profile.type.image, weaponType)
-            loadStars(profile.stars, stars)
-        }
-
-        private fun loadImage(googleImage: String, imageView: ImageView) {
-            try {
-                val imageId = googleImage.split("/")[5]
-                val image = "https://drive.google.com/uc?export=view&id=${imageId}"
-                Picasso.get().load(image)
-                    .placeholder(R.drawable.loader_animation)
-                    .error(R.drawable.broken_image)
-                    .into(imageView)
-            } catch (ex: Exception) {
-                Log.e("Error", ex.message.toString())
-                ex.printStackTrace()
-            }
-        }
-
-        private fun loadStars(stars: Int, imageView: ImageView) {
-            when (stars) {
-                5 -> {
-                    imageView.setImageResource(R.drawable.five_stars)
-                }
-                4 -> {
-                    imageView.setImageResource(R.drawable.fourth_stars)
-                }
-                3 -> {
-                    imageView.setImageResource(R.drawable.three_stars)
-                }
-                2 -> {
-                    imageView.setImageResource(R.drawable.three_stars)
-                }
-                1 -> {
-                    imageView.setImageResource(R.drawable.three_stars)
-                }
-                else -> {
-                    imageView.setImageResource(R.drawable.broken_image)
-                }
-            }
+            ProfileUtils.loadImage(
+                ProfileUtils.getImageFromGoogle(profile.image),
+                weapon,
+                R.drawable.loader_animation
+            )
+            ProfileUtils.loadImage(
+                ProfileUtils.getImageFromGoogle(profile.type.image),
+                weaponType,
+                R.drawable.loader_animation
+            )
+            stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))
         }
     }
 

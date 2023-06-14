@@ -91,8 +91,8 @@ class Mock {
             CharacterProfile(
                 "1",
                 "1",
-                "https://drive.google.com/uc?export=view&id=10yvtmTVxxPuSah6VyNbPDE-boxKOZ0JD",
-                "Яо Яо",
+                "https://drive.google.com/file/d/10yvtmTVxxPuSah6VyNbPDE-boxKOZ0JD/view",
+                "Yao Yao",
                 4,
                 getWeaponType(WeaponTypes.POLEARM),
                 getWeaponElement(Elements.DENDRO)
@@ -100,8 +100,8 @@ class Mock {
             CharacterProfile(
                 "2",
                 "2",
-                "https://drive.google.com/uc?export=view&id=1BBnFVb0ERkIxoI2ylxxnpVMjc4MbVLoc",
-                "Джун ли",
+                "https://drive.google.com/file/d/1BBnFVb0ERkIxoI2ylxxnpVMjc4MbVLoc/view",
+                "Zhong Li",
                 5,
                 getWeaponType(WeaponTypes.POLEARM),
                 getWeaponElement(Elements.GEO)
@@ -109,11 +109,20 @@ class Mock {
             CharacterProfile(
                 "3",
                 "3",
-                "https://drive.google.com/uc?export=download&id=1oA9C6t28y5i1jtDIXc5vUvmG_ZAqeGKX",
+                "https://drive.google.com/file/d/1oA9C6t28y5i1jtDIXc5vUvmG_ZAqeGKX/view",
                 "Yoimiya",
                 5,
                 getWeaponType(WeaponTypes.BOW),
                 getWeaponElement(Elements.PYRO)
+            ),
+            CharacterProfile(
+                "4",
+                "4",
+                "https://drive.google.com/file/d/1WD5p8cqkzPcsK26-NtUtWpxmmWOa7OIi/view",
+                "Raiden",
+                5,
+                getWeaponType(WeaponTypes.POLEARM),
+                getWeaponElement(Elements.ELECTRO)
             ),
         )
     }
@@ -177,35 +186,35 @@ class Mock {
                 WeaponType(
                     "1",
                     "Polearm",
-                    "https://drive.google.com/uc?export=view&id=19qGBZ66BEsslwYG3Q3nIKcpA5UDB9jkl"
+                    "https://drive.google.com/file/d/19qGBZ66BEsslwYG3Q3nIKcpA5UDB9jkl/view"
                 )
             }
             WeaponTypes.CLAYMOR -> {
                 WeaponType(
                     "2",
                     "Claymor",
-                    "https://drive.google.com/uc?export=view&id=1WtN2EZXX8vB5PRf_XjYMYR48_RWiZXNk"
+                    "https://drive.google.com/file/d/1WtN2EZXX8vB5PRf_XjYMYR48_RWiZXNk/view"
                 )
             }
             WeaponTypes.CATALYST -> {
                 WeaponType(
                     "3",
                     "Catalyst",
-                    "https://drive.google.com/uc?export=view&id=1VF11Eihy7JzoGkFTKT9iisgz2nlgtzrO"
+                    "https://drive.google.com/file/d/1VF11Eihy7JzoGkFTKT9iisgz2nlgtzrO/view"
                 )
             }
             WeaponTypes.BOW -> {
                 WeaponType(
                     "4",
                     "Bow",
-                    "https://drive.google.com/uc?export=view&id=1MZrqvsc5MAQna0fB7S3iGq93B5W8n_l-"
+                    "https://drive.google.com/file/d/1MZrqvsc5MAQna0fB7S3iGq93B5W8n_l-/view"
                 )
             }
             WeaponTypes.SWORD -> {
                 WeaponType(
                     "5",
                     "Sword",
-                    "https://drive.google.com/uc?export=view&id=15lCuwX6P62VBVk6V52jq17dY1J3M9bYE"
+                    "https://drive.google.com/file/d/15lCuwX6P62VBVk6V52jq17dY1J3M9bYE/view"
                 )
             }
             else -> {
@@ -220,28 +229,28 @@ class Mock {
                 Element(
                     "1",
                     "Pyro",
-                    "https://drive.google.com/uc?export=view&id=10oEiogG0fguDv3qnGeZDGDffXbUxPJ1R"
+                    "https://drive.google.com/file/d/10oEiogG0fguDv3qnGeZDGDffXbUxPJ1R/view"
                 )
             }
             Elements.ELECTRO -> {
                 Element(
                     "2",
                     "Electro",
-                    "https://drive.google.com/uc?export=view&id=19lmBJQf-0_1kKvT0NNzNtZAYAUuKiNqw"
+                    "https://drive.google.com/file/d/19lmBJQf-0_1kKvT0NNzNtZAYAUuKiNqw/view"
                 )
             }
             Elements.DENDRO -> {
                 Element(
                     "3",
                     "Dendro",
-                    "https://drive.google.com/uc?export=view&id=1U1Sbh0uyVhVJKT-0WqW9f66Pj2GjjMQx"
+                    "https://drive.google.com/file/d/1U1Sbh0uyVhVJKT-0WqW9f66Pj2GjjMQx/view"
                 )
             }
             Elements.GEO -> {
                 Element(
                     "4",
                     "Geo",
-                    "https://drive.google.com/uc?export=view&id=1od1d-kDi9sryTuBQzmh6g4PMGc4I1j6n"
+                    "https://drive.google.com/file/d/1od1d-kDi9sryTuBQzmh6g4PMGc4I1j6n/view"
                 )
             }
             else -> {
@@ -275,6 +284,24 @@ class Mock {
                 "https://drive.google.com/file/d/1Ru7Jxi3z8lTnNs5f0Ufr2znsSAikHXWI/view",
                 "Scholar",
                 4,
+            ),
+            Artifact(
+                "5",
+                "https://drive.google.com/file/d/15QVYW9Leqb44va03fa0daNNUAO8YOvj9/view",
+                "Lucky Dog",
+                2,
+            ),
+            Artifact(
+                "6",
+                "https://drive.google.com/file/d/1vSHZqh8EHiBtv5WyTVCQC0KkStxQpiuX/view",
+                "Adventurer",
+                1,
+            ),
+            Artifact(
+                "7",
+                "https://drive.google.com/file/d/1Fbc633EPX2bV8OEdzqVNUls3JwY_4QQx/view",
+                "Resolution of Sojourner",
+                3,
             ),
         )
     }

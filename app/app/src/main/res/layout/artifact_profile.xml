@@ -22,6 +22,7 @@
             android:padding="10dp">
 
             <com.google.android.material.card.MaterialCardView
+                app:strokeWidth="0dp"
                 android:id="@+id/artifact_block"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,10 +55,10 @@
             <TextView
                 android:id="@+id/name"
                 android:layout_width="@dimen/image_size"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:paddingTop="6dp"
                 android:paddingBottom="12dp"
-                android:text="@string/Homa"
+                android:text="@string/emblem"
                 android:textAlignment="center"
                 android:textSize="@dimen/default_text_size"
                 android:textStyle="bold"

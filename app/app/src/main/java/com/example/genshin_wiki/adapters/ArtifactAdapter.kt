@@ -1,17 +1,17 @@
 package com.example.genshin_wiki.adapters
 
-import android.util.Log
+import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
+import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.ArtifactProfileBinding
 import com.example.genshin_wiki.models.Artifact
-import com.squareup.picasso.Picasso
-
 
 class ArtifactAdapter : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCallback()) {
     override fun getItemViewType(position: Int): Int {
@@ -25,7 +25,7 @@ class ArtifactAdapter : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCal
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                ArtifactProfileHolder(binding);
+                ArtifactProfileHolder(parent.context, binding)
             }
             else -> throw IllegalStateException("Unknown view type $viewType")
         }
@@ -38,49 +38,27 @@ class ArtifactAdapter : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCal
         }
     }
 
-    inner class ArtifactProfileHolder(private val binding: ArtifactProfileBinding) :
+    inner class ArtifactProfileHolder(
+        private val context: Context,
+        private val binding: ArtifactProfileBinding
+    ) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(artifactObj: Artifact) = with(binding) {
-            loadImage(artifactObj.image, artifact)
+            ProfileUtils.loadImage(
+                ProfileUtils.getImageFromGoogle(artifactObj.image),
+                artifact,
+                R.drawable.loader_animation
+            )
             name.text = artifactObj.name
-            loadStars(artifactObj.stars, stars)
-        }
-        private fun loadImage(googleImage: String, imageView: ImageView) {
-            try {
-                val imageId = googleImage.split("/")[5]
-                val image = "https://drive.google.com/uc?export=view&id=${imageId}"
-                Picasso.get().load(image)
-                    .placeholder(R.drawable.loader_animation)
-                    .error(R.drawable.broken_image)
-                    .into(imageView)
-            } catch (ex: Exception) {
-                Log.e("Error", ex.message.toString())
-                ex.printStackTrace()
-            }
-        }
-
-        private fun loadStars(stars: Int, imageView: ImageView) {
-            when (stars) {
-                5 -> {
-                    imageView.setImageResource(R.drawable.five_stars)
-                }
-                4 -> {
-                    imageView.setImageResource(R.drawable.fourth_stars)
-                }
-                3 -> {
-                    imageView.setImageResource(R.drawable.three_stars)
-                }
-                2 -> {
-                    imageView.setImageResource(R.drawable.three_stars)
-                }
-                1 -> {
-                    imageView.setImageResource(R.drawable.three_stars)
-                }
-                else -> {
-                    imageView.setImageResource(R.drawable.broken_image)
-                }
-            }
+            artifactBlock.backgroundTintList =
+                ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        context,
+                        ProfileUtils.getColorByStars(artifactObj.stars)
+                    )
+                )
+            stars.setImageResource(ProfileUtils.getImageByStars(artifactObj.stars))
         }
     }
 
