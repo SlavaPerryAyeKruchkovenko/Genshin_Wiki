@@ -12,4 +12,4 @@ data class Weapon(
     val stat: Stats,
     val editionStat: Stats,
     val image: String
-)
+): Likeable()
