@@ -1,7 +1,10 @@
 package com.example.genshin_wiki.adapters
 
+import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -22,7 +25,7 @@ class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallba
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                WeaponsProfileHolder(binding);
+                WeaponsProfileHolder(parent.context, binding);
             }
             else -> throw IllegalStateException("Unknown view type $viewType")
         }
@@ -35,10 +38,20 @@ class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallba
         }
     }
 
-    inner class WeaponsProfileHolder(private val binding: WeaponProfileBinding) :
+    inner class WeaponsProfileHolder(
+        private val context: Context,
+        private val binding: WeaponProfileBinding
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: Weapon) = with(binding) {
             name.text = profile.name
+            weaponBlock.backgroundTintList =
+                ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        context,
+                        ProfileUtils.getColorByStars(profile.stars)
+                    )
+                )
             ProfileUtils.loadImage(
                 ProfileUtils.getImageFromGoogle(profile.image),
                 weapon,

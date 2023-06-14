@@ -1,7 +1,10 @@
 package com.example.genshin_wiki.adapters
 
+import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +26,7 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                CharacterProfileHolder(binding);
+                CharacterProfileHolder(parent.context,binding);
             }
             else -> throw IllegalStateException("Unknown view type $viewType")
         }
@@ -35,10 +38,20 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
             else -> throw IllegalStateException("Unknown item view type ${holder.itemViewType}")
         }
     }
-    inner class CharacterProfileHolder(private val binding: CharacterProfileBinding) :
+    inner class CharacterProfileHolder(
+        private val context: Context,
+        private val binding: CharacterProfileBinding
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: CharacterProfile) = with(binding) {
             name.text = profile.name
+            characterBlock.backgroundTintList =
+                ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        context,
+                        ProfileUtils.getColorByStars(profile.stars)
+                    )
+                )
             ProfileUtils.loadImage(
                 ProfileUtils.getImageFromGoogle(profile.image),
                 character,
