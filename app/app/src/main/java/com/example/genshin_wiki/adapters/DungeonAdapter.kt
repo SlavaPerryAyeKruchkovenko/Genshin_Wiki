@@ -1,16 +1,14 @@
 package com.example.genshin_wiki.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
+import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.DungeonResourceBinding
 import com.example.genshin_wiki.models.DungeonResource
-import com.squareup.picasso.Picasso
 
 class DungeonAdapter : ListAdapter<DungeonResource, RecyclerView.ViewHolder>(MyDiffCallback()) {
 
@@ -37,27 +35,16 @@ class DungeonAdapter : ListAdapter<DungeonResource, RecyclerView.ViewHolder>(MyD
     override fun getItemViewType(position: Int): Int {
         return R.id.dungeon_panel
     }
-
     inner class DungeonHolder(private val binding: DungeonResourceBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(resource: DungeonResource) = with(binding) {
-            loadImage(resource.image, image)
+            ProfileUtils.loadImage(
+                ProfileUtils.getImageFromGoogle(resource.image),
+                image,
+                R.drawable.loader_dungeon_animation
+            )
             val value = resource.location + ", " + resource.city
             label.text = value
-        }
-
-        private fun loadImage(googleImage: String, imageView: ImageView) {
-            try {
-                val imageId = googleImage.split("/")[5]
-                val image = "https://drive.google.com/uc?export=view&id=${imageId}"
-                Picasso.get().load(image)
-                    .placeholder(R.drawable.loader_animation)
-                    .error(R.drawable.broken_image)
-                    .into(imageView)
-            } catch (ex: Exception) {
-                Log.e("Error", ex.message.toString())
-                ex.printStackTrace()
-            }
         }
     }
 

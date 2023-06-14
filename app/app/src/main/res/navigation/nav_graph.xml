@@ -22,4 +22,10 @@
         android:label="@string/characters"
         tools:layout="@layout/fragment_charaters">
     </fragment>
+    <fragment
+        android:id="@+id/navigation_artifacts"
+        android:name="com.example.genshin_wiki.ui.artifacts.ArtifactsFragment"
+        android:label="@string/artifacts"
+        tools:layout="@layout/fragment_artifacts">
+    </fragment>
 </navigation>

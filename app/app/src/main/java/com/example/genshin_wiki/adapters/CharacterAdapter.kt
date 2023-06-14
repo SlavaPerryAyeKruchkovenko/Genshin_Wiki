@@ -1,16 +1,17 @@
 package com.example.genshin_wiki.adapters
 
-import android.util.Log
+import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
+import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.CharacterProfileBinding
 import com.example.genshin_wiki.models.CharacterProfile
-import com.squareup.picasso.Picasso
 
 class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(MyDiffCallback()) {
 
@@ -25,7 +26,7 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                CharacterProfileHolder(binding);
+                CharacterProfileHolder(parent.context,binding);
             }
             else -> throw IllegalStateException("Unknown view type $viewType")
         }
@@ -37,40 +38,39 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
             else -> throw IllegalStateException("Unknown item view type ${holder.itemViewType}")
         }
     }
-
-    inner class CharacterProfileHolder(private val binding: CharacterProfileBinding) :
+    inner class CharacterProfileHolder(
+        private val context: Context,
+        private val binding: CharacterProfileBinding
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: CharacterProfile) = with(binding) {
-            loadImage(profile.image, character)
             name.text = profile.name
-            loadImage(profile.element.image, element)
-            loadImage(profile.weaponType.image, weaponType)
-            loadStars(profile.stars, stars)
-        }
-
-        private fun loadImage(image: String, imageView: ImageView) {
-            try {
-                Picasso.get().load(image)
-                    .placeholder(R.drawable.loader_animation)
-                    .error(R.drawable.broken_image)
-                    .into(imageView)
-            } catch (ex: Exception) {
-                Log.e("Error", ex.message.toString())
-                ex.printStackTrace()
-            }
-        }
-
-        private fun loadStars(stars: Int, imageView: ImageView) {
-            when (stars) {
-                5 -> {
-                    imageView.setImageResource(R.drawable.five_stars)
-                }
-                4 -> {
-                    imageView.setImageResource(R.drawable.fourth_stars)
-                }
-                else -> {
-                    imageView.setImageResource(R.drawable.broken_image)
-                }
+            characterBlock.backgroundTintList =
+                ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        context,
+                        ProfileUtils.getColorByStars(profile.stars)
+                    )
+                )
+            ProfileUtils.loadImage(
+                ProfileUtils.getImageFromGoogle(profile.image),
+                character,
+                R.drawable.loader_animation
+            )
+            ProfileUtils.loadImage(
+                ProfileUtils.getImageFromGoogle(profile.element.image),
+                element,
+                R.drawable.loader_animation
+            )
+            ProfileUtils.loadImage(
+                ProfileUtils.getImageFromGoogle(profile.weaponType.image),
+                weaponType,
+                R.drawable.loader_animation
+            )
+            if (profile.stars in 4..5) {
+                stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))
+            } else {
+                stars.setImageResource(R.drawable.broken_image)
             }
         }
     }

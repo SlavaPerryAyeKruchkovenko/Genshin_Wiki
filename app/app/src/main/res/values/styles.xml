@@ -9,7 +9,7 @@
         <item name="android:background">?attr/colorPrimary</item>
     </style>
     <style name="TextAppearance.Material3.SearchBar.MyTitle" parent="TextAppearance.Material3.SearchBar">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:textColorHint">?attr/colorOnSecondary</item>
     </style>
@@ -24,12 +24,12 @@
         <item name="android:textSize">20sp</item>
     </style>
     <style name="DangerTitle" parent="ResourceText">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
     </style>
     <style name="ResetBtn" parent="Widget.Material3.Button">
         <item name="backgroundTint">?attr/colorOnPrimarySurface</item>
         <item name="fontFamily">Ubuntu</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/big_text_size</item>
         <item name="android:textColor">?attr/colorOnSecondaryFixed</item>
         <item name="android:textColorHint">?attr/colorOnSecondaryFixed</item>
     </style>
@@ -55,6 +55,6 @@
     </style>
     <style name="ShapeAppearance.M3.Sys.Shape.Corner.LowCorner" parent="">
         <item name="cornerFamily">?attr/shapeCornerFamily</item>
-        <item name="cornerSize">15dp</item>
+        <item name="cornerSize">@dimen/profile_radius</item>
     </style>
 </resources>
