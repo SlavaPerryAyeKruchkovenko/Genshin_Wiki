@@ -16,12 +16,19 @@
     <string name="artifacts" translatable="false">Artifacts</string>
     <string name="empty" translatable="false" />
     <string name="Homa" translatable="false">Staff of Homa</string>
+    <string name="lee_yue" translatable="false">Lee Yue</string>
     <string name="weapons_fragment" translatable="false">weapons fragment</string>
     <string name="pitch" translatable="false">pitch</string>
     <string name="value_example" translatable="false">153</string>
     <string name="reset" translatable="false">reset</string>
+    <string name="emblem" translatable="false">Эмблема рассечённой судьбы</string>
     <string name="resource" translatable="false">resource</string>
     <string name="resource_label_example" translatable="false">Forgotten Canyon, Mondstadt</string>
+    <string name="birthday_example" translatable="false">12 Апреля</string>
+    <string name="description_example" translatable="false">Лучший дед геншина</string>
+    <string name="normal_attack_example" translatable="false">Каменный дождь</string>
+    <string name="elemental_burst_example" translatable="false">Падение кометы</string>
+    <string name="elemental_skill_example" translatable="false">Власть над камнем</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
@@ -29,5 +36,14 @@
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
-    <string name="emblem">Эмблема рассечённой судьбы</string>
+    <string name="location">Location:</string>
+    <string name="female">Female:</string>
+    <string name="male">Male:</string>
+    <string name="gender">Gender:</string>
+    <string name="birthday">Birthday:</string>
+    <string name="description">Description:</string>
+    <string name="ability">Abilities:</string>
+    <string name="normal_attack">Normal Attack:</string>
+    <string name="elemental_skill">Elemental Skill:</string>
+    <string name="elemental_burst">Elemental Burst:</string>
 </resources>
