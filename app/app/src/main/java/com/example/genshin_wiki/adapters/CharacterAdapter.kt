@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.CharacterProfileBinding
+import com.example.genshin_wiki.interfaces.CharacterListener
 import com.example.genshin_wiki.models.CharacterProfile
 
-class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(MyDiffCallback()) {
+class CharacterAdapter(val listener: CharacterListener) :
+    ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(MyDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
         return R.id.navigation_characters
@@ -44,6 +46,9 @@ class CharacterAdapter : ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: CharacterProfile) = with(binding) {
+            itemView.setOnClickListener {
+                listener.onClick(profile)
+            }
             name.text = profile.name
             characterBlock.backgroundTintList =
                 ColorStateList.valueOf(

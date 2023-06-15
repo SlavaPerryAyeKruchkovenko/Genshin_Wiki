@@ -1,11 +1,9 @@
 package com.example.genshin_wiki
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.genshin_wiki.databinding.ActivityMainBinding
 
@@ -27,5 +25,13 @@ class MainActivity : AppCompatActivity() {
                     as NavHostFragment
         val navController = navHostFragment.navController
         navView.setupWithNavController(navController)
+    }
+
+    fun hideBottomNavigationView() {
+        binding.navigationBar.visibility = View.GONE
+    }
+
+    fun showBottomNavigationView() {
+        binding.navigationBar.visibility = View.VISIBLE
     }
 }
