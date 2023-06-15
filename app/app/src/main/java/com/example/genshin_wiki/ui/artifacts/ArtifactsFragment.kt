@@ -37,4 +37,9 @@ class ArtifactsFragment : Fragment() {
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

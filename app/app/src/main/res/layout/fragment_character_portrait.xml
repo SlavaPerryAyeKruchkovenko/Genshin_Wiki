@@ -55,6 +55,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <include
+                        android:id="@+id/info_block"
                         layout="@layout/portrait_info_block"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

@@ -16,6 +16,10 @@ class Mock {
     fun getWeapons(): List<Weapon> = getMockWeapons()
     fun getResources(): List<DungeonResource> = getMockResources()
     fun getArtifacts(): List<Artifact> = getMockArtifacts()
+    fun getCharacterPortraitById(characterId: String): CharacterPortrait? {
+        return getMockCharactersPortrait().find { it.id === characterId }
+    }
+
     private fun getMockWeapons(): List<Weapon> {
         return listOf(
             Weapon(
@@ -123,6 +127,63 @@ class Mock {
                 5,
                 getWeaponType(WeaponTypes.POLEARM),
                 getWeaponElement(Elements.ELECTRO)
+            ),
+        )
+    }
+
+    private fun getMockCharactersPortrait(): List<CharacterPortrait> {
+        return listOf(
+            CharacterPortrait(
+                "1",
+                "Yao Yao",
+                "https://drive.google.com/file/d/1bai2zj5anPUQME0JPbMZFVNuJOEXsAgp/view",
+                "Lee Yue",
+                false,
+                "6 марта",
+                "Младшая ученица Владыки Песен и Скитаний, добрый и заботливый «маленький взрослый».",
+                "Возращаюсиеся копье",
+                "Небесное скопление редьки",
+                "Сошествие лунной яшмы",
+                getMockCharacters().find { it.characterId === "1" }
+            ),
+            CharacterPortrait(
+                "2",
+                "Zhong Li",
+                "https://drive.google.com/file/d/1ZxLbuMA9WGNaV0M_xfKKef4mcy7MIC8t/view",
+                "Lee Yue",
+                true,
+                "31st December",
+                "Приглашённый специалист ритуального бюро “Ваншэн”. Необычайно загадочен и сведущ во всех делах.",
+                "Каменный дождь",
+                "Власть над камнем",
+                "Падение кометы",
+                getMockCharacters().find { it.characterId === "2" }
+            ),
+            CharacterPortrait(
+                "3",
+                "Yoimiya",
+                "https://drive.google.com/file/d/1vOVdApLRMA-ypysBjfAznZrIOqT5D9x5/view",
+                "Inadzuma",
+                false,
+                "21 июня",
+                "Владелица «Фейерверков Наганохары», так же известна как «Королева праздника лета». Будучи мастером своего дела, она воплощает надежды и мечты людей в своих фейерверках.",
+                "Вспышка фейерверка",
+                "Огненный танец Ниваби",
+                "Камнеломка Рюкин",
+                getMockCharacters().find { it.characterId === "3" }
+            ),
+            CharacterPortrait(
+                "4",
+                "Raiden",
+                "https://drive.google.com/file/d/1YVwqOKFXR24UxCwmpW5nztHSpf1_2hhY/view",
+                "Inadzuma",
+                false,
+                "26 июня",
+                "Её Превосходительство Наруками Огосё, пообещавшая неизменную вечность для жителей Инадзумы.",
+                "Исток",
+                "Превосходство: Зловещее знамение",
+                "Тайное искусство: Мусо синсэцу",
+                getMockCharacters().find { it.characterId === "4" }
             ),
         )
     }

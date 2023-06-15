@@ -48,4 +48,9 @@ class CharactersFragment : Fragment(), CharacterListener {
         }
         findNavController().navigate(R.id.action_characters_to_character_portrait, bundle)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
