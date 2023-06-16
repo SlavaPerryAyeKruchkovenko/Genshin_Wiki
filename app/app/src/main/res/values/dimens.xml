@@ -15,4 +15,8 @@
     <dimen name="text_block_margin">8dp</dimen>
     <dimen name="indentation">8dp</dimen>
     <dimen name="ability_margin">12dp</dimen>
+    <dimen name="liked_fragment_margin">16dp</dimen>
+    <dimen name="liked_padding">12dp</dimen>
+    <dimen name="liked_size">100dp</dimen>
+    <dimen name="liked_info_margin">24dp</dimen>
 </resources>

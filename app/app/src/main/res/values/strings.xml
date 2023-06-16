@@ -46,4 +46,6 @@
     <string name="normal_attack">Normal Attack:</string>
     <string name="elemental_skill">Elemental Skill:</string>
     <string name="elemental_burst">Elemental Burst:</string>
+    <string name="clear">Clear</string>
+    <string name="more">more</string>
 </resources>
