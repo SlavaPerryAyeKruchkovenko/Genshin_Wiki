@@ -9,15 +9,23 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.genshin_wiki.MainActivity
+import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.LikedAdapter
 import com.example.genshin_wiki.databinding.FragmentLikedProfilesBinding
+import com.example.genshin_wiki.interfaces.ArtifactListener
+import com.example.genshin_wiki.interfaces.CharacterListener
+import com.example.genshin_wiki.interfaces.LikedListener
+import com.example.genshin_wiki.interfaces.WeaponListener
+import com.example.genshin_wiki.models.Artifact
+import com.example.genshin_wiki.models.CharacterProfile
 import com.example.genshin_wiki.models.Likeable
+import com.example.genshin_wiki.models.Weapon
 
-class LikedProfilesFragment : Fragment() {
+class LikedProfilesFragment : Fragment(), LikedListener {
     private var _binding: FragmentLikedProfilesBinding? = null
     private val binding get() = _binding!!
     private val viewModel = LikedProfilesViewModel()
-    private val likedAdapter = LikedAdapter()
+    private val likedAdapter = LikedAdapter(this)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +39,11 @@ class LikedProfilesFragment : Fragment() {
     private fun init() {
         hideNavigationBar()
         initAppBar()
+        initLikedProfiles()
+        initClearBtn()
+    }
+
+    private fun initLikedProfiles() {
         binding.likedProfiles.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.VERTICAL, false
@@ -40,6 +53,12 @@ class LikedProfilesFragment : Fragment() {
             likedAdapter.submitList(newValue)
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
+    }
+
+    private fun initClearBtn() {
+        binding.clear.setOnClickListener {
+            viewModel.clearLiked()
+        }
     }
 
     private fun initAppBar() {
@@ -70,5 +89,21 @@ class LikedProfilesFragment : Fragment() {
         super.onDestroy()
         _binding = null
         showNavigationBar()
+    }
+
+    override fun onClick(profile: Artifact) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClick(profile: CharacterProfile) {
+        val bundle = Bundle()
+        bundle.apply {
+            putString("character_id", profile.characterId)
+        }
+        findNavController().navigate(R.id.action_liked_to_character_portrait, bundle)
+    }
+
+    override fun onClick(profile: Weapon) {
+        TODO("Not yet implemented")
     }
 }

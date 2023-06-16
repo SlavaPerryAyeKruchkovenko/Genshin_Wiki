@@ -45,6 +45,7 @@
                 tools:listitem="@layout/character_profile_likeable" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/clear"
                 style="@style/ClearBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

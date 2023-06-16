@@ -11,4 +11,8 @@ class LikedProfilesViewModel : ViewModel() {
         val mock = Mock()
         liveData.postValue(mock.getLikeable())
     }
+
+    fun clearLiked() {
+        liveData.postValue(listOf())
+    }
 }

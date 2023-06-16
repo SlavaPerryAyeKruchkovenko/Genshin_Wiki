@@ -13,12 +13,14 @@ import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.ArtifactProfileLikeableBinding
 import com.example.genshin_wiki.databinding.CharacterProfileLikeableBinding
 import com.example.genshin_wiki.databinding.WeaponProfileLikeableBinding
+import com.example.genshin_wiki.interfaces.LikedListener
 import com.example.genshin_wiki.models.Artifact
 import com.example.genshin_wiki.models.CharacterProfile
 import com.example.genshin_wiki.models.Likeable
 import com.example.genshin_wiki.models.Weapon
 
-class LikedAdapter : ListAdapter<Likeable, RecyclerView.ViewHolder>(MyDiffCallback()) {
+class LikedAdapter(private val listener: LikedListener) :
+    ListAdapter<Likeable, RecyclerView.ViewHolder>(MyDiffCallback()) {
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
             is Artifact -> R.layout.artifact_profile
@@ -76,6 +78,9 @@ class LikedAdapter : ListAdapter<Likeable, RecyclerView.ViewHolder>(MyDiffCallba
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: Artifact) = with(binding) {
+            itemView.setOnClickListener {
+                listener.onClick(profile)
+            }
             name.text = profile.name
             artifactBlock.backgroundTintList =
                 ColorStateList.valueOf(
@@ -99,6 +104,9 @@ class LikedAdapter : ListAdapter<Likeable, RecyclerView.ViewHolder>(MyDiffCallba
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: Weapon) = with(binding) {
+            itemView.setOnClickListener {
+                listener.onClick(profile)
+            }
             name.text = profile.name
             weaponBlock.backgroundTintList =
                 ColorStateList.valueOf(
@@ -127,6 +135,9 @@ class LikedAdapter : ListAdapter<Likeable, RecyclerView.ViewHolder>(MyDiffCallba
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: CharacterProfile) = with(binding) {
+            itemView.setOnClickListener {
+                listener.onClick(profile)
+            }
             name.text = profile.name
             characterBlock.backgroundTintList =
                 ColorStateList.valueOf(
