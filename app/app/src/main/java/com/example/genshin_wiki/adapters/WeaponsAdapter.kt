@@ -65,7 +65,6 @@ class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallba
             stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))
         }
     }
-
     class MyDiffCallback : DiffUtil.ItemCallback<Weapon>() {
         override fun areItemsTheSame(
             oldItem: Weapon,
@@ -81,6 +80,4 @@ class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallba
             return oldItem.id == newItem.id
         }
     }
-
-
 }

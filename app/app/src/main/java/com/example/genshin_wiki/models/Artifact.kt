@@ -5,4 +5,4 @@ data class Artifact(
     val image: String,
     val name: String,
     val stars: Int
-): Likeable()
+): Likeable(id)

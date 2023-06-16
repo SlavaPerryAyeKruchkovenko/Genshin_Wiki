@@ -1,6 +1,6 @@
 package com.example.genshin_wiki.models
 
-open class Likeable(isLiked: Boolean = false) {
+open class Likeable(val liked_id:String,isLiked: Boolean = false) {
     var isLike = isLiked
         private set
 
