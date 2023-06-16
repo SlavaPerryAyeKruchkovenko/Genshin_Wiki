@@ -147,4 +147,9 @@ class HomeFragment : Fragment() {
         }
         viewModel.adapterPositionData.observe(viewLifecycleOwner, positionObserver)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

@@ -18,4 +18,6 @@
     <color name="stars_3">#3b83bd</color>
     <color name="stars_2">#4ba383</color>
     <color name="stars_1">#798c99</color>
+    <color name="geo_element">#FFF4B9</color>
+    <color name="geo_description">#A8A17A</color>
 </resources>

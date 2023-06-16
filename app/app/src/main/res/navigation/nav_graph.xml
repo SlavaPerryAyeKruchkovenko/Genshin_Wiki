@@ -20,12 +20,27 @@
         android:id="@+id/navigation_characters"
         android:name="com.example.genshin_wiki.ui.characters.CharactersFragment"
         android:label="@string/characters"
-        tools:layout="@layout/fragment_charaters">
+        tools:layout="@layout/fragment_characters">
+        <action
+            android:id="@+id/action_characters_to_character_portrait"
+            app:destination="@+id/navigation_character_portrait">
+            <argument
+                android:name="character_id"
+                app:argType="string" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/navigation_artifacts"
         android:name="com.example.genshin_wiki.ui.artifacts.ArtifactsFragment"
         android:label="@string/artifacts"
-        tools:layout="@layout/fragment_artifacts">
+        tools:layout="@layout/fragment_artifacts" />
+    <fragment
+        android:id="@+id/navigation_character_portrait"
+        android:name="com.example.genshin_wiki.ui.character_portrait.CharacterPortraitFragment"
+        android:label="fragment_character_portrait"
+        tools:layout="@layout/fragment_character_portrait">
+        <argument
+            android:name="character_id"
+            app:argType="string" />
     </fragment>
 </navigation>

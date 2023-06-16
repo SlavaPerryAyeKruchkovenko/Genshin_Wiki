@@ -1,10 +1,10 @@
 package com.example.genshin_wiki.ui.weapons
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.genshin_wiki.adapters.WeaponsAdapter
@@ -36,5 +36,10 @@ class WeaponsFragment : Fragment() {
             weaponsAdapter.submitList(newValue)
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
