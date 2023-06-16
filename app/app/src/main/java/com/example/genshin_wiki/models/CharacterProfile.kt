@@ -8,4 +8,4 @@ data class CharacterProfile(
     val stars: Int,
     val weaponType: WeaponType,
     val element: Element
-): Likeable()
+): Likeable(id)

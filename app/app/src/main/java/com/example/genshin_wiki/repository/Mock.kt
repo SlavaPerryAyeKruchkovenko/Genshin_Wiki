@@ -16,10 +16,78 @@ class Mock {
     fun getWeapons(): List<Weapon> = getMockWeapons()
     fun getResources(): List<DungeonResource> = getMockResources()
     fun getArtifacts(): List<Artifact> = getMockArtifacts()
+    fun getLikeable(): List<Likeable> = getMockLikeable()
     fun getCharacterPortraitById(characterId: String): CharacterPortrait? {
         return getMockCharactersPortrait().find { it.id === characterId }
     }
-
+    private fun getMockLikeable(): List<Likeable>{
+        return listOf(
+            Weapon(
+                "1",
+                "Calamity Queller",
+                "test",
+                getWeaponType(WeaponTypes.POLEARM),
+                "Extinguishing Precept",
+                5,
+                Stats.ATK,
+                Stats.ATK_PER,
+                "https://drive.google.com/file/d/1kABfbqHoLSHFRi-bnfLNK5cnIo3hVS3T/view"
+            ),
+            CharacterProfile(
+                "2",
+                "1",
+                "https://drive.google.com/file/d/10yvtmTVxxPuSah6VyNbPDE-boxKOZ0JD/view",
+                "Yao Yao",
+                4,
+                getWeaponType(WeaponTypes.POLEARM),
+                getWeaponElement(Elements.DENDRO)
+            ),
+            CharacterProfile(
+                "3",
+                "4",
+                "https://drive.google.com/file/d/1WD5p8cqkzPcsK26-NtUtWpxmmWOa7OIi/view",
+                "Raiden",
+                5,
+                getWeaponType(WeaponTypes.POLEARM),
+                getWeaponElement(Elements.ELECTRO)
+            ),
+            Artifact(
+                "4",
+                "https://drive.google.com/file/d/16EH-ODMcaLMQ0dDZWfVc6j4YZUxNIIuQ/view",
+                "Emblem of Severed Fate",
+                5,
+            ),
+            Artifact(
+                "5",
+                "https://drive.google.com/file/d/15QVYW9Leqb44va03fa0daNNUAO8YOvj9/view",
+                "Lucky Dog",
+                2,
+            ),
+            Weapon(
+                "6",
+                "Engulfing Lightning",
+                "A naginata used to ''cut grass.'' Any army that stands before this weapon will probably be likewise cut down...",
+                getWeaponType(WeaponTypes.POLEARM),
+                "test",
+                5,
+                Stats.ATK,
+                Stats.ER_PER,
+                "https://drive.google.com/file/d/1eyiEvFWJSdS3-0yuWgXHpKp82E9_4Bad/view"
+            ),
+            Artifact(
+                "7",
+                "https://drive.google.com/file/d/1vSHZqh8EHiBtv5WyTVCQC0KkStxQpiuX/view",
+                "Adventurer",
+                1,
+            ),
+            Artifact(
+                "8",
+                "https://drive.google.com/file/d/1Fbc633EPX2bV8OEdzqVNUls3JwY_4QQx/view",
+                "Resolution of Sojourner",
+                3,
+            ),
+        )
+    }
     private fun getMockWeapons(): List<Weapon> {
         return listOf(
             Weapon(
