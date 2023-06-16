@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.genshin_wiki.MainActivity
 import com.example.genshin_wiki.adapters.LikedAdapter
@@ -29,6 +30,7 @@ class LikedProfilesFragment : Fragment() {
 
     private fun init() {
         hideNavigationBar()
+        initAppBar()
         binding.likedProfiles.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.VERTICAL, false
@@ -38,6 +40,12 @@ class LikedProfilesFragment : Fragment() {
             likedAdapter.submitList(newValue)
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
+    }
+
+    private fun initAppBar() {
+        binding.toolBar.setNavigationOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun hideNavigationBar() {

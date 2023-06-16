@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.DungeonAdapter
@@ -39,6 +40,19 @@ class HomeFragment : Fragment() {
         initDungeonView()
         initPitchView()
         initAdapterBtn()
+        initAppBar()
+    }
+
+    private fun initAppBar() {
+        binding.homeAppbar.toolBar.setOnMenuItemClickListener {
+            when (it?.itemId) {
+                R.id.filter -> {
+                    findNavController().navigate(R.id.action_home_to_liked)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun initDayOfWeek() {
