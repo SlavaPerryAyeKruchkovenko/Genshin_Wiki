@@ -21,4 +21,16 @@
     <color name="stars_1">#798c99</color>
     <color name="geo_element">#FFF4B9</color>
     <color name="geo_description">#A8A17A</color>
+    <color name="pyro_element">#f1a55d</color>
+    <color name="pyro_description">#d2753c</color>
+    <color name="hydro_element">#21e1eb</color>
+    <color name="hydro_description">#007e81</color>
+    <color name="anemo_element">#72e2c3</color>
+    <color name="anemo_description">#35aac3</color>
+    <color name="electro_element">#8e57cb</color>
+    <color name="electro_description">#a700cb</color>
+    <color name="dendro_element">#23c18a</color>
+    <color name="dendro_description">#238487</color>
+    <color name="cryo_element">#a0e9e5</color>
+    <color name="cryo_description">#31bdbb</color>
 </resources>

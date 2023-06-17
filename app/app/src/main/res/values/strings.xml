@@ -57,6 +57,10 @@
     <string name="piece_bonus_4">4-Piece Bonus</string>
     <string name="type">Type:</string>
     <string name="polearm">Polearm</string>
+    <string name="sword">Sword</string>
+    <string name="bow">Bow</string>
+    <string name="claymor">Claymor</string>
+    <string name="catalyst">Catalyst</string>
     <string name="information">Information:</string>
     <string name="stat">Stat:</string>
     <string name="second_stat">2nd Stat:</string>

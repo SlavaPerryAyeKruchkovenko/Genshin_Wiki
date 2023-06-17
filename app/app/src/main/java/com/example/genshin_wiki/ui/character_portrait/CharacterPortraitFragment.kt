@@ -1,9 +1,11 @@
 package com.example.genshin_wiki.ui.character_portrait
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -65,6 +67,22 @@ class CharacterPortraitFragment : Fragment() {
             binding.normalAttack.text = newValue.normalAttack
             binding.elementalSkill.text = newValue.elementalSkill
             binding.elementalBurst.text = newValue.elementalBurst
+            if (newValue.profile != null) {
+                val color = ProfileUtils.getGeoElement(newValue.profile.element.name)
+                val secondColor = ProfileUtils.getGeoElementSecond(newValue.profile.element.name)
+                binding.portraitBlock.backgroundTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        color
+                    )
+                )
+                binding.secondBlock.backgroundTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        secondColor
+                    )
+                )
+            }
         }
         viewModel.characterPortrait.observe(viewLifecycleOwner, characterObserver)
     }

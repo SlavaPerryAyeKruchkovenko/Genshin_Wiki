@@ -1,16 +1,11 @@
 package com.example.genshin_wiki.repository
 
 import com.example.genshin_wiki.models.*
+import com.example.genshin_wiki.models.enums.Elements
 import com.example.genshin_wiki.models.enums.Stats
+import com.example.genshin_wiki.models.enums.WeaponTypes
 
 class Mock {
-    enum class WeaponTypes {
-        POLEARM, SWORD, BOW, CLAYMOR, CATALYST
-    }
-
-    enum class Elements {
-        PYRO, HYDRO, GEO, ELECTRO, DENDRO, ANEMO
-    }
 
     fun getCharacters(): List<CharacterProfile> = getMockCharacters()
     fun getWeapons(): List<Weapon> = getMockWeapons()
@@ -329,40 +324,37 @@ class Mock {
             WeaponTypes.POLEARM -> {
                 WeaponType(
                     "1",
-                    "Polearm",
+                    WeaponTypes.POLEARM,
                     "https://drive.google.com/file/d/19qGBZ66BEsslwYG3Q3nIKcpA5UDB9jkl/view"
                 )
             }
             WeaponTypes.CLAYMOR -> {
                 WeaponType(
                     "2",
-                    "Claymor",
+                    WeaponTypes.CLAYMOR,
                     "https://drive.google.com/file/d/1WtN2EZXX8vB5PRf_XjYMYR48_RWiZXNk/view"
                 )
             }
             WeaponTypes.CATALYST -> {
                 WeaponType(
                     "3",
-                    "Catalyst",
+                    WeaponTypes.CATALYST,
                     "https://drive.google.com/file/d/1VF11Eihy7JzoGkFTKT9iisgz2nlgtzrO/view"
                 )
             }
             WeaponTypes.BOW -> {
                 WeaponType(
                     "4",
-                    "Bow",
+                    WeaponTypes.BOW,
                     "https://drive.google.com/file/d/1MZrqvsc5MAQna0fB7S3iGq93B5W8n_l-/view"
                 )
             }
             WeaponTypes.SWORD -> {
                 WeaponType(
                     "5",
-                    "Sword",
+                    WeaponTypes.SWORD,
                     "https://drive.google.com/file/d/15lCuwX6P62VBVk6V52jq17dY1J3M9bYE/view"
                 )
-            }
-            else -> {
-                WeaponType("1", "Sword", "")
             }
         }
     }
@@ -372,33 +364,33 @@ class Mock {
             Elements.PYRO -> {
                 Element(
                     "1",
-                    "Pyro",
+                    Elements.PYRO,
                     "https://drive.google.com/file/d/10oEiogG0fguDv3qnGeZDGDffXbUxPJ1R/view"
                 )
             }
             Elements.ELECTRO -> {
                 Element(
                     "2",
-                    "Electro",
+                    Elements.ELECTRO,
                     "https://drive.google.com/file/d/19lmBJQf-0_1kKvT0NNzNtZAYAUuKiNqw/view"
                 )
             }
             Elements.DENDRO -> {
                 Element(
                     "3",
-                    "Dendro",
+                    Elements.DENDRO,
                     "https://drive.google.com/file/d/1U1Sbh0uyVhVJKT-0WqW9f66Pj2GjjMQx/view"
                 )
             }
             Elements.GEO -> {
                 Element(
                     "4",
-                    "Geo",
+                    Elements.GEO,
                     "https://drive.google.com/file/d/1od1d-kDi9sryTuBQzmh6g4PMGc4I1j6n/view"
                 )
             }
             else -> {
-                Element("1", "10oEiogG0fguDv3qnGeZDGDffXbUxPJ1R", "")
+                Element("1", Elements.PYRO, "")
             }
         }
     }

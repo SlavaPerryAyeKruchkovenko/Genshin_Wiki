@@ -27,7 +27,7 @@ class WeaponsAdapter(private val listener: WeaponListener) :
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                WeaponsProfileHolder(parent.context, binding);
+                WeaponsProfileHolder(parent.context, binding)
             }
             else -> throw IllegalStateException("Unknown view type $viewType")
         }

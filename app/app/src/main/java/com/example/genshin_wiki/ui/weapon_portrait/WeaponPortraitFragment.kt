@@ -57,7 +57,7 @@ class WeaponPortraitFragment : Fragment() {
     private fun initWeapon(weapon: Weapon) {
         binding.portraitImage.name.text = weapon.name
         binding.portraitImage.stars.setImageResource(ProfileUtils.getImageByStars(weapon.stars))
-        binding.weaponType.text = weapon.type.name
+        binding.weaponType.text = getString(weapon.type.name.value)
         binding.stat.text = getString(weapon.stat.value)
         binding.secondStat.text = getString(weapon.editionStat.value)
         binding.description.text = weapon.description
