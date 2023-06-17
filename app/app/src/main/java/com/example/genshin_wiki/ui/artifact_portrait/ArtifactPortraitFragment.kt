@@ -2,7 +2,6 @@ package com.example.genshin_wiki.ui.artifact_portrait
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,18 +55,18 @@ class ArtifactPortraitFragment : Fragment() {
     }
 
     private fun initArtifact(artifact: Artifact) {
-        binding.name.text = artifact.name
+        binding.portraitImage.name.text = artifact.name
         ProfileUtils.loadImage(
             ProfileUtils.getImageFromGoogle(artifact.image),
-            binding.artifact,
+            binding.portraitImage.image,
             R.drawable.loader_animation
         )
-        binding.stars.setImageResource(ProfileUtils.getImageByStars(artifact.stars))
+        binding.portraitImage.stars.setImageResource(ProfileUtils.getImageByStars(artifact.stars))
         binding.pieceBonus2.text = artifact.bonus2
         binding.pieceBonus4.text = artifact.bonus4
 
         val color = ProfileUtils.getColorByStars(artifact.stars)
-        binding.artifactBlock.backgroundTintList =
+        binding.portraitImage.portraitBlock.backgroundTintList =
             ColorStateList.valueOf(
                 ContextCompat.getColor(
                     requireContext(),

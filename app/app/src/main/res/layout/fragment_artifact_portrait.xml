@@ -27,59 +27,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/artifact_block"
+            <include
+                android:id="@+id/portrait_image"
+                layout="@layout/portrait_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/stars_5">
-
-                <LinearLayout
-                    android:id="@+id/artifact_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingVertical="@dimen/portrait_image_padding"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/artifact"
-                        android:layout_width="@dimen/image_size"
-                        android:layout_height="@dimen/image_size"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/profile"
-                        android:src="@drawable/artifact" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:paddingBottom="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/artifact_image"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ImageView
-                        android:id="@+id/stars"
-                        android:layout_width="@dimen/stars_image_width"
-                        android:layout_height="@dimen/starts_image_height"
-                        android:contentDescription="@string/stars"
-                        android:paddingTop="6dp"
-                        android:src="@drawable/five_stars" />
-
-                    <TextView
-                        android:id="@+id/name"
-                        style="@style/PortraitTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="6dp"
-                        android:text="@string/emblem" />
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="wrap_content" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"

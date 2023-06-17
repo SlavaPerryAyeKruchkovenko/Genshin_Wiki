@@ -31,6 +31,8 @@
     <string name="elemental_skill_example" translatable="false">Власть над камнем</string>
     <string name="piece_bonus_2_example" translatable="false">ATK +18%.</string>
     <string name="piece_bonus_4_example" translatable="false">Increases DMG by 30% against opponents with more than 50% HP.</string>
+    <string name="description_example_weapon" translatable="false">In a barren ancient time, when the now-verdant land was still but a wasteland, a maiden, barefoot in the snow, followed the footsteps of the Lord of the Tower.</string>
+    <string name="passive_ability_example" translatable="false">The Parting Refrain A part of the \'Millennial Movement\' that wanders amidst the winds.</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
@@ -53,4 +55,13 @@
     <string name="bonus">Bonus:</string>
     <string name="piece_bonus_2">2-Piece Bonus</string>
     <string name="piece_bonus_4">4-Piece Bonus</string>
+    <string name="type">Type:</string>
+    <string name="polearm">Polearm</string>
+    <string name="information">Information:</string>
+    <string name="stat">Stat:</string>
+    <string name="second_stat">2nd Stat:</string>
+    <string name="atk">ATK</string>
+    <string name="ER">Energy Recharge</string>
+    <string name="ER_PER">Energy Recharge %</string>
+    <string name="passive_ability">Passive ability:</string>
 </resources>
