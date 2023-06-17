@@ -23,4 +23,9 @@
         <!-- Customize your theme here. -->
 
     </style>
+    <style name="Theme.SplashScreen" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryFixed">@color/black</item>
+    </style>
 </resources>
