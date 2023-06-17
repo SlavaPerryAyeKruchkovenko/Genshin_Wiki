@@ -20,7 +20,9 @@ class Mock {
     fun getArtifactById(id: String): Artifact? {
         return getMockArtifacts().find { it.id == id }
     }
-
+    fun getWeaponById(id: String): Weapon?{
+        return getMockWeapons().find { it.id == id }
+    }
     fun getCharacterPortraitById(characterId: String): CharacterPortrait? {
         return getMockCharactersPortrait().find { it.id === characterId }
     }

@@ -48,7 +48,7 @@ class ArtifactPortraitFragment : Fragment() {
     }
 
     private fun initArtifactPortrait() {
-        val artifactObserver = Observer<Artifact> { newValue ->
+        val artifactObserver = Observer<Artifact?> { newValue ->
             initArtifact(newValue)
         }
         viewModel.liveData.observe(viewLifecycleOwner, artifactObserver)

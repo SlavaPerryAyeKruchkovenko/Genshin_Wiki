@@ -60,8 +60,24 @@
     <string name="information">Information:</string>
     <string name="stat">Stat:</string>
     <string name="second_stat">2nd Stat:</string>
-    <string name="atk">ATK</string>
-    <string name="ER">Energy Recharge</string>
+    <string name="ATK">ATK</string>
+    <string name="ATK_PER">ATK %</string>
+    <string name="DEF">DEF</string>
+    <string name="DEF_PER">DEF %</string>
+    <string name="HP">HP</string>
+    <string name="HP_PER">HP %</string>
     <string name="ER_PER">Energy Recharge %</string>
+    <string name="EM">Elemental Mastery %</string>
+    <string name="CRIT_DMG">CRIT DMG %</string>
+    <string name="CRIT_RATE">CRIT Rate %</string>
+    <string name="HEAL_PER">Healing Bonus %</string>
+    <string name="PHYS_DMG">Physical DMG Bonus %</string>
+    <string name="PYRO_DMG">Pyro DMG Bonus %</string>
+    <string name="DENDRO_DMG">Dendro DMG Bonus %</string>
+    <string name="GEO_DMG">Geo DMG Bonus %</string>
+    <string name="HYDRO_DMG">Hydro DMG Bonus %</string>
+    <string name="ELECTRO_DMG">Electro DMG Bonus %</string>
+    <string name="ANEMO_DMG">Anemo DMG Bonus %</string>
+    <string name="CRYO_DMG">Cryo DMG Bonus %</string>
     <string name="passive_ability">Passive ability:</string>
 </resources>

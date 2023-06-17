@@ -1,19 +1,19 @@
-package com.example.genshin_wiki.ui.artifact_portrait
+package com.example.genshin_wiki.ui.weapon_portrait
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.genshin_wiki.models.Artifact
+import com.example.genshin_wiki.models.Weapon
 import com.example.genshin_wiki.repository.Mock
 
-class ArtifactPortraitViewModel : ViewModel() {
-    val liveData = MutableLiveData<Artifact?>()
+class WeaponPortraitViewModel : ViewModel() {
+    val liveData = MutableLiveData<Weapon?>()
     val isLiked = MutableLiveData<Boolean>()
     fun init(artifactId: String) {
         val mock = Mock()
-        val artifact = mock.getArtifactById(artifactId)
-        if (artifact != null) {
-            liveData.postValue(artifact)
-            isLiked.postValue(artifact.isLike)
+        val weapon = mock.getWeaponById(artifactId)
+        if (weapon != null) {
+            liveData.postValue(weapon)
+            isLiked.postValue(weapon.isLike)
         }
     }
 

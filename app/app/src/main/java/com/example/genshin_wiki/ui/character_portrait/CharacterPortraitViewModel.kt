@@ -6,7 +6,7 @@ import com.example.genshin_wiki.models.CharacterPortrait
 import com.example.genshin_wiki.repository.Mock
 
 class CharacterPortraitViewModel : ViewModel() {
-    val characterPortrait = MutableLiveData<CharacterPortrait>()
+    val characterPortrait = MutableLiveData<CharacterPortrait?>()
     val isLiked = MutableLiveData(false)
     fun init(characterId: String) {
         val mock = Mock()
