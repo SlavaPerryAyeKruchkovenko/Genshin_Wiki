@@ -19,4 +19,6 @@
     <dimen name="liked_padding">12dp</dimen>
     <dimen name="liked_size">100dp</dimen>
     <dimen name="liked_info_margin">24dp</dimen>
+    <dimen name="portrait_image_padding">20dp</dimen>
+    <dimen name="portrait_image_size">200dp</dimen>
 </resources>

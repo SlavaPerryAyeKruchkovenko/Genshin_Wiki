@@ -30,6 +30,7 @@
             >
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/portrait_block"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/geo_element"
@@ -67,6 +68,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/second_block"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

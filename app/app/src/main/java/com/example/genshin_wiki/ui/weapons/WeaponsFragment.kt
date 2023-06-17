@@ -6,15 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.WeaponsAdapter
 import com.example.genshin_wiki.databinding.FragmentWeaponsBinding
+import com.example.genshin_wiki.interfaces.WeaponListener
 import com.example.genshin_wiki.models.Weapon
 
-class WeaponsFragment : Fragment() {
+class WeaponsFragment : Fragment(), WeaponListener {
     private var _binding: FragmentWeaponsBinding? = null
     private val binding get() = _binding!!
-    private val weaponsAdapter = WeaponsAdapter()
+    private val weaponsAdapter = WeaponsAdapter(this)
     private val viewModel = WeaponsViewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,5 +44,13 @@ class WeaponsFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onClick(profile: Weapon) {
+        val bundle = Bundle()
+        bundle.apply {
+            putString("weapon_id", profile.id)
+        }
+        findNavController().navigate(R.id.action_weapons_to_weapon_portrait, bundle)
     }
 }

@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.ArtifactProfileBinding
+import com.example.genshin_wiki.interfaces.ArtifactListener
 import com.example.genshin_wiki.models.Artifact
 
-class ArtifactAdapter : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCallback()) {
+class ArtifactAdapter(private val listener: ArtifactListener) : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCallback()) {
     override fun getItemViewType(position: Int): Int {
         return R.id.navigation_artifacts
     }
@@ -45,6 +46,9 @@ class ArtifactAdapter : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCal
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(artifactObj: Artifact) = with(binding) {
+            itemView.setOnClickListener{
+                listener.onClick(artifactObj)
+            }
             ProfileUtils.loadImage(
                 ProfileUtils.getImageFromGoogle(artifactObj.image),
                 artifact,

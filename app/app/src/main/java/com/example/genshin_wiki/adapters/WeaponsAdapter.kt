@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.WeaponProfileBinding
+import com.example.genshin_wiki.interfaces.WeaponListener
 import com.example.genshin_wiki.models.Weapon
 
-class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallback()) {
+class WeaponsAdapter(private val listener: WeaponListener) :
+    ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallback()) {
     override fun getItemViewType(position: Int): Int {
         return R.id.navigation_weapons
     }
@@ -25,7 +27,7 @@ class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallba
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                WeaponsProfileHolder(parent.context, binding);
+                WeaponsProfileHolder(parent.context, binding)
             }
             else -> throw IllegalStateException("Unknown view type $viewType")
         }
@@ -44,6 +46,9 @@ class WeaponsAdapter : ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallba
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(profile: Weapon) = with(binding) {
+            itemView.setOnClickListener {
+                listener.onClick(profile)
+            }
             name.text = profile.name
             weaponBlock.backgroundTintList =
                 ColorStateList.valueOf(

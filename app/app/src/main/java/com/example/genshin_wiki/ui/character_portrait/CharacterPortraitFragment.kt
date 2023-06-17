@@ -1,18 +1,20 @@
 package com.example.genshin_wiki.ui.character_portrait
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.genshin_wiki.MainActivity
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.FragmentCharacterPortraitBinding
 import com.example.genshin_wiki.models.CharacterPortrait
 import com.example.genshin_wiki.models.CharacterProfile
+import com.example.genshin_wiki.ui.NavigationBarHelper
 
 class CharacterPortraitFragment : Fragment() {
     private var _binding: FragmentCharacterPortraitBinding? = null
@@ -33,38 +35,19 @@ class CharacterPortraitFragment : Fragment() {
         return binding.root
     }
 
-    private fun hideNavigationBar() {
-        try {
-            val mainActivity = activity as MainActivity
-            mainActivity.hideBottomNavigationView()
-        } catch (_: Exception) {
-
-        }
-    }
-
-    private fun showNavigationBar() {
-        try {
-            val mainActivity = activity as MainActivity
-            mainActivity.showBottomNavigationView()
-        } catch (_: Exception) {
-
-        }
-    }
-
     private fun init() {
-        hideNavigationBar()
+        NavigationBarHelper.hideNavigationBar(activity)
         initAppbar()
         initPortrait()
+        initLikeBtn()
     }
-
     private fun initAppbar() {
         binding.appbar.toolBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
     }
-
     private fun initPortrait() {
-        val characterObserver = Observer<CharacterPortrait> { newValue ->
+        val characterObserver = Observer<CharacterPortrait?> { newValue ->
             if (newValue.profile != null) {
                 initInfoBlock(newValue.profile)
             }
@@ -84,10 +67,25 @@ class CharacterPortraitFragment : Fragment() {
             binding.normalAttack.text = newValue.normalAttack
             binding.elementalSkill.text = newValue.elementalSkill
             binding.elementalBurst.text = newValue.elementalBurst
+            if (newValue.profile != null) {
+                val color = ProfileUtils.getGeoElement(newValue.profile.element.name)
+                val secondColor = ProfileUtils.getGeoElementSecond(newValue.profile.element.name)
+                binding.portraitBlock.backgroundTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        color
+                    )
+                )
+                binding.secondBlock.backgroundTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        secondColor
+                    )
+                )
+            }
         }
         viewModel.characterPortrait.observe(viewLifecycleOwner, characterObserver)
     }
-
     private fun initInfoBlock(profile: CharacterProfile) {
         val infoBlock = binding.infoBlock
         infoBlock.name.text = profile.name
@@ -108,9 +106,30 @@ class CharacterPortraitFragment : Fragment() {
         }
     }
 
+    private fun initLikeBtn() {
+        binding.appbar.toolBar.setOnMenuItemClickListener {
+            when (it?.itemId) {
+                R.id.like -> {
+                    viewModel.changeLike()
+                    true
+                }
+                else -> false
+            }
+        }
+        val likeObserver = Observer<Boolean> { newValue ->
+            val likeIcon = binding.appbar.toolBar.menu.findItem(R.id.like)
+            if (newValue) {
+                likeIcon.setIcon(R.drawable.heart_like)
+            } else {
+                likeIcon.setIcon(R.drawable.heart)
+            }
+        }
+        viewModel.isLiked.observe(viewLifecycleOwner, likeObserver)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        showNavigationBar()
+        NavigationBarHelper.showNavigationBar(activity)
     }
 }
