@@ -87,6 +87,10 @@ class LikedProfilesFragment : Fragment(), LikedListener {
     }
 
     override fun onClick(profile: Weapon) {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.apply {
+            putString("weapon_id", profile.id)
+        }
+        findNavController().navigate(R.id.action_liked_to_weapon_portrait, bundle)
     }
 }

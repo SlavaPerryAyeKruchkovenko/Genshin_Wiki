@@ -45,7 +45,7 @@ class CharacterPortraitFragment : Fragment() {
         }
     }
     private fun initPortrait() {
-        val characterObserver = Observer<CharacterPortrait> { newValue ->
+        val characterObserver = Observer<CharacterPortrait?> { newValue ->
             if (newValue.profile != null) {
                 initInfoBlock(newValue.profile)
             }

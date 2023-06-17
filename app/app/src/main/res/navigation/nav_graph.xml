@@ -19,6 +19,13 @@
         android:name="com.example.genshin_wiki.ui.weapons.WeaponsFragment"
         android:label="@string/weapons"
         tools:layout="@layout/fragment_weapons">
+        <action
+            android:id="@+id/action_weapons_to_weapon_portrait"
+            app:destination="@id/navigation_weapon_portrait">
+            <argument
+                android:name="weapon_id"
+                app:argType="string" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/navigation_characters"
@@ -68,9 +75,16 @@
         </action>
         <action
             android:id="@+id/action_liked_to_artifact_portrait"
-            app:destination="@id/navigation_artifact_portrait" >
+            app:destination="@id/navigation_artifact_portrait">
             <argument
                 android:name="artifact_id"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_liked_to_weapon_portrait"
+            app:destination="@id/navigation_weapon_portrait">
+            <argument
+                android:name="weapon_id"
                 app:argType="string" />
         </action>
 
@@ -78,9 +92,17 @@
     <fragment
         android:id="@+id/navigation_artifact_portrait"
         android:name="com.example.genshin_wiki.ui.artifact_portrait.ArtifactPortraitFragment"
-        android:label="ArtifactPortraitFragment" >
+        android:label="ArtifactPortraitFragment">
         <argument
             android:name="artifact_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_weapon_portrait"
+        android:name="com.example.genshin_wiki.ui.weapon_portrait.WeaponPortraitFragment"
+        android:label="WeaponPortraitFragment">
+        <argument
+            android:name="weapon_id"
             app:argType="string" />
     </fragment>
 </navigation>
