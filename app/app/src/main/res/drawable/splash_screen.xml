@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="?attr/colorPrimary"/>
-    <item
-        android:id="@+id/vector_item"
-        android:width="180dp"
-        android:height="180dp"
-        android:drawable="@drawable/artifact_logo"/>
-    <item android:top="200dp">
+    <item android:width="200dp"
+        android:height="200dp">
+        <bitmap android:src="@drawable/book"
+            android:gravity="center"/>
+    </item>
+    <!--<item android:top="200dp">
         <bitmap android:src="@drawable/app_title"
             android:tint="?attr/colorPrimaryFixed"/>
-    </item>
+    </item>-->
 </layer-list>

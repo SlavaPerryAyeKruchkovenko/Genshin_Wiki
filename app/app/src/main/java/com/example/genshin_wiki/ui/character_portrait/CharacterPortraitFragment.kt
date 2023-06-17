@@ -92,12 +92,12 @@ class CharacterPortraitFragment : Fragment() {
         ProfileUtils.loadImage(
             ProfileUtils.getImageFromGoogle(profile.element.image),
             infoBlock.element,
-            R.drawable.loader_animation
+            R.drawable.loader_info_animation
         )
         ProfileUtils.loadImage(
             ProfileUtils.getImageFromGoogle(profile.weaponType.image),
             infoBlock.weaponType,
-            R.drawable.loader_animation
+            R.drawable.loader_info_animation
         )
         if (profile.stars in 4..5) {
             infoBlock.stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))

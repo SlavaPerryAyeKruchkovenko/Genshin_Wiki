@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Genshin_Wiki" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
+        <item name="android:windowBackground">@drawable/splash_screen</item>
         <item name="colorPrimary">@color/gray_200</item>
         <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorPrimaryContainer">@color/gray_200</item>
@@ -23,9 +24,9 @@
         <!-- Customize your theme here. -->
 
     </style>
-    <style name="Theme.SplashScreen" parent="Theme.Material3.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_screen</item>
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryFixed">@color/black</item>
+    <style name="Theme.SplashScreen.Genshin" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/element</item>
+        <item name="postSplashScreenTheme">@style/Theme.Genshin_Wiki</item>
     </style>
 </resources>
