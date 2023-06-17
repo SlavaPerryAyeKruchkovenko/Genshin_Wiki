@@ -17,10 +17,15 @@ class Mock {
     fun getResources(): List<DungeonResource> = getMockResources()
     fun getArtifacts(): List<Artifact> = getMockArtifacts()
     fun getLikeable(): List<Likeable> = getMockLikeable()
+    fun getArtifactById(id: String): Artifact? {
+        return getMockArtifacts().find { it.id == id }
+    }
+
     fun getCharacterPortraitById(characterId: String): CharacterPortrait? {
         return getMockCharactersPortrait().find { it.id === characterId }
     }
-    private fun getMockLikeable(): List<Likeable>{
+
+    private fun getMockLikeable(): List<Likeable> {
         return listOf(
             Weapon(
                 "1",
@@ -56,12 +61,16 @@ class Mock {
                 "https://drive.google.com/file/d/16EH-ODMcaLMQ0dDZWfVc6j4YZUxNIIuQ/view",
                 "Emblem of Severed Fate",
                 5,
+                "bonus 2",
+                "bonus 4",
             ),
             Artifact(
                 "5",
                 "https://drive.google.com/file/d/15QVYW9Leqb44va03fa0daNNUAO8YOvj9/view",
                 "Lucky Dog",
                 2,
+                "bonus 2",
+                "bonus 4",
             ),
             Weapon(
                 "6",
@@ -79,12 +88,16 @@ class Mock {
                 "https://drive.google.com/file/d/1vSHZqh8EHiBtv5WyTVCQC0KkStxQpiuX/view",
                 "Adventurer",
                 1,
+                "bonus 2",
+                "bonus 4",
             ),
             Artifact(
                 "8",
                 "https://drive.google.com/file/d/1Fbc633EPX2bV8OEdzqVNUls3JwY_4QQx/view",
                 "Resolution of Sojourner",
                 3,
+                "bonus 2",
+                "bonus 4",
             ),
         )
     }
@@ -395,42 +408,57 @@ class Mock {
                 "https://drive.google.com/file/d/16EH-ODMcaLMQ0dDZWfVc6j4YZUxNIIuQ/view",
                 "Emblem of Severed Fate",
                 5,
+                "Energy Recharge +20%",
+                "Increases Elemental Burst DMG by 25% of Energy Recharge. A maximum of 75% bonus DMG can be obtained in this way."
             ),
             Artifact(
                 "2",
                 "https://drive.google.com/file/d/1YiA9rL236gLIwBAaamyYi4qG0GCZmwnn/view",
                 "Shimenawa's Reminiscence",
                 5,
-            ),
+                "ATK +18%",
+                "When casting an Elemental Skill, if the character has 15 or more Energy, they lose 15 Energy and Normal/Charged/Plunging Attack DMG is increased by 50% for 10s. This effect will not trigger again during that duration.",
+
+                ),
             Artifact(
                 "3",
                 "https://drive.google.com/file/d/1hx9dnxVKuXMfLiNJd-lqD65CjUkp845J/view",
                 "Deepwood Memories",
                 5,
+                "Dendro DMG Bonus +15%",
+                "After Elemental Skills or Bursts hit opponents, the targets' Dendro RES will be decreased by 30% for 8s. This effect can be triggered even if the equipping character is not on the field.",
             ),
             Artifact(
                 "4",
                 "https://drive.google.com/file/d/1Ru7Jxi3z8lTnNs5f0Ufr2znsSAikHXWI/view",
                 "Scholar",
                 4,
+                "bonus 2",
+                "bonus 4",
             ),
             Artifact(
                 "5",
                 "https://drive.google.com/file/d/15QVYW9Leqb44va03fa0daNNUAO8YOvj9/view",
                 "Lucky Dog",
                 2,
+                "bonus 2",
+                "bonus 4",
             ),
             Artifact(
                 "6",
                 "https://drive.google.com/file/d/1vSHZqh8EHiBtv5WyTVCQC0KkStxQpiuX/view",
                 "Adventurer",
                 1,
+                "bonus 2",
+                "bonus 4",
             ),
             Artifact(
                 "7",
                 "https://drive.google.com/file/d/1Fbc633EPX2bV8OEdzqVNUls3JwY_4QQx/view",
                 "Resolution of Sojourner",
                 3,
+                "bonus 2",
+                "bonus 4",
             ),
         )
     }

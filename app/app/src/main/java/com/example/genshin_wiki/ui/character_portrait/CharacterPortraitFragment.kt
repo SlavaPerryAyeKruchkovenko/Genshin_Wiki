@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.example.genshin_wiki.MainActivity
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.FragmentCharacterPortraitBinding
 import com.example.genshin_wiki.models.CharacterPortrait
 import com.example.genshin_wiki.models.CharacterProfile
+import com.example.genshin_wiki.ui.NavigationBarHelper
 
 class CharacterPortraitFragment : Fragment() {
     private var _binding: FragmentCharacterPortraitBinding? = null
@@ -33,36 +33,17 @@ class CharacterPortraitFragment : Fragment() {
         return binding.root
     }
 
-    private fun hideNavigationBar() {
-        try {
-            val mainActivity = activity as MainActivity
-            mainActivity.hideBottomNavigationView()
-        } catch (_: Exception) {
-
-        }
-    }
-
-    private fun showNavigationBar() {
-        try {
-            val mainActivity = activity as MainActivity
-            mainActivity.showBottomNavigationView()
-        } catch (_: Exception) {
-
-        }
-    }
-
     private fun init() {
-        hideNavigationBar()
+        NavigationBarHelper.hideNavigationBar(activity)
         initAppbar()
         initPortrait()
+        initLikeBtn()
     }
-
     private fun initAppbar() {
         binding.appbar.toolBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
     }
-
     private fun initPortrait() {
         val characterObserver = Observer<CharacterPortrait> { newValue ->
             if (newValue.profile != null) {
@@ -87,7 +68,6 @@ class CharacterPortraitFragment : Fragment() {
         }
         viewModel.characterPortrait.observe(viewLifecycleOwner, characterObserver)
     }
-
     private fun initInfoBlock(profile: CharacterProfile) {
         val infoBlock = binding.infoBlock
         infoBlock.name.text = profile.name
@@ -108,9 +88,30 @@ class CharacterPortraitFragment : Fragment() {
         }
     }
 
+    private fun initLikeBtn() {
+        binding.appbar.toolBar.setOnMenuItemClickListener {
+            when (it?.itemId) {
+                R.id.like -> {
+                    viewModel.changeLike()
+                    true
+                }
+                else -> false
+            }
+        }
+        val likeObserver = Observer<Boolean> { newValue ->
+            val likeIcon = binding.appbar.toolBar.menu.findItem(R.id.like)
+            if (newValue) {
+                likeIcon.setIcon(R.drawable.heart_like)
+            } else {
+                likeIcon.setIcon(R.drawable.heart)
+            }
+        }
+        viewModel.isLiked.observe(viewLifecycleOwner, likeObserver)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        showNavigationBar()
+        NavigationBarHelper.showNavigationBar(activity)
     }
 }

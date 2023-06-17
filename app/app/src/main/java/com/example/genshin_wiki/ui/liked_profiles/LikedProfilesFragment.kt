@@ -8,18 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.genshin_wiki.MainActivity
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.LikedAdapter
 import com.example.genshin_wiki.databinding.FragmentLikedProfilesBinding
-import com.example.genshin_wiki.interfaces.ArtifactListener
-import com.example.genshin_wiki.interfaces.CharacterListener
 import com.example.genshin_wiki.interfaces.LikedListener
-import com.example.genshin_wiki.interfaces.WeaponListener
 import com.example.genshin_wiki.models.Artifact
 import com.example.genshin_wiki.models.CharacterProfile
 import com.example.genshin_wiki.models.Likeable
 import com.example.genshin_wiki.models.Weapon
+import com.example.genshin_wiki.ui.NavigationBarHelper
 
 class LikedProfilesFragment : Fragment(), LikedListener {
     private var _binding: FragmentLikedProfilesBinding? = null
@@ -37,7 +34,7 @@ class LikedProfilesFragment : Fragment(), LikedListener {
     }
 
     private fun init() {
-        hideNavigationBar()
+        NavigationBarHelper.hideNavigationBar(activity)
         initAppBar()
         initLikedProfiles()
         initClearBtn()
@@ -67,28 +64,10 @@ class LikedProfilesFragment : Fragment(), LikedListener {
         }
     }
 
-    private fun hideNavigationBar() {
-        try {
-            val mainActivity = activity as MainActivity
-            mainActivity.hideBottomNavigationView()
-        } catch (_: Exception) {
-
-        }
-    }
-
-    private fun showNavigationBar() {
-        try {
-            val mainActivity = activity as MainActivity
-            mainActivity.showBottomNavigationView()
-        } catch (_: Exception) {
-
-        }
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        showNavigationBar()
+        NavigationBarHelper.showNavigationBar(activity)
     }
 
     override fun onClick(profile: Artifact) {
