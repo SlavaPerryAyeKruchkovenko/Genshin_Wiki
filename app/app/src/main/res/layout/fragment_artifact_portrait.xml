@@ -113,7 +113,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="4dp"
                             android:layout_marginTop="4dp"
-                            app:dividerColor="@color/stars_5" />
+                             />
                     </LinearLayout>
 
                     <LinearLayout

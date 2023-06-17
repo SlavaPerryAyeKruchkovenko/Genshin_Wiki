@@ -2,6 +2,7 @@ package com.example.genshin_wiki.ui.artifact_portrait
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,14 +66,18 @@ class ArtifactPortraitFragment : Fragment() {
         binding.pieceBonus2.text = artifact.bonus2
         binding.pieceBonus4.text = artifact.bonus4
 
+        val color = ProfileUtils.getColorByStars(artifact.stars)
         binding.artifactBlock.backgroundTintList =
             ColorStateList.valueOf(
                 ContextCompat.getColor(
                     requireContext(),
-                    ProfileUtils.getColorByStars(artifact.stars)
+                    color
                 )
             )
-        binding.separator.dividerColor = ProfileUtils.getColorByStars(artifact.stars)
+        binding.separator.dividerColor = ContextCompat.getColor(
+            requireContext(),
+            color
+        )
     }
 
     private fun initLikeBtn() {
