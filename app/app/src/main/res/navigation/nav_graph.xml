@@ -3,11 +3,106 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/CharacterFragment">
+    app:startDestination="@id/navigation_home">
     <fragment
-        android:id="@+id/CharacterFragment"
+        android:id="@+id/navigation_home"
+        android:name="com.example.genshin_wiki.ui.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_liked"
+            app:destination="@+id/navigation_liked">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_weapons"
+        android:name="com.example.genshin_wiki.ui.weapons.WeaponsFragment"
+        android:label="@string/weapons"
+        tools:layout="@layout/fragment_weapons">
+        <action
+            android:id="@+id/action_weapons_to_weapon_portrait"
+            app:destination="@id/navigation_weapon_portrait">
+            <argument
+                android:name="weapon_id"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_characters"
         android:name="com.example.genshin_wiki.ui.characters.CharactersFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_charaters">
+        android:label="@string/characters"
+        tools:layout="@layout/fragment_characters">
+        <action
+            android:id="@+id/action_characters_to_character_portrait"
+            app:destination="@+id/navigation_character_portrait">
+            <argument
+                android:name="character_id"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_artifacts"
+        android:name="com.example.genshin_wiki.ui.artifacts.ArtifactsFragment"
+        android:label="@string/artifacts"
+        tools:layout="@layout/fragment_artifacts" >
+        <action
+            android:id="@+id/action_artifacts_to_artifact_portrait"
+            app:destination="@id/navigation_artifact_portrait" >
+            <argument
+                android:name="artifact_id"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_character_portrait"
+        android:name="com.example.genshin_wiki.ui.character_portrait.CharacterPortraitFragment"
+        android:label="fragment_character_portrait"
+        tools:layout="@layout/fragment_character_portrait">
+        <argument
+            android:name="character_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_liked"
+        android:name="com.example.genshin_wiki.ui.liked_profiles.LikedProfilesFragment"
+        android:label="LikedProfilesFragment" >
+        <action
+            android:id="@+id/action_liked_to_character_portrait"
+            app:destination="@id/navigation_character_portrait" >
+            <argument
+                android:name="character_id"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_liked_to_artifact_portrait"
+            app:destination="@id/navigation_artifact_portrait">
+            <argument
+                android:name="artifact_id"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_liked_to_weapon_portrait"
+            app:destination="@id/navigation_weapon_portrait">
+            <argument
+                android:name="weapon_id"
+                app:argType="string" />
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_artifact_portrait"
+        android:name="com.example.genshin_wiki.ui.artifact_portrait.ArtifactPortraitFragment"
+        android:label="ArtifactPortraitFragment">
+        <argument
+            android:name="artifact_id"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_weapon_portrait"
+        android:name="com.example.genshin_wiki.ui.weapon_portrait.WeaponPortraitFragment"
+        android:label="WeaponPortraitFragment">
+        <argument
+            android:name="weapon_id"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VerticalProgressBar">
+        <attr name="colorPyro" format="color" />
+        <attr name="colorDendro" format="color" />
+        <attr name="colorGeo" format="color" />
+        <attr name="colorHydro" format="color" />
+        <attr name="colorElectro" format="color" />
+        <attr name="colorAnemo" format="color" />
+        <attr name="colorCryo" format="color" />
+    </declare-styleable>
+</resources>

@@ -1,4 +1,8 @@
 package com.example.genshin_wiki.models
 
-class WeaponType(id: String, name: String, image: String) {
-}
+import com.example.genshin_wiki.models.enums.WeaponTypes
+
+data class WeaponType(
+    val id: String,
+    val name: WeaponTypes,
+    val image: String)

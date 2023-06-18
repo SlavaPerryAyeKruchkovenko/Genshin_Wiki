@@ -1,4 +1,8 @@
 package com.example.genshin_wiki.models
 
-class Element(id: String, name: String, image: String) {
-}
+import com.example.genshin_wiki.models.enums.Elements
+
+data class Element(
+    val id: String,
+    val name: Elements,
+    val image: String)
