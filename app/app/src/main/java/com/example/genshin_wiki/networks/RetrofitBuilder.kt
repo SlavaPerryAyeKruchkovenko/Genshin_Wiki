@@ -13,4 +13,7 @@ object RetrofitBuilder {
     }
 
     val artifactApi: ArtifactApi = getRetrofit().create(ArtifactApi::class.java)
+    val characterApi: CharacterApi = getRetrofit().create(CharacterApi::class.java)
+    val weaponApi: WeaponApi = getRetrofit().create(WeaponApi::class.java)
+    val resourceApi: DungeonResourceApi = getRetrofit().create(DungeonResourceApi::class.java)
 }
