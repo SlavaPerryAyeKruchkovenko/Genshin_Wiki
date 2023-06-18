@@ -1,8 +1,8 @@
-package com.example.genshin_wiki.data.requests
+package com.example.genshin_wiki.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class ArtifactRequest(
+data class ArtifactResponse(
     @SerializedName("_id") val id: String = "",
     @SerializedName("bonus2") val bonus2: String = "",
     @SerializedName("bonus4") val bonus4: String = "",

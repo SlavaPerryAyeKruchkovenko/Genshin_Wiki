@@ -44,7 +44,6 @@ class Mock {
                 getWeaponElement(Elements.DENDRO),
                 CharacterPortrait(
                     "1",
-                    "Yao Yao",
                     "https://drive.google.com/file/d/1bai2zj5anPUQME0JPbMZFVNuJOEXsAgp/view",
                     "Lee Yue",
                     false,
@@ -65,7 +64,6 @@ class Mock {
                 getWeaponElement(Elements.ELECTRO),
                 CharacterPortrait(
                     "4",
-                    "Raiden",
                     "https://drive.google.com/file/d/1YVwqOKFXR24UxCwmpW5nztHSpf1_2hhY/view",
                     "Inadzuma",
                     false,
@@ -202,7 +200,6 @@ class Mock {
                 getWeaponElement(Elements.DENDRO),
                 CharacterPortrait(
                     "1",
-                    "Yao Yao",
                     "https://drive.google.com/file/d/1bai2zj5anPUQME0JPbMZFVNuJOEXsAgp/view",
                     "Lee Yue",
                     false,
@@ -222,7 +219,6 @@ class Mock {
                 getWeaponElement(Elements.GEO),
                 CharacterPortrait(
                     "2",
-                    "Zhong Li",
                     "https://drive.google.com/file/d/1ZxLbuMA9WGNaV0M_xfKKef4mcy7MIC8t/view",
                     "Lee Yue",
                     true,
@@ -242,7 +238,6 @@ class Mock {
                 getWeaponElement(Elements.PYRO),
                 CharacterPortrait(
                     "3",
-                    "Yoimiya",
                     "https://drive.google.com/file/d/1vOVdApLRMA-ypysBjfAznZrIOqT5D9x5/view",
                     "Inadzuma",
                     false,
@@ -262,7 +257,6 @@ class Mock {
                 getWeaponElement(Elements.ELECTRO),
                 CharacterPortrait(
                     "4",
-                    "Raiden",
                     "https://drive.google.com/file/d/1YVwqOKFXR24UxCwmpW5nztHSpf1_2hhY/view",
                     "Inadzuma",
                     false,
