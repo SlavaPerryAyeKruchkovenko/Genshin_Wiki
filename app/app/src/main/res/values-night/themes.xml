@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Genshin_Wiki" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -16,11 +16,19 @@
         <item name="colorSecondaryContainer">@color/white</item>
         <item name="colorOnSecondaryFixed">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimary</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="android:navigationBarColor">?attr/colorPrimary</item>
         <!-- Surface colors -->
         <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnSurfaceVariant">@color/blue_700</item>
         <!-- Customize your theme here. -->
+        <item name="colorPyro">@color/pyro_element_dark</item>
+        <item name="colorDendro">@color/dendro_element_dark</item>
+        <item name="colorGeo">@color/geo_element_dark</item>
+        <item name="colorHydro">@color/hydro_element_dark</item>
+        <item name="colorElectro">@color/electro_element_dark</item>
+        <item name="colorAnemo">@color/anemo_element_dark</item>
+        <item name="colorCryo">@color/cryo_element_dark</item>
     </style>
     <style name="Theme.SplashScreen.Genshin" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@drawable/splash_dark</item>

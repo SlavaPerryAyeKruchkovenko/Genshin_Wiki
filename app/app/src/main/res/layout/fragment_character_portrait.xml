@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:backgroundTint="@color/geo_description"
+                android:backgroundTint="?attr/colorOnSurfaceVariant"
                 app:cardCornerRadius="@dimen/profile_radius">
 
                 <androidx.constraintlayout.widget.ConstraintLayout

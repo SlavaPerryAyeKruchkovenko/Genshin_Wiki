@@ -28,7 +28,7 @@ class CharacterAdapter(val listener: CharacterListener) :
                     LayoutInflater.from(parent.context),
                     parent, false
                 )
-                CharacterProfileHolder(parent.context,binding);
+                CharacterProfileHolder(parent.context,binding)
             }
             else -> throw IllegalStateException("Unknown view type $viewType")
         }
