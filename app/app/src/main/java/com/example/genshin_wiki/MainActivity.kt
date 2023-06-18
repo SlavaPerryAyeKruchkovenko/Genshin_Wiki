@@ -3,16 +3,21 @@ package com.example.genshin_wiki
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.genshin_wiki.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
-    val count: UInt = 0u;
+    private lateinit var _binding: ActivityMainBinding
+    private val binding get() = _binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val bindingActivity: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(bindingActivity.root)
+        installSplashScreen()
+        this._binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        init()
     }
 
     private fun init() {

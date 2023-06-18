@@ -3,7 +3,6 @@ package com.example.genshin_wiki.adapters.utils
 import android.util.Log
 import android.widget.ImageView
 import com.example.genshin_wiki.R
-import com.example.genshin_wiki.models.enums.Elements
 import com.squareup.picasso.Picasso
 
 class ProfileUtils {
@@ -28,32 +27,6 @@ class ProfileUtils {
                 1 -> R.drawable.one_star
                 else -> R.drawable.broken_image
                 
-            }
-        }
-
-        fun getGeoElement(element: Elements): Int {
-            return when (element) {
-                Elements.PYRO -> R.color.pyro_element
-                Elements.HYDRO -> R.color.hydro_element
-                Elements.ANEMO -> R.color.anemo_element
-                Elements.ELECTRO -> R.color.electro_element
-                Elements.DENDRO -> R.color.dendro_element
-                Elements.CRYO -> R.color.cryo_element
-                Elements.GEO -> R.color.geo_element
-                else -> R.color.white
-            }
-        }
-
-        fun getGeoElementSecond(element: Elements): Int {
-            return when (element) {
-                Elements.PYRO -> R.color.pyro_description
-                Elements.HYDRO -> R.color.hydro_description
-                Elements.ANEMO -> R.color.anemo_description
-                Elements.ELECTRO -> R.color.electro_description
-                Elements.DENDRO -> R.color.dendro_description
-                Elements.CRYO -> R.color.cryo_description
-                Elements.GEO -> R.color.geo_description
-                else -> R.color.white
             }
         }
 
