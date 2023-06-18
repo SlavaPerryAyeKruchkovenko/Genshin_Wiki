@@ -46,43 +46,51 @@ class CharacterPortraitFragment : Fragment() {
             findNavController().popBackStack()
         }
     }
+
     private fun initPortrait() {
         val characterObserver = Observer<CharacterPortrait?> { newValue ->
             if (newValue.profile != null) {
                 initInfoBlock(newValue.profile)
             }
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(newValue.image),
-                binding.image,
-                R.drawable.loader_animation
-            )
-            binding.location.text = newValue.location
-            binding.gender.text = if (newValue.sex) {
-                getString(R.string.male)
-            } else {
-                getString(R.string.female)
-            }
-            binding.birthday.text = newValue.birthday
-            binding.description.text = newValue.description
-            binding.normalAttack.text = newValue.normalAttack
-            binding.elementalSkill.text = newValue.elementalSkill
-            binding.elementalBurst.text = newValue.elementalBurst
-            if (newValue.profile != null) {
-                val typedValue = TypedValue()
-                requireContext().theme.resolveAttribute(
-                    newValue.profile.element.name.colorAttr,
-                    typedValue,
-                    true
-                )
-                val color = typedValue.data
-                binding.portraitBlock.backgroundTintList = ColorStateList.valueOf(color)
-            }
+            initPortraitBlock(newValue)
         }
         viewModel.characterPortrait.observe(viewLifecycleOwner, characterObserver)
     }
+
+    private fun initPortraitBlock(portrait: CharacterPortrait) {
+        ProfileUtils.loadImage(
+            ProfileUtils.getImageFromGoogle(portrait.image),
+            binding.image,
+            R.drawable.loader_animation
+        )
+        binding.location.text = portrait.location
+        binding.gender.text = if (portrait.sex) {
+            getString(R.string.male)
+        } else {
+            getString(R.string.female)
+        }
+        binding.birthday.text = portrait.birthday
+        binding.description.text = portrait.description
+        binding.normalAttack.text = portrait.normalAttack
+        binding.elementalSkill.text = portrait.elementalSkill
+        binding.elementalBurst.text = portrait.elementalBurst
+        if (portrait.profile != null) {
+            val typedValue = TypedValue()
+            requireContext().theme.resolveAttribute(
+                portrait.profile.element.name.colorAttr,
+                typedValue,
+                true
+            )
+            val color = typedValue.data
+            binding.portraitBlock.backgroundTintList = ColorStateList.valueOf(color)
+        }
+    }
+
     private fun initInfoBlock(profile: CharacterProfile) {
-        val infoBlock = binding.infoBlock
+        val infoBlock = binding.characterInfo
         infoBlock.name.text = profile.name
+        infoBlock.elementName.text = getString(profile.element.name.text)
+        infoBlock.weaponName.text = getString(profile.weaponType.name.value)
         ProfileUtils.loadImage(
             ProfileUtils.getImageFromGoogle(profile.element.image),
             infoBlock.element,
