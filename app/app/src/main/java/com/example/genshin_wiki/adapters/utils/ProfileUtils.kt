@@ -26,6 +26,7 @@ class ProfileUtils {
                 2 -> R.drawable.two_stars
                 1 -> R.drawable.one_star
                 else -> R.drawable.broken_image
+                
             }
         }
 
