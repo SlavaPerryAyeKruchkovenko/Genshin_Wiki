@@ -2,10 +2,10 @@ package com.example.genshin_wiki.ui.character_portrait
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -46,51 +46,49 @@ class CharacterPortraitFragment : Fragment() {
             findNavController().popBackStack()
         }
     }
-
     private fun initPortrait() {
         val characterObserver = Observer<CharacterPortrait?> { newValue ->
             if (newValue.profile != null) {
                 initInfoBlock(newValue.profile)
             }
-            initPortraitBlock(newValue)
+            ProfileUtils.loadImage(
+                ProfileUtils.getImageFromGoogle(newValue.image),
+                binding.image,
+                R.drawable.loader_animation
+            )
+            binding.location.text = newValue.location
+            binding.gender.text = if (newValue.sex) {
+                getString(R.string.male)
+            } else {
+                getString(R.string.female)
+            }
+            binding.birthday.text = newValue.birthday
+            binding.description.text = newValue.description
+            binding.normalAttack.text = newValue.normalAttack
+            binding.elementalSkill.text = newValue.elementalSkill
+            binding.elementalBurst.text = newValue.elementalBurst
+            if (newValue.profile != null) {
+                val color = ProfileUtils.getGeoElement(newValue.profile.element.name)
+                val secondColor = ProfileUtils.getGeoElementSecond(newValue.profile.element.name)
+                binding.portraitBlock.backgroundTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        color
+                    )
+                )
+                binding.secondBlock.backgroundTintList = ColorStateList.valueOf(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        secondColor
+                    )
+                )
+            }
         }
         viewModel.characterPortrait.observe(viewLifecycleOwner, characterObserver)
     }
-
-    private fun initPortraitBlock(portrait: CharacterPortrait) {
-        ProfileUtils.loadImage(
-            ProfileUtils.getImageFromGoogle(portrait.image),
-            binding.image,
-            R.drawable.loader_animation
-        )
-        binding.location.text = portrait.location
-        binding.gender.text = if (portrait.sex) {
-            getString(R.string.male)
-        } else {
-            getString(R.string.female)
-        }
-        binding.birthday.text = portrait.birthday
-        binding.description.text = portrait.description
-        binding.normalAttack.text = portrait.normalAttack
-        binding.elementalSkill.text = portrait.elementalSkill
-        binding.elementalBurst.text = portrait.elementalBurst
-        if (portrait.profile != null) {
-            val typedValue = TypedValue()
-            requireContext().theme.resolveAttribute(
-                portrait.profile.element.name.colorAttr,
-                typedValue,
-                true
-            )
-            val color = typedValue.data
-            binding.portraitBlock.backgroundTintList = ColorStateList.valueOf(color)
-        }
-    }
-
     private fun initInfoBlock(profile: CharacterProfile) {
-        val infoBlock = binding.characterInfo
+        val infoBlock = binding.infoBlock
         infoBlock.name.text = profile.name
-        infoBlock.elementName.text = getString(profile.element.name.text)
-        infoBlock.weaponName.text = getString(profile.weaponType.name.value)
         ProfileUtils.loadImage(
             ProfileUtils.getImageFromGoogle(profile.element.image),
             infoBlock.element,

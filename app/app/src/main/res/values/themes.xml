@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Genshin_Wiki" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -20,20 +20,7 @@
         <item name="android:navigationBarColor">?attr/colorPrimary</item>
         <!-- Surface colors -->
         <item name="colorOnSurface">@color/gray_200</item>
-        <item name="colorOnSurfaceVariant">@color/gray_200</item>
         <!-- Customize your theme here. -->
-        <item name="colorPyro">@color/pyro_element</item>
-        <item name="colorDendro">@color/dendro_element</item>
-        <item name="colorGeo">@color/geo_element</item>
-        <item name="colorHydro">@color/hydro_element</item>
-        <item name="colorElectro">@color/electro_element</item>
-        <item name="colorAnemo">@color/anemo_element</item>
-        <item name="colorCryo">@color/cryo_element</item>
 
-    </style>
-    <style name="Theme.SplashScreen.Genshin" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@drawable/splash_light</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/transparent</item>
-        <item name="postSplashScreenTheme">@style/Theme.Genshin_Wiki</item>
     </style>
 </resources>
