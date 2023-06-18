@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.CharacterProfileBinding
-import com.example.genshin_wiki.interfaces.CharacterListener
+import com.example.genshin_wiki.interfaces.listeners.CharacterListener
 import com.example.genshin_wiki.data.models.Character
 
 class CharacterAdapter(val listener: CharacterListener) :

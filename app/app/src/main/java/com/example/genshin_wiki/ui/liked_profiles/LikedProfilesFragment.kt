@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.LikedAdapter
 import com.example.genshin_wiki.databinding.FragmentLikedProfilesBinding
-import com.example.genshin_wiki.interfaces.LikedListener
+import com.example.genshin_wiki.interfaces.listeners.LikedListener
 import com.example.genshin_wiki.data.models.Artifact
 import com.example.genshin_wiki.data.models.Character
 import com.example.genshin_wiki.data.models.Likeable

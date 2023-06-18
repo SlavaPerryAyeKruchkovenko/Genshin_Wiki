@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.WeaponProfileBinding
-import com.example.genshin_wiki.interfaces.WeaponListener
+import com.example.genshin_wiki.interfaces.listeners.WeaponListener
 import com.example.genshin_wiki.data.models.Weapon
 
 class WeaponsAdapter(private val listener: WeaponListener) :

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.CharacterAdapter
 import com.example.genshin_wiki.databinding.FragmentCharactersBinding
-import com.example.genshin_wiki.interfaces.CharacterListener
+import com.example.genshin_wiki.interfaces.listeners.CharacterListener
 import com.example.genshin_wiki.data.models.Character
 
 class CharactersFragment : Fragment(), CharacterListener {

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.ArtifactProfileBinding
-import com.example.genshin_wiki.interfaces.ArtifactListener
+import com.example.genshin_wiki.interfaces.listeners.ArtifactListener
 import com.example.genshin_wiki.data.models.Artifact
 
 class ArtifactAdapter(private val listener: ArtifactListener) : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCallback()) {

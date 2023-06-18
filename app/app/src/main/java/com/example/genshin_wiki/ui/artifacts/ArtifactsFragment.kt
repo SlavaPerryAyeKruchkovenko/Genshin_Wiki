@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.ArtifactAdapter
 import com.example.genshin_wiki.databinding.FragmentArtifactsBinding
-import com.example.genshin_wiki.interfaces.ArtifactListener
+import com.example.genshin_wiki.interfaces.listeners.ArtifactListener
 import com.example.genshin_wiki.data.models.Artifact
 
 class ArtifactsFragment : Fragment(), ArtifactListener {

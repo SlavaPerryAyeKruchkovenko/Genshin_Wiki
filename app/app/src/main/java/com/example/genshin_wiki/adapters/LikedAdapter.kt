@@ -13,7 +13,7 @@ import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.ArtifactProfileLikeableBinding
 import com.example.genshin_wiki.databinding.CharacterProfileLikeableBinding
 import com.example.genshin_wiki.databinding.WeaponProfileLikeableBinding
-import com.example.genshin_wiki.interfaces.LikedListener
+import com.example.genshin_wiki.interfaces.listeners.LikedListener
 import com.example.genshin_wiki.data.models.Artifact
 import com.example.genshin_wiki.data.models.Character
 import com.example.genshin_wiki.data.models.Likeable

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.WeaponsAdapter
 import com.example.genshin_wiki.databinding.FragmentWeaponsBinding
-import com.example.genshin_wiki.interfaces.WeaponListener
+import com.example.genshin_wiki.interfaces.listeners.WeaponListener
 import com.example.genshin_wiki.data.models.Weapon
 
 class WeaponsFragment : Fragment(), WeaponListener {
