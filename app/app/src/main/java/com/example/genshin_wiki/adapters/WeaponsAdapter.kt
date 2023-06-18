@@ -12,7 +12,7 @@ import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.WeaponProfileBinding
 import com.example.genshin_wiki.interfaces.WeaponListener
-import com.example.genshin_wiki.models.Weapon
+import com.example.genshin_wiki.data.models.Weapon
 
 class WeaponsAdapter(private val listener: WeaponListener) :
     ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallback()) {

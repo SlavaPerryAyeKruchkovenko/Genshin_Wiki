@@ -2,8 +2,8 @@ package com.example.genshin_wiki.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.genshin_wiki.models.DungeonResource
-import com.example.genshin_wiki.models.enums.Day
+import com.example.genshin_wiki.data.models.DungeonResource
+import com.example.genshin_wiki.data.models.enums.Day
 import com.example.genshin_wiki.repository.Mock
 
 class HomeViewModel : ViewModel() {
@@ -33,7 +33,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun setCurrentDay(day:Day){
+    fun setCurrentDay(day: Day){
         dayOfWeekData.postValue(day)
     }
 }

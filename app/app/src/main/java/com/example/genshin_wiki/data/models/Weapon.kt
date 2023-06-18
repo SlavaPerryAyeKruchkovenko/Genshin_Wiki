@@ -1,6 +1,6 @@
-package com.example.genshin_wiki.models
+package com.example.genshin_wiki.data.models
 
-import com.example.genshin_wiki.models.enums.Stats
+import com.example.genshin_wiki.data.models.enums.Stats
 
 data class Weapon(
     val id: String,

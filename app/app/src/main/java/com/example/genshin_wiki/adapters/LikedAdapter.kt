@@ -14,10 +14,10 @@ import com.example.genshin_wiki.databinding.ArtifactProfileLikeableBinding
 import com.example.genshin_wiki.databinding.CharacterProfileLikeableBinding
 import com.example.genshin_wiki.databinding.WeaponProfileLikeableBinding
 import com.example.genshin_wiki.interfaces.LikedListener
-import com.example.genshin_wiki.models.Artifact
-import com.example.genshin_wiki.models.CharacterProfile
-import com.example.genshin_wiki.models.Likeable
-import com.example.genshin_wiki.models.Weapon
+import com.example.genshin_wiki.data.models.Artifact
+import com.example.genshin_wiki.data.models.Character
+import com.example.genshin_wiki.data.models.Likeable
+import com.example.genshin_wiki.data.models.Weapon
 
 class LikedAdapter(private val listener: LikedListener) :
     ListAdapter<Likeable, RecyclerView.ViewHolder>(MyDiffCallback()) {
@@ -25,7 +25,7 @@ class LikedAdapter(private val listener: LikedListener) :
         return when (getItem(position)) {
             is Artifact -> R.layout.artifact_profile
             is Weapon -> R.layout.weapon_profile
-            is CharacterProfile -> R.layout.character_profile
+            is Character -> R.layout.character_profile
             else -> Int.MAX_VALUE
         }
     }
@@ -66,7 +66,7 @@ class LikedAdapter(private val listener: LikedListener) :
                 getItem(position) as Weapon
             )
             R.layout.character_profile -> (holder as LikedAdapter.CharacterProfileHolder).bind(
-                getItem(position) as CharacterProfile
+                getItem(position) as Character
             )
             else -> throw IllegalStateException("Unknown item view type ${holder.itemViewType}")
         }
@@ -134,7 +134,7 @@ class LikedAdapter(private val listener: LikedListener) :
         private val binding: CharacterProfileLikeableBinding
     ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(profile: CharacterProfile) = with(binding) {
+        fun bind(profile: Character) = with(binding) {
             itemView.setOnClickListener {
                 listener.onClick(profile)
             }

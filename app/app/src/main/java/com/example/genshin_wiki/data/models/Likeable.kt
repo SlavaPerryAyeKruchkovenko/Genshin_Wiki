@@ -1,4 +1,4 @@
-package com.example.genshin_wiki.models
+package com.example.genshin_wiki.data.models
 
 open class Likeable(val liked_id:String,isLiked: Boolean = false) {
     var isLike = isLiked

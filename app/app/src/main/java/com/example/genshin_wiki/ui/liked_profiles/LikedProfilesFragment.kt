@@ -12,10 +12,10 @@ import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.LikedAdapter
 import com.example.genshin_wiki.databinding.FragmentLikedProfilesBinding
 import com.example.genshin_wiki.interfaces.LikedListener
-import com.example.genshin_wiki.models.Artifact
-import com.example.genshin_wiki.models.CharacterProfile
-import com.example.genshin_wiki.models.Likeable
-import com.example.genshin_wiki.models.Weapon
+import com.example.genshin_wiki.data.models.Artifact
+import com.example.genshin_wiki.data.models.Character
+import com.example.genshin_wiki.data.models.Likeable
+import com.example.genshin_wiki.data.models.Weapon
 import com.example.genshin_wiki.ui.NavigationBarHelper
 
 class LikedProfilesFragment : Fragment(), LikedListener {
@@ -78,10 +78,10 @@ class LikedProfilesFragment : Fragment(), LikedListener {
         findNavController().navigate(R.id.action_liked_to_artifact_portrait, bundle)
     }
 
-    override fun onClick(profile: CharacterProfile) {
+    override fun onClick(profile: Character) {
         val bundle = Bundle()
         bundle.apply {
-            putString("character_id", profile.characterId)
+            putString("character_id", profile.id)
         }
         findNavController().navigate(R.id.action_liked_to_character_portrait, bundle)
     }

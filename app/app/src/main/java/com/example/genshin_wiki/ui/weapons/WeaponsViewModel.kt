@@ -2,7 +2,7 @@ package com.example.genshin_wiki.ui.weapons
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.genshin_wiki.models.Weapon
+import com.example.genshin_wiki.data.models.Weapon
 import com.example.genshin_wiki.repository.Mock
 
 class WeaponsViewModel: ViewModel(){

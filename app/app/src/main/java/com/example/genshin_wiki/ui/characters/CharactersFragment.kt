@@ -12,7 +12,7 @@ import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.CharacterAdapter
 import com.example.genshin_wiki.databinding.FragmentCharactersBinding
 import com.example.genshin_wiki.interfaces.CharacterListener
-import com.example.genshin_wiki.models.CharacterProfile
+import com.example.genshin_wiki.data.models.Character
 
 class CharactersFragment : Fragment(), CharacterListener {
     private var _binding: FragmentCharactersBinding? = null
@@ -35,16 +35,16 @@ class CharactersFragment : Fragment(), CharacterListener {
             2
         )
         binding.characters.adapter = characterAdapter
-        val observer = Observer<List<CharacterProfile>> { newValue ->
+        val observer = Observer<List<Character>> { newValue ->
             characterAdapter.submitList(newValue)
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
 
-    override fun onClick(profile: CharacterProfile) {
+    override fun onClick(profile: Character) {
         val bundle = Bundle()
         bundle.apply {
-            putString("character_id", profile.characterId)
+            putString("character_id", profile.id)
         }
         findNavController().navigate(R.id.action_characters_to_character_portrait, bundle)
     }

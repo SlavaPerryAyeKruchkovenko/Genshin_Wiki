@@ -15,8 +15,8 @@ import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.DungeonAdapter
 import com.example.genshin_wiki.databinding.FragmentHomeBinding
 import com.example.genshin_wiki.layouts.DungeonLayout
-import com.example.genshin_wiki.models.DungeonResource
-import com.example.genshin_wiki.models.enums.Day
+import com.example.genshin_wiki.data.models.DungeonResource
+import com.example.genshin_wiki.data.models.enums.Day
 import com.google.android.material.button.MaterialButton
 
 class HomeFragment : Fragment() {
