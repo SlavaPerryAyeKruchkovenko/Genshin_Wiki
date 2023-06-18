@@ -6,32 +6,24 @@
     android:layout_height="wrap_content"
     tools:context=".ui.characters.CharactersFragment">
 
-    <include
-        android:id="@+id/search_appbar"
-        layout="@layout/search_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <include
+            android:id="@+id/search_appbar"
+            layout="@layout/search_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <androidx.recyclerview.widget.RecyclerView
-<<<<<<< HEAD:app/app/src/main/res/layout/fragment_charaters.xml
-        android:background="?attr/colorOnPrimary"
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:paddingBottom="?attr/actionBarSize"
-=======
-        android:paddingBottom="60dp"
-        android:id="@+id/characters"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="?attr/colorOnPrimary"
-        android:paddingTop="8dp"
->>>>>>> ui:app/app/src/main/res/layout/fragment_characters.xml
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_appbar"
-        app:spanCount="2"
-        tools:listitem="@layout/character_profile" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingBottom="60dp"
+            android:id="@+id/characters"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="?attr/colorOnPrimary"
+            android:paddingTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_appbar"
+            app:spanCount="2"
+            tools:listitem="@layout/character_profile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
