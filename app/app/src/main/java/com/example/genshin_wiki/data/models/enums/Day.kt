@@ -1,4 +1,4 @@
-package com.example.genshin_wiki.models.enums
+package com.example.genshin_wiki.data.models.enums
 
 import com.example.genshin_wiki.R
 

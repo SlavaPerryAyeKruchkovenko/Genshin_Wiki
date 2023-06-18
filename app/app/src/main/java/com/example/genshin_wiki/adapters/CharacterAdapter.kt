@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.CharacterProfileBinding
-import com.example.genshin_wiki.interfaces.CharacterListener
-import com.example.genshin_wiki.models.CharacterProfile
+import com.example.genshin_wiki.interfaces.listeners.CharacterListener
+import com.example.genshin_wiki.data.models.Character
 
 class CharacterAdapter(val listener: CharacterListener) :
-    ListAdapter<CharacterProfile, RecyclerView.ViewHolder>(MyDiffCallback()) {
+    ListAdapter<Character, RecyclerView.ViewHolder>(MyDiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
         return R.id.navigation_characters
@@ -45,7 +45,7 @@ class CharacterAdapter(val listener: CharacterListener) :
         private val binding: CharacterProfileBinding
     ) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(profile: CharacterProfile) = with(binding) {
+        fun bind(profile: Character) = with(binding) {
             itemView.setOnClickListener {
                 listener.onClick(profile)
             }
@@ -80,17 +80,17 @@ class CharacterAdapter(val listener: CharacterListener) :
         }
     }
 
-    class MyDiffCallback : DiffUtil.ItemCallback<CharacterProfile>() {
+    class MyDiffCallback : DiffUtil.ItemCallback<Character>() {
         override fun areItemsTheSame(
-            oldItem: CharacterProfile,
-            newItem: CharacterProfile
+            oldItem: Character,
+            newItem: Character
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: CharacterProfile,
-            newItem: CharacterProfile
+            oldItem: Character,
+            newItem: Character
         ): Boolean {
             return oldItem.id == newItem.id
         }

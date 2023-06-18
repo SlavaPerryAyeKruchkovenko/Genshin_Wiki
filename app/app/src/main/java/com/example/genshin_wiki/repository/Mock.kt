@@ -1,13 +1,13 @@
 package com.example.genshin_wiki.repository
 
-import com.example.genshin_wiki.models.*
-import com.example.genshin_wiki.models.enums.Elements
-import com.example.genshin_wiki.models.enums.Stats
-import com.example.genshin_wiki.models.enums.WeaponTypes
+import com.example.genshin_wiki.data.models.*
+import com.example.genshin_wiki.data.models.enums.Elements
+import com.example.genshin_wiki.data.models.enums.Stats
+import com.example.genshin_wiki.data.models.enums.WeaponTypes
 
 class Mock {
 
-    fun getCharacters(): List<CharacterProfile> = getMockCharacters()
+    fun getCharacters(): List<Character> = getMockCharacters()
     fun getWeapons(): List<Weapon> = getMockWeapons()
     fun getResources(): List<DungeonResource> = getMockResources()
     fun getArtifacts(): List<Artifact> = getMockArtifacts()
@@ -18,8 +18,8 @@ class Mock {
     fun getWeaponById(id: String): Weapon?{
         return getMockWeapons().find { it.id == id }
     }
-    fun getCharacterPortraitById(characterId: String): CharacterPortrait? {
-        return getMockCharactersPortrait().find { it.id === characterId }
+    fun getCharacterPortraitById(characterId: String): Character? {
+        return getMockCharacters().find { it.id === characterId }
     }
 
     private fun getMockLikeable(): List<Likeable> {
@@ -35,23 +35,44 @@ class Mock {
                 Stats.ATK_PER,
                 "https://drive.google.com/file/d/1kABfbqHoLSHFRi-bnfLNK5cnIo3hVS3T/view"
             ),
-            CharacterProfile(
+            Character(
                 "2",
-                "1",
                 "https://drive.google.com/file/d/10yvtmTVxxPuSah6VyNbPDE-boxKOZ0JD/view",
                 "Yao Yao",
                 4,
                 getWeaponType(WeaponTypes.POLEARM),
-                getWeaponElement(Elements.DENDRO)
+                getWeaponElement(Elements.DENDRO),
+                CharacterPortrait(
+                    "1",
+                    "https://drive.google.com/file/d/1bai2zj5anPUQME0JPbMZFVNuJOEXsAgp/view",
+                    "Lee Yue",
+                    false,
+                    "6 марта",
+                    "Младшая ученица Владыки Песен и Скитаний, добрый и заботливый «маленький взрослый».",
+                    "Возращаюсиеся копье",
+                    "Небесное скопление редьки",
+                    "Сошествие лунной яшмы",
+
+                    ),
             ),
-            CharacterProfile(
+            Character(
                 "3",
-                "4",
                 "https://drive.google.com/file/d/1WD5p8cqkzPcsK26-NtUtWpxmmWOa7OIi/view",
                 "Raiden",
                 5,
                 getWeaponType(WeaponTypes.POLEARM),
-                getWeaponElement(Elements.ELECTRO)
+                getWeaponElement(Elements.ELECTRO),
+                CharacterPortrait(
+                    "4",
+                    "https://drive.google.com/file/d/1YVwqOKFXR24UxCwmpW5nztHSpf1_2hhY/view",
+                    "Inadzuma",
+                    false,
+                    "26 июня",
+                    "Её Превосходительство Наруками Огосё, пообещавшая неизменную вечность для жителей Инадзумы.",
+                    "Исток",
+                    "Превосходство: Зловещее знамение",
+                    "Тайное искусство: Мусо синсэцу",
+                ),
             ),
             Artifact(
                 "4",
@@ -132,7 +153,7 @@ class Mock {
                 Stats.ATK,
                 Stats.ER_PER,
                 "https://drive.google.com/file/d/1eyiEvFWJSdS3-0yuWgXHpKp82E9_4Bad/view"
-            ),Weapon(
+            ), Weapon(
                 "4",
                 "Calamity Queller",
                 "test",
@@ -168,100 +189,83 @@ class Mock {
         )
     }
 
-    private fun getMockCharacters(): List<CharacterProfile> {
+    private fun getMockCharacters(): List<Character> {
         return listOf(
-            CharacterProfile(
-                "1",
+            Character(
                 "1",
                 "https://drive.google.com/file/d/10yvtmTVxxPuSah6VyNbPDE-boxKOZ0JD/view",
                 "Yao Yao",
                 4,
                 getWeaponType(WeaponTypes.POLEARM),
-                getWeaponElement(Elements.DENDRO)
+                getWeaponElement(Elements.DENDRO),
+                CharacterPortrait(
+                    "1",
+                    "https://drive.google.com/file/d/1bai2zj5anPUQME0JPbMZFVNuJOEXsAgp/view",
+                    "Lee Yue",
+                    false,
+                    "6 марта",
+                    "Младшая ученица Владыки Песен и Скитаний, добрый и заботливый «маленький взрослый».",
+                    "Возращаюсиеся копье",
+                    "Небесное скопление редьки",
+                    "Сошествие лунной яшмы",
+                    ),
             ),
-            CharacterProfile(
-                "2",
+            Character(
                 "2",
                 "https://drive.google.com/file/d/1BBnFVb0ERkIxoI2ylxxnpVMjc4MbVLoc/view",
                 "Zhong Li",
                 5,
                 getWeaponType(WeaponTypes.POLEARM),
-                getWeaponElement(Elements.GEO)
+                getWeaponElement(Elements.GEO),
+                CharacterPortrait(
+                    "2",
+                    "https://drive.google.com/file/d/1ZxLbuMA9WGNaV0M_xfKKef4mcy7MIC8t/view",
+                    "Lee Yue",
+                    true,
+                    "31st December",
+                    "Приглашённый специалист ритуального бюро “Ваншэн”. Необычайно загадочен и сведущ во всех делах.",
+                    "Каменный дождь",
+                    "Власть над камнем",
+                    "Падение кометы",
+                ),
             ),
-            CharacterProfile(
-                "3",
+            Character(
                 "3",
                 "https://drive.google.com/file/d/1oA9C6t28y5i1jtDIXc5vUvmG_ZAqeGKX/view",
                 "Yoimiya",
                 5,
                 getWeaponType(WeaponTypes.BOW),
-                getWeaponElement(Elements.PYRO)
+                getWeaponElement(Elements.PYRO),
+                CharacterPortrait(
+                    "3",
+                    "https://drive.google.com/file/d/1vOVdApLRMA-ypysBjfAznZrIOqT5D9x5/view",
+                    "Inadzuma",
+                    false,
+                    "21 июня",
+                    "Владелица «Фейерверков Наганохары», так же известна как «Королева праздника лета». Будучи мастером своего дела, она воплощает надежды и мечты людей в своих фейерверках.",
+                    "Вспышка фейерверка",
+                    "Огненный танец Ниваби",
+                    "Камнеломка Рюкин",
+                ),
             ),
-            CharacterProfile(
-                "4",
+            Character(
                 "4",
                 "https://drive.google.com/file/d/1WD5p8cqkzPcsK26-NtUtWpxmmWOa7OIi/view",
                 "Raiden",
                 5,
                 getWeaponType(WeaponTypes.POLEARM),
-                getWeaponElement(Elements.ELECTRO)
-            ),
-        )
-    }
-
-    private fun getMockCharactersPortrait(): List<CharacterPortrait> {
-        return listOf(
-            CharacterPortrait(
-                "1",
-                "Yao Yao",
-                "https://drive.google.com/file/d/1bai2zj5anPUQME0JPbMZFVNuJOEXsAgp/view",
-                "Lee Yue",
-                false,
-                "6 марта",
-                "Младшая ученица Владыки Песен и Скитаний, добрый и заботливый «маленький взрослый».",
-                "Возращаюсиеся копье",
-                "Небесное скопление редьки",
-                "Сошествие лунной яшмы",
-                getMockCharacters().find { it.characterId === "1" }
-            ),
-            CharacterPortrait(
-                "2",
-                "Zhong Li",
-                "https://drive.google.com/file/d/1ZxLbuMA9WGNaV0M_xfKKef4mcy7MIC8t/view",
-                "Lee Yue",
-                true,
-                "31st December",
-                "Приглашённый специалист ритуального бюро “Ваншэн”. Необычайно загадочен и сведущ во всех делах.",
-                "Каменный дождь",
-                "Власть над камнем",
-                "Падение кометы",
-                getMockCharacters().find { it.characterId === "2" }
-            ),
-            CharacterPortrait(
-                "3",
-                "Yoimiya",
-                "https://drive.google.com/file/d/1vOVdApLRMA-ypysBjfAznZrIOqT5D9x5/view",
-                "Inadzuma",
-                false,
-                "21 июня",
-                "Владелица «Фейерверков Наганохары», так же известна как «Королева праздника лета». Будучи мастером своего дела, она воплощает надежды и мечты людей в своих фейерверках.",
-                "Вспышка фейерверка",
-                "Огненный танец Ниваби",
-                "Камнеломка Рюкин",
-                getMockCharacters().find { it.characterId === "3" }
-            ),
-            CharacterPortrait(
-                "4",
-                "Raiden",
-                "https://drive.google.com/file/d/1YVwqOKFXR24UxCwmpW5nztHSpf1_2hhY/view",
-                "Inadzuma",
-                false,
-                "26 июня",
-                "Её Превосходительство Наруками Огосё, пообещавшая неизменную вечность для жителей Инадзумы.",
-                "Исток",
-                "Превосходство: Зловещее знамение",
-                "Тайное искусство: Мусо синсэцу",
-                getMockCharacters().find { it.characterId === "4" }
+                getWeaponElement(Elements.ELECTRO),
+                CharacterPortrait(
+                    "4",
+                    "https://drive.google.com/file/d/1YVwqOKFXR24UxCwmpW5nztHSpf1_2hhY/view",
+                    "Inadzuma",
+                    false,
+                    "26 июня",
+                    "Её Превосходительство Наруками Огосё, пообещавшая неизменную вечность для жителей Инадзумы.",
+                    "Исток",
+                    "Превосходство: Зловещее знамение",
+                    "Тайное искусство: Мусо синсэцу",
+                ),
             ),
         )
     }

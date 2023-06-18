@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.FragmentWeaponPortraitBinding
-import com.example.genshin_wiki.models.Weapon
+import com.example.genshin_wiki.data.models.Weapon
 import com.example.genshin_wiki.ui.NavigationBarHelper
 
 class WeaponPortraitFragment : Fragment() {

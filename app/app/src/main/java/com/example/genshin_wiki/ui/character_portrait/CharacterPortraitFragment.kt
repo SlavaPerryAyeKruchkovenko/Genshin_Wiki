@@ -11,9 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
+import com.example.genshin_wiki.data.models.Character
+import com.example.genshin_wiki.data.models.CharacterPortrait
 import com.example.genshin_wiki.databinding.FragmentCharacterPortraitBinding
-import com.example.genshin_wiki.models.CharacterPortrait
-import com.example.genshin_wiki.models.CharacterProfile
 import com.example.genshin_wiki.ui.NavigationBarHelper
 
 class CharacterPortraitFragment : Fragment() {
@@ -48,11 +48,13 @@ class CharacterPortraitFragment : Fragment() {
     }
 
     private fun initPortrait() {
-        val characterObserver = Observer<CharacterPortrait?> { newValue ->
-            if (newValue.profile != null) {
-                initInfoBlock(newValue.profile)
+        val characterObserver = Observer<Character?> { newValue ->
+            if (newValue != null) {
+                initInfoBlock(newValue)
+                if (newValue.portrait != null) {
+                    initPortraitBlock(newValue.portrait)
+                }
             }
-            initPortraitBlock(newValue)
         }
         viewModel.characterPortrait.observe(viewLifecycleOwner, characterObserver)
     }
@@ -74,19 +76,9 @@ class CharacterPortraitFragment : Fragment() {
         binding.normalAttack.text = portrait.normalAttack
         binding.elementalSkill.text = portrait.elementalSkill
         binding.elementalBurst.text = portrait.elementalBurst
-        if (portrait.profile != null) {
-            val typedValue = TypedValue()
-            requireContext().theme.resolveAttribute(
-                portrait.profile.element.name.colorAttr,
-                typedValue,
-                true
-            )
-            val color = typedValue.data
-            binding.portraitBlock.backgroundTintList = ColorStateList.valueOf(color)
-        }
     }
 
-    private fun initInfoBlock(profile: CharacterProfile) {
+    private fun initInfoBlock(profile: Character) {
         val infoBlock = binding.characterInfo
         infoBlock.name.text = profile.name
         infoBlock.elementName.text = getString(profile.element.name.text)
@@ -106,6 +98,15 @@ class CharacterPortraitFragment : Fragment() {
         } else {
             infoBlock.stars.setImageResource(R.drawable.broken_image)
         }
+
+        val typedValue = TypedValue()
+        requireContext().theme.resolveAttribute(
+            profile.element.name.colorAttr,
+            typedValue,
+            true
+        )
+        val color = typedValue.data
+        binding.portraitBlock.backgroundTintList = ColorStateList.valueOf(color)
     }
 
     private fun initLikeBtn() {

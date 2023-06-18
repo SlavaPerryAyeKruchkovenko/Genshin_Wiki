@@ -1,4 +1,4 @@
-package com.example.genshin_wiki.models
+package com.example.genshin_wiki.data.models
 
 data class DungeonResource(
     val id: String,

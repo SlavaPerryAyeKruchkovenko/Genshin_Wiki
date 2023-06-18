@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.databinding.DungeonResourceBinding
-import com.example.genshin_wiki.models.DungeonResource
+import com.example.genshin_wiki.data.models.DungeonResource
 
 class DungeonAdapter : ListAdapter<DungeonResource, RecyclerView.ViewHolder>(MyDiffCallback()) {
 
