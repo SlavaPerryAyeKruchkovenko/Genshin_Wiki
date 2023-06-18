@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Genshin_Wiki" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Genshin_Wiki" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/blue_500</item>
         <item name="colorPrimaryVariant">@color/blue_500</item>
@@ -10,8 +10,8 @@
         <item name="colorPrimaryFixed">@color/white</item>
         <item name="colorOnPrimarySurface">@color/gray_200</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/gray_200</item>
-        <item name="colorSecondaryVariant">@color/blue_300</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <item name="colorSecondaryContainer">@color/white</item>
         <item name="colorOnSecondaryFixed">@color/black</item>

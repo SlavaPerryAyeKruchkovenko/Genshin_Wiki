@@ -7,15 +7,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.genshin_wiki.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
-    private lateinit var _binding: ActivityMainBinding
-    private val binding get() = _binding
+    val count: UInt = 0u;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this._binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        init()
+        val bindingActivity: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(bindingActivity.root)
     }
 
     private fun init() {

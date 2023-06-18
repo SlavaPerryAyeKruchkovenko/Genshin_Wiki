@@ -38,4 +38,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="?attr/colorPrimaryFixed" />
 
+    <com.google.android.material.search.SearchView
+        android:id="@+id/search_view"
+        android:layout_width="0dp"
+        android:layout_weight=".0"
+        android:layout_height="0dp"
+        app:layout_anchor="@id/search_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </LinearLayout>
