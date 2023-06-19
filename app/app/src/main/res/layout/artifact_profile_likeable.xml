@@ -31,7 +31,7 @@
                 android:layout_height="@dimen/liked_size"
                 android:contentDescription="@string/profile"
                 android:maxHeight="@dimen/liked_size"
-                android:src="@drawable/artifact"
+                android:src="@drawable/question_mark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -47,14 +47,15 @@
             app:layout_constraintStart_toEndOf="@+id/artifact_block"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="UseCompoundDrawables">
+            tools:ignore="UseCompoundDrawables"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/name"
                 android:maxWidth="180dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/emblem"
+                android:text="@string/no_data"
                 android:textAlignment="center"
                 android:textSize="@dimen/default_text_size"
                 android:textStyle="bold" />

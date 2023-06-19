@@ -13,7 +13,7 @@ class WeaponTypeConvert(
         val type = try {
             WeaponTypes.valueOf(this.name.uppercase())
         } catch (_: Exception) {
-            WeaponTypes.CLAYMOR
+            WeaponTypes.NoData
         }
         return WeaponType(
             this.id,
@@ -23,7 +23,7 @@ class WeaponTypeConvert(
     }
     companion object {
         fun default(): WeaponTypeConvert {
-            return WeaponTypeConvert("0", "CLAYMOR", "")
+            return WeaponTypeConvert("0", "NoData", "")
         }
 
         fun fromWeaponTypeResponse(req: WeaponTypeResponse): WeaponTypeConvert {

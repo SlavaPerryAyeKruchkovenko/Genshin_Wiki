@@ -21,7 +21,7 @@
             style="@style/ResourceText"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:text="@string/resource_label_example"
+            android:text="@string/no_data"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +32,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:contentDescription="@string/resource"
-            android:src="@drawable/book"
+            android:src="@drawable/question_mark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label" />

@@ -88,7 +88,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:text="@string/polearm" />
+                                android:text="@string/no_data" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -109,7 +109,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:text="@string/ATK" />
+                                android:text="@string/no_data" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -130,7 +130,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:text="@string/ER_PER" />
+                                android:text="@string/no_data" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -161,7 +161,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
-                            android:text="@string/description_example_weapon"
+                            android:text="@string/no_data"
                             app:layout_constraintTop_toBottomOf="@+id/description_title" />
                     </LinearLayout>
 
@@ -191,7 +191,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
-                            android:text="@string/passive_ability_example"
+                            android:text="@string/no_data"
                             app:layout_constraintTop_toBottomOf="@+id/description_title" />
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>

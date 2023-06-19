@@ -33,7 +33,7 @@
                 android:id="@+id/portrait_block"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/geo_element"
+                android:backgroundTint="@color/transparent"
                 app:cardCornerRadius="@dimen/profile_radius"
                 app:strokeWidth="0dp">
 
@@ -49,7 +49,7 @@
                         android:maxHeight="600dp"
                         android:minHeight="500dp"
                         android:padding="8dp"
-                        android:src="@drawable/grandpa_portrait"
+                        android:src="@drawable/question_mark"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/indentation"
-                            android:text="@string/lee_yue" />
+                            android:text="@string/no_data" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -136,7 +136,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/indentation"
-                            android:text="@string/male" />
+                            android:text="@string/no_data" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -161,7 +161,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/indentation"
-                            android:text="@string/birthday_example" />
+                            android:text="@string/no_data" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -185,7 +185,7 @@
                             style="@style/PortraitDescription"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/description_example" />
+                            android:text="@string/no_data" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -222,7 +222,7 @@
                                 style="@style/PortraitDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/normal_attack_example" />
+                                android:text="@string/no_data" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -243,7 +243,7 @@
                                 style="@style/PortraitDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/elemental_skill_example" />
+                                android:text="@string/no_data" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -264,7 +264,7 @@
                                 style="@style/PortraitDescription"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/elemental_burst_example" />
+                                android:text="@string/no_data" />
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
