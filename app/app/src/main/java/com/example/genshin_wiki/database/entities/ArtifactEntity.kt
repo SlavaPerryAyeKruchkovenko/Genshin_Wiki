@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class ArtifactEntity(
     @PrimaryKey
     val id: String,
-    val isLiked: Int,
+    var isLike: Int,
     val image: String,
     val name: String,
     val stars: Int,

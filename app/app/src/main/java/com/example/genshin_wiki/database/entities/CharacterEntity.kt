@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class CharacterEntity(
     @PrimaryKey val id: String,
-    val isLike: Int,
+    var isLike: Int,
     val image: String,
     val name: String,
     val stars: Int,
