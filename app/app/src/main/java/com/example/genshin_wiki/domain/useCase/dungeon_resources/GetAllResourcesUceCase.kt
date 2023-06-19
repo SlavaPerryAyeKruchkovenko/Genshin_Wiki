@@ -1,8 +1,8 @@
-package com.example.genshin_wiki.domain.useCase
+package com.example.genshin_wiki.domain.useCase.dungeon_resources
 
 import com.example.genshin_wiki.data.converters.DungeonResourceConvert
 import com.example.genshin_wiki.domain.helpers.ResourceDay
-import com.example.genshin_wiki.domain.interfaces.IGetAllResourcesUseCase
+import com.example.genshin_wiki.domain.interfaces.dungeon_resource.IGetAllResourcesUseCase
 import com.example.genshin_wiki.repository.dungeon_resource.DungeonResourceRepository
 
 class GetAllResourcesUceCase : IGetAllResourcesUseCase {

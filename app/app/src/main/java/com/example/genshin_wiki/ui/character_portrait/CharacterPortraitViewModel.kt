@@ -4,10 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Character
-import com.example.genshin_wiki.domain.useCase.GetArtifactUseCase
-import com.example.genshin_wiki.domain.useCase.GetCharacterUseCase
-import com.example.genshin_wiki.domain.useCase.GetWeaponUseCase
-import com.example.genshin_wiki.networks.Mock
+import com.example.genshin_wiki.domain.useCase.character.GetCharacterUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

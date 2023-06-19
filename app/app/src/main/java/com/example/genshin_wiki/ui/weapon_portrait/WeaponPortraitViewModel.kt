@@ -4,8 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Weapon
-import com.example.genshin_wiki.domain.useCase.GetCharacterUseCase
-import com.example.genshin_wiki.domain.useCase.GetWeaponUseCase
+import com.example.genshin_wiki.domain.useCase.weapon.GetWeaponUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

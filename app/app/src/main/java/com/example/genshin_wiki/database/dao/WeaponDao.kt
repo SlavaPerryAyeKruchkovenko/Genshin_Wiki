@@ -1,6 +1,5 @@
 package com.example.genshin_wiki.database.dao
 
-import android.util.Log
 import androidx.room.*
 import com.example.genshin_wiki.database.entities.WeaponEntity
 
@@ -21,7 +20,6 @@ interface WeaponDao {
     @Transaction
     suspend fun softInsertWeapons(weapons: List<WeaponEntity>) {
         val dbWeapons = getAllWeapons()
-        Log.d("weapons", dbWeapons.toString())
         weapons.forEach { weapon ->
             val dbWeapon = dbWeapons.find { it.id == weapon.id }
             weapon.isLike = dbWeapon?.isLike ?: 0

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Artifact
-import com.example.genshin_wiki.domain.useCase.GetArtifactUseCase
+import com.example.genshin_wiki.domain.useCase.artifact.GetArtifactUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

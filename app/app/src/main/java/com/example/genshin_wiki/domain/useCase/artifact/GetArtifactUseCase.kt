@@ -1,7 +1,7 @@
-package com.example.genshin_wiki.domain.useCase
+package com.example.genshin_wiki.domain.useCase.artifact
 
 import com.example.genshin_wiki.data.converters.ArtifactConvert
-import com.example.genshin_wiki.domain.interfaces.IGetArtifactUseCase
+import com.example.genshin_wiki.domain.interfaces.artifact.IGetArtifactUseCase
 import com.example.genshin_wiki.repository.artifact.ArtifactRepository
 
 class GetArtifactUseCase: IGetArtifactUseCase {

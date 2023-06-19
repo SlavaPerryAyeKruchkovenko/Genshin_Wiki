@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.DungeonResource
 import com.example.genshin_wiki.data.models.enums.Day
 import com.example.genshin_wiki.domain.helpers.ResourceDay
-import com.example.genshin_wiki.domain.useCase.GetAllResourcesUceCase
+import com.example.genshin_wiki.domain.useCase.dungeon_resources.GetAllResourcesUceCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
