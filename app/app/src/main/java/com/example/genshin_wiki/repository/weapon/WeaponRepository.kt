@@ -50,12 +50,12 @@ class WeaponRepository : IWeaponRepository {
         }
     }
 
-    override suspend fun updateWeaponById(weapon: WeaponConverter): WeaponConverter {
+    override suspend fun updateWeapon(weapon: WeaponConverter): WeaponConverter {
         val localRepository = WeaponLocalRepository()
         return try {
             val weaponEntity = localRepository.getWeapon(weapon.id)
             if (weaponEntity != null) {
-                weaponEntity.isLike = if (weapon.isLike) {
+                weaponEntity.isLike = if (weapon.isLiked) {
                     1
                 } else {
                     0

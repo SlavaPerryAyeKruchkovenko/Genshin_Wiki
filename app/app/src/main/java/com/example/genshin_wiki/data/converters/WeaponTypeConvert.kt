@@ -39,5 +39,10 @@ class WeaponTypeConvert(
                 req.id, req.name, req.image
             )
         }
+        fun fromWeaponType(weaponType:WeaponType): WeaponTypeConvert{
+            return WeaponTypeConvert(
+                weaponType.id, weaponType.name.name, weaponType.image
+            )
+        }
     }
 }

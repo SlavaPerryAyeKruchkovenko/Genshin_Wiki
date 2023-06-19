@@ -25,11 +25,14 @@ class CharacterPortraitViewModel : ViewModel() {
     }
 
     fun changeLike() {
-        val like = isLiked.value
-        if (like != null) {
-            isLiked.postValue(!like)
-        } else {
-            isLiked.postValue(true)
+        viewModelScope.launch {
+            val like = isLiked.value
+            if (like != null) {
+                isLiked.postValue(!like)
+            } else {
+                isLiked.postValue(true)
+            }
         }
+
     }
 }

@@ -1,15 +1,13 @@
 package com.example.genshin_wiki.data.converters
 
-import androidx.room.Embedded
 import com.example.genshin_wiki.data.models.Weapon
 import com.example.genshin_wiki.data.models.enums.Stats
 import com.example.genshin_wiki.data.responses.WeaponResponse
 import com.example.genshin_wiki.database.entities.WeaponEntity
-import com.example.genshin_wiki.database.entities.WeaponTypeEntity
 
 data class WeaponConverter(
-    val id: String,
-    val isLike: Boolean,
+    override val id: String,
+    override var isLiked: Boolean,
     val name: String,
     val description: String,
     val type: WeaponTypeConvert,
@@ -18,7 +16,7 @@ data class WeaponConverter(
     val stat: String,
     val editionStat: String,
     val image: String,
-) {
+) : Convert(id, isLiked) {
     fun toWeapon(): Weapon {
         val stat = try {
             Stats.valueOf(this.stat.uppercase())
@@ -30,8 +28,7 @@ data class WeaponConverter(
         } catch (_: Exception) {
             Stats.NoData
         }
-
-        return Weapon(
+        val weapon = Weapon(
             this.id,
             this.name,
             this.description,
@@ -42,6 +39,12 @@ data class WeaponConverter(
             editionStat,
             this.image
         )
+        if (isLiked) {
+            weapon.like()
+        } else {
+            weapon.dislike()
+        }
+        return weapon
     }
 
     fun toWeaponEntity(): WeaponEntity {
@@ -75,12 +78,29 @@ data class WeaponConverter(
                 req.stars, req.stat, req.editionStat, req.image
             )
         }
+
         fun fromWeaponEntity(entity: WeaponEntity): WeaponConverter {
             val type = WeaponTypeConvert.fromWeaponTypeEntity(entity.type)
             val isLike = entity.isLike > 0
             return WeaponConverter(
                 entity.id, isLike, entity.name, entity.description, type, entity.passiveAbility,
                 entity.stars, entity.stat, entity.editionStat, entity.image
+            )
+        }
+
+        fun fromWeapon(weapon: Weapon): WeaponConverter {
+            val type = WeaponTypeConvert.fromWeaponType(weapon.type)
+            return WeaponConverter(
+                weapon.id,
+                weapon.isLike,
+                weapon.name,
+                weapon.description,
+                type,
+                weapon.passiveAbility,
+                weapon.stars,
+                weapon.stat.name,
+                weapon.editionStat.name,
+                weapon.image
             )
         }
     }
