@@ -1,7 +1,7 @@
-package com.example.genshin_wiki.data.convert_models
+package com.example.genshin_wiki.data.converters
 
 import com.example.genshin_wiki.data.models.Character
-import com.example.genshin_wiki.data.response.CharacterResponse
+import com.example.genshin_wiki.data.responses.CharacterResponse
 
 data class CharacterConvert(
     val id: String,
@@ -27,8 +27,8 @@ data class CharacterConvert(
 
     companion object {
         fun fromCharacterResponse(req: CharacterResponse): CharacterConvert {
-            val weaponTypes = WeaponTypeConvert.fromWeaponTypeRequestResponse(req.weaponType)
-            val element = ElementConverter.fromElementRequestResponse(req.element)
+            val weaponTypes = WeaponTypeConvert.fromWeaponTypeResponse(req.weaponType)
+            val element = ElementConverter.fromElementResponse(req.element)
             val portrait =
                 CharacterPortraitConvert.fromCharacterPortraitRequestResponse(req.portrait)
             return CharacterConvert(

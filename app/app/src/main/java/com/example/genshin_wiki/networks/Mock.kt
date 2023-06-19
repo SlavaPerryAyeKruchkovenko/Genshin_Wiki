@@ -1,4 +1,4 @@
-package com.example.genshin_wiki.repository
+package com.example.genshin_wiki.networks
 
 import com.example.genshin_wiki.data.models.*
 import com.example.genshin_wiki.data.models.enums.Elements

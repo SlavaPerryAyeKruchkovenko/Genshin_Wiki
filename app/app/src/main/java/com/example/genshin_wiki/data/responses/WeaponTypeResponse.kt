@@ -1,8 +1,8 @@
-package com.example.genshin_wiki.data.response
+package com.example.genshin_wiki.data.responses
 
 import com.google.gson.annotations.SerializedName
 
-data class ElementResponse(
+data class WeaponTypeResponse(
     @SerializedName("_id") val id: String,
     @SerializedName("name") val name: String,
     @SerializedName("image") val image: String

@@ -1,7 +1,7 @@
-package com.example.genshin_wiki.data.convert_models
+package com.example.genshin_wiki.data.converters
 
 import com.example.genshin_wiki.data.models.CharacterPortrait
-import com.example.genshin_wiki.data.response.CharacterPortraitResponse
+import com.example.genshin_wiki.data.responses.CharacterPortraitResponse
 
 data class CharacterPortraitConvert(
     val id: String,

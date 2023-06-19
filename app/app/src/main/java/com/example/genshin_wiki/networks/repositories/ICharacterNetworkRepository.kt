@@ -1,7 +1,7 @@
-package com.example.genshin_wiki.interfaces.repositories
+package com.example.genshin_wiki.networks.repositories
 
-import com.example.genshin_wiki.data.response.CharacterListResponse
-import com.example.genshin_wiki.data.response.CharacterResponse
+import com.example.genshin_wiki.data.responses.CharacterListResponse
+import com.example.genshin_wiki.data.responses.CharacterResponse
 import retrofit2.Response
 
 interface ICharacterNetworkRepository {

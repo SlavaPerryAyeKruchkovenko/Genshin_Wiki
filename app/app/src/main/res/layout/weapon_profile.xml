@@ -58,8 +58,10 @@
             <TextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:paddingTop="6dp"
+                android:maxWidth="@dimen/image_size"
+                android:gravity="center"
                 android:text="@string/Homa"
                 android:textAlignment="center"
                 android:textSize="@dimen/default_text_size"

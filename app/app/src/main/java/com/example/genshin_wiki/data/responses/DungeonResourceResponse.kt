@@ -1,4 +1,4 @@
-package com.example.genshin_wiki.data.response
+package com.example.genshin_wiki.data.responses
 
 import com.google.gson.annotations.SerializedName
 

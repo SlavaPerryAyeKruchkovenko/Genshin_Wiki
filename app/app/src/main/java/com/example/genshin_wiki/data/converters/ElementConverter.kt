@@ -1,8 +1,8 @@
-package com.example.genshin_wiki.data.convert_models
+package com.example.genshin_wiki.data.converters
 
 import com.example.genshin_wiki.data.models.Element
 import com.example.genshin_wiki.data.models.enums.Elements
-import com.example.genshin_wiki.data.response.ElementResponse
+import com.example.genshin_wiki.data.responses.ElementResponse
 
 data class ElementConverter(
     val id: String,
@@ -12,13 +12,13 @@ data class ElementConverter(
     fun toElement(): Element {
         return Element(
             this.id,
-            Elements.valueOf(this.name.toUpperCase()),
+            Elements.valueOf(this.name.uppercase()),
             this.image
         )
     }
 
     companion object {
-        fun fromElementRequestResponse(req: ElementResponse): ElementConverter {
+        fun fromElementResponse(req: ElementResponse): ElementConverter {
             return ElementConverter(
                 req.id, req.name, req.image
             )
