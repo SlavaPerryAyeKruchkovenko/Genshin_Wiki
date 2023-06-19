@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.genshin_wiki.data.models.DungeonResource
 import com.example.genshin_wiki.data.models.enums.Day
-import com.example.genshin_wiki.repository.Mock
+import com.example.genshin_wiki.networks.Mock
 
 class HomeViewModel : ViewModel() {
     val liveData = MutableLiveData<List<DungeonResource>>()

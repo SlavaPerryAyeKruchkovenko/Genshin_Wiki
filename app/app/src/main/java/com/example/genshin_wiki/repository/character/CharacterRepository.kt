@@ -1,15 +1,14 @@
 package com.example.genshin_wiki.repository.character
 
 import android.util.Log
-import com.example.genshin_wiki.data.convert_models.CharacterConvert
-import com.example.genshin_wiki.interfaces.repositories.ICharacterRepository
+import com.example.genshin_wiki.data.converters.CharacterConvert
+import com.example.genshin_wiki.repository.interfaces.ICharacterRepository
 
 class CharacterRepository : ICharacterRepository {
     override suspend fun getAllCharacters(): List<CharacterConvert> {
         return try {
             val networkRepository = CharacterNetworkRepository()
             val res = networkRepository.getCharacters()
-            Log.d("res", res.toString())
             if (res.isSuccessful) {
                 val response = res.body()!!
                 val characters = response.characters
@@ -20,7 +19,7 @@ class CharacterRepository : ICharacterRepository {
                 listOf()
             }
         } catch (e: Exception) {
-            Log.e("er", e.toString())
+            Log.e("character api error", e.toString())
             listOf()
         }
     }

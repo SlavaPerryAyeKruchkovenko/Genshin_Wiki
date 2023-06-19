@@ -1,8 +1,8 @@
-package com.example.genshin_wiki.data.convert_models
+package com.example.genshin_wiki.data.converters
 
 import com.example.genshin_wiki.data.models.WeaponType
 import com.example.genshin_wiki.data.models.enums.WeaponTypes
-import com.example.genshin_wiki.data.response.WeaponTypeResponse
+import com.example.genshin_wiki.data.responses.WeaponTypeResponse
 
 class WeaponTypeConvert(
     val id: String,
@@ -12,12 +12,12 @@ class WeaponTypeConvert(
     fun toWeaponType(): WeaponType{
         return WeaponType(
             this.id,
-            WeaponTypes.valueOf(this.name.toUpperCase()),
+            WeaponTypes.valueOf(this.name.uppercase()),
             this.image
         )
     }
     companion object {
-        fun fromWeaponTypeRequestResponse(req: WeaponTypeResponse): WeaponTypeConvert {
+        fun fromWeaponTypeResponse(req: WeaponTypeResponse): WeaponTypeConvert {
             return WeaponTypeConvert(
                 req.id, req.name, req.image
             )

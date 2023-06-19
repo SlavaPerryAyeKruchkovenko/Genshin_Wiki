@@ -3,7 +3,7 @@ package com.example.genshin_wiki.ui.character_portrait
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.genshin_wiki.data.models.Character
-import com.example.genshin_wiki.repository.Mock
+import com.example.genshin_wiki.networks.Mock
 
 class CharacterPortraitViewModel : ViewModel() {
     val characterPortrait = MutableLiveData<Character?>()

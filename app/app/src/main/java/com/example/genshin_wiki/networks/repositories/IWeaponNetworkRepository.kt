@@ -1,11 +1,10 @@
-package com.example.genshin_wiki.networks
+package com.example.genshin_wiki.networks.repositories
 
 import com.example.genshin_wiki.data.responses.WeaponResponse
 import com.example.genshin_wiki.data.responses.WeaponsListResponse
 import retrofit2.Response
-import retrofit2.http.GET
 
-interface WeaponApi {
-    @GET("weapons")
+interface IWeaponNetworkRepository {
     suspend fun getWeapons(): Response<WeaponsListResponse>
+    suspend fun getWeapon(id: String): Response<WeaponResponse>
 }

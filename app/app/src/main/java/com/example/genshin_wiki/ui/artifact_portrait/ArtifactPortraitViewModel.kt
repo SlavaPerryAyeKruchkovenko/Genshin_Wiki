@@ -3,7 +3,7 @@ package com.example.genshin_wiki.ui.artifact_portrait
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.genshin_wiki.data.models.Artifact
-import com.example.genshin_wiki.repository.Mock
+import com.example.genshin_wiki.networks.Mock
 
 class ArtifactPortraitViewModel : ViewModel() {
     val liveData = MutableLiveData<Artifact?>()

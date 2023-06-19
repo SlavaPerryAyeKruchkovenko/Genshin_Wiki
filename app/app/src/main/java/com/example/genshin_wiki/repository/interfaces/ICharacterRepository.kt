@@ -1,6 +1,6 @@
-package com.example.genshin_wiki.interfaces.repositories
+package com.example.genshin_wiki.repository.interfaces
 
-import com.example.genshin_wiki.data.convert_models.CharacterConvert
+import com.example.genshin_wiki.data.converters.CharacterConvert
 
 interface ICharacterRepository {
     suspend fun getAllCharacters(): List<CharacterConvert>
