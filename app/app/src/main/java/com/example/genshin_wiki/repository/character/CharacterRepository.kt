@@ -27,6 +27,7 @@ class CharacterRepository : ICharacterRepository {
     override suspend fun getCharacterById(id: String): CharacterConvert {
         return try {
             val networkRepository = CharacterNetworkRepository()
+            Log.e("id",id)
             val res = networkRepository.getCharacter(id)
             if (res.isSuccessful) {
                 val data = res.body()!!

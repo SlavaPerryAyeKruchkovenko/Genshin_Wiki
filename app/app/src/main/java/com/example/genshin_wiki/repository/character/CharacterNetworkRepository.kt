@@ -15,5 +15,4 @@ class CharacterNetworkRepository: ICharacterNetworkRepository {
     override suspend fun getCharacter(id: String): Response<CharacterDataResponse> {
         return RetrofitBuilder.characterApi.getCharacter(id)
     }
-
 }

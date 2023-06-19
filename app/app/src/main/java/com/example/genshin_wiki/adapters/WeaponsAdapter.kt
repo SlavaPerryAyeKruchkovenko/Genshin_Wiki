@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
+import com.example.genshin_wiki.data.models.Weapon
 import com.example.genshin_wiki.databinding.WeaponProfileBinding
 import com.example.genshin_wiki.interfaces.listeners.WeaponListener
-import com.example.genshin_wiki.data.models.Weapon
 
 class WeaponsAdapter(private val listener: WeaponListener) :
     ListAdapter<Weapon, RecyclerView.ViewHolder>(MyDiffCallback()) {
@@ -57,16 +57,22 @@ class WeaponsAdapter(private val listener: WeaponListener) :
                         ProfileUtils.getColorByStars(profile.stars)
                     )
                 )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.image),
-                weapon,
-                R.drawable.loader_animation
-            )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.type.image),
-                weaponType,
-                R.drawable.loader_animation
-            )
+            val image = ProfileUtils.getImageFromGoogle(profile.image)
+            val imageType = ProfileUtils.getImageFromGoogle(profile.type.image)
+            if (image != null) {
+                ProfileUtils.loadImage(
+                    image,
+                    weapon,
+                    R.drawable.loader_animation
+                )
+            }
+            if (imageType != null) {
+                ProfileUtils.loadImage(
+                    imageType,
+                    weaponType,
+                    R.drawable.loader_animation
+                )
+            }
             stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))
         }
     }

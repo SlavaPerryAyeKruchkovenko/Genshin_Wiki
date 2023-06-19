@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
+import com.example.genshin_wiki.data.models.Character
 import com.example.genshin_wiki.databinding.CharacterProfileBinding
 import com.example.genshin_wiki.interfaces.listeners.CharacterListener
-import com.example.genshin_wiki.data.models.Character
 
 class CharacterAdapter(val listener: CharacterListener) :
     ListAdapter<Character, RecyclerView.ViewHolder>(MyDiffCallback()) {
@@ -57,21 +57,30 @@ class CharacterAdapter(val listener: CharacterListener) :
                         ProfileUtils.getColorByStars(profile.stars)
                     )
                 )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.image),
-                character,
-                R.drawable.loader_animation
-            )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.element.image),
-                element,
-                R.drawable.loader_animation
-            )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.weaponType.image),
-                weaponType,
-                R.drawable.loader_animation
-            )
+            val portraitImage = ProfileUtils.getImageFromGoogle(profile.image)
+            val elementImage = ProfileUtils.getImageFromGoogle(profile.element.image)
+            val weaponImage = ProfileUtils.getImageFromGoogle(profile.weaponType.image)
+            if (portraitImage != null) {
+                ProfileUtils.loadImage(
+                    portraitImage,
+                    character,
+                    R.drawable.loader_animation
+                )
+            }
+            if (elementImage != null) {
+                ProfileUtils.loadImage(
+                    elementImage,
+                    element,
+                    R.drawable.loader_animation
+                )
+            }
+            if (weaponImage != null) {
+                ProfileUtils.loadImage(
+                    weaponImage,
+                    weaponType,
+                    R.drawable.loader_animation
+                )
+            }
             if (profile.stars in 4..5) {
                 stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))
             } else {

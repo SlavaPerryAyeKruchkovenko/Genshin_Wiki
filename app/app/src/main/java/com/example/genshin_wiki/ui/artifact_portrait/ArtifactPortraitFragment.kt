@@ -11,8 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
-import com.example.genshin_wiki.databinding.FragmentArtifactPortraitBinding
 import com.example.genshin_wiki.data.models.Artifact
+import com.example.genshin_wiki.databinding.FragmentArtifactPortraitBinding
 import com.example.genshin_wiki.ui.NavigationBarHelper
 
 class ArtifactPortraitFragment : Fragment() {
@@ -56,11 +56,15 @@ class ArtifactPortraitFragment : Fragment() {
 
     private fun initArtifact(artifact: Artifact) {
         binding.portraitImage.name.text = artifact.name
-        ProfileUtils.loadImage(
-            ProfileUtils.getImageFromGoogle(artifact.image),
-            binding.portraitImage.image,
-            R.drawable.loader_animation
-        )
+        val image = ProfileUtils.getImageFromGoogle(artifact.image)
+        if (image != null) {
+            ProfileUtils.loadImage(
+                image,
+                binding.portraitImage.image,
+                R.drawable.loader_animation
+            )
+        }
+
         binding.portraitImage.stars.setImageResource(ProfileUtils.getImageByStars(artifact.stars))
         binding.pieceBonus2.text = artifact.bonus2
         binding.pieceBonus4.text = artifact.bonus4

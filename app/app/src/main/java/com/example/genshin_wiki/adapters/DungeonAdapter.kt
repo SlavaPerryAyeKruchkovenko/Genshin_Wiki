@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
-import com.example.genshin_wiki.databinding.DungeonResourceBinding
 import com.example.genshin_wiki.data.models.DungeonResource
+import com.example.genshin_wiki.databinding.DungeonResourceBinding
 
 class DungeonAdapter : ListAdapter<DungeonResource, RecyclerView.ViewHolder>(MyDiffCallback()) {
 
@@ -38,11 +38,14 @@ class DungeonAdapter : ListAdapter<DungeonResource, RecyclerView.ViewHolder>(MyD
     inner class DungeonHolder(private val binding: DungeonResourceBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(resource: DungeonResource) = with(binding) {
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(resource.image),
-                image,
-                R.drawable.loader_dungeon_animation
-            )
+            val resourceImage = ProfileUtils.getImageFromGoogle(resource.image)
+            if (resourceImage != null) {
+                ProfileUtils.loadImage(
+                    resourceImage,
+                    image,
+                    R.drawable.loader_dungeon_animation
+                )
+            }
             val value = resource.location + ", " + resource.city
             label.text = value
         }

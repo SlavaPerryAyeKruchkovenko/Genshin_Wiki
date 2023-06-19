@@ -11,8 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
-import com.example.genshin_wiki.databinding.FragmentWeaponPortraitBinding
 import com.example.genshin_wiki.data.models.Weapon
+import com.example.genshin_wiki.databinding.FragmentWeaponPortraitBinding
 import com.example.genshin_wiki.ui.NavigationBarHelper
 
 class WeaponPortraitFragment : Fragment() {
@@ -64,11 +64,14 @@ class WeaponPortraitFragment : Fragment() {
         binding.passiveAbility.text = weapon.passiveAbility
 
         val color = ProfileUtils.getColorByStars(weapon.stars)
-        ProfileUtils.loadImage(
-            ProfileUtils.getImageFromGoogle(weapon.image),
-            binding.portraitImage.image,
-            R.drawable.loader_animation
-        )
+        val image = ProfileUtils.getImageFromGoogle(weapon.image)
+        if (image != null) {
+            ProfileUtils.loadImage(
+                image,
+                binding.portraitImage.image,
+                R.drawable.loader_animation
+            )
+        }
         binding.portraitImage.portraitBlock.backgroundTintList =
             ColorStateList.valueOf(
                 ContextCompat.getColor(

@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
+import com.example.genshin_wiki.data.models.Artifact
 import com.example.genshin_wiki.databinding.ArtifactProfileBinding
 import com.example.genshin_wiki.interfaces.listeners.ArtifactListener
-import com.example.genshin_wiki.data.models.Artifact
 
 class ArtifactAdapter(private val listener: ArtifactListener) : ListAdapter<Artifact, RecyclerView.ViewHolder>(MyDiffCallback()) {
     override fun getItemViewType(position: Int): Int {
@@ -46,14 +46,17 @@ class ArtifactAdapter(private val listener: ArtifactListener) : ListAdapter<Arti
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(artifactObj: Artifact) = with(binding) {
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 listener.onClick(artifactObj)
             }
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(artifactObj.image),
-                artifact,
-                R.drawable.loader_animation
-            )
+            val image = ProfileUtils.getImageFromGoogle(artifactObj.image)
+            if (image != null) {
+                ProfileUtils.loadImage(
+                    image,
+                    artifact,
+                    R.drawable.loader_animation
+                )
+            }
             name.text = artifactObj.name
             artifactBlock.backgroundTintList =
                 ColorStateList.valueOf(
