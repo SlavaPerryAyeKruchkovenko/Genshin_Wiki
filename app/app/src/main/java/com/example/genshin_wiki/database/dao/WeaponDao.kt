@@ -1,31 +1,38 @@
 package com.example.genshin_wiki.database.dao
 
 import android.util.Log
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.example.genshin_wiki.database.entities.WeaponEntity
 
 @Dao
 interface WeaponDao {
     @Query("Select * from WeaponEntity")
-    suspend fun getAll(): List<WeaponEntity>
+    suspend fun getAllWeapons(): List<WeaponEntity>
+
+    @Query("SELECT * FROM WeaponEntity WHERE id = :id")
+    suspend fun getWeaponById(id: String): WeaponEntity?
+
+    @Query("SELECT * FROM WeaponEntity WHERE isLike = 1")
+    suspend fun getLikedWeapons(): List<WeaponEntity>
+
+    @Query("Delete from WeaponEntity")
+    suspend fun deleteWeapons()
 
     @Transaction
-    suspend fun softInsert(weapons: List<WeaponEntity>) {
-        val dbWeapons = getAll()
-        Log.d("weapons",dbWeapons.toString())
+    suspend fun softInsertWeapons(weapons: List<WeaponEntity>) {
+        val dbWeapons = getAllWeapons()
+        Log.d("weapons", dbWeapons.toString())
         weapons.forEach { weapon ->
             val dbWeapon = dbWeapons.find { it.id == weapon.id }
             weapon.isLike = dbWeapon?.isLike ?: 0
         }
-        deleteAll()
-        insertTools(weapons)
+        deleteWeapons()
+        insertWeapons(weapons)
     }
-    @Query("Delete from WeaponEntity")
-    suspend fun deleteAll()
+
+    @Update
+    suspend fun update(weapon: WeaponEntity)
 
     @Insert
-    suspend fun insertTools(weapons: List<WeaponEntity>)
+    suspend fun insertWeapons(weapons: List<WeaponEntity>)
 }

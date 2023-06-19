@@ -7,19 +7,22 @@ import com.example.genshin_wiki.database.repositories.IWeaponLocalRepository
 
 class WeaponLocalRepository : IWeaponLocalRepository {
     override suspend fun addWeapons(weapons: List<WeaponEntity>) {
-        Log.d("database",MainActivity.getWeaponDao().toString())
-        MainActivity.getWeaponDao()?.softInsert(weapons)
+        MainActivity.getWeaponDao()?.softInsertWeapons(weapons)
     }
 
     override suspend fun updateWeapon(weapon: WeaponEntity) {
-        TODO("Not yet implemented")
+        MainActivity.getWeaponDao()?.update(weapon)
     }
 
     override suspend fun getWeapons(): List<WeaponEntity>? {
-        return MainActivity.getWeaponDao()?.getAll()
+        return MainActivity.getWeaponDao()?.getAllWeapons()
+    }
+
+    override suspend fun getLikedWeapons(): List<WeaponEntity>? {
+        return MainActivity.getWeaponDao()?.getLikedWeapons()
     }
 
     override suspend fun getWeapon(id: String): WeaponEntity? {
-        TODO("Not yet implemented")
+        return MainActivity.getWeaponDao()?.getWeaponById(id)
     }
 }
