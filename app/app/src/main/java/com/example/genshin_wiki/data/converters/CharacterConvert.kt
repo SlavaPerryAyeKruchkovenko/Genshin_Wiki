@@ -24,8 +24,15 @@ data class CharacterConvert(
             this.portrait.toCharacterPortrait()
         )
     }
-
     companion object {
+        fun default(): CharacterConvert {
+            return CharacterConvert(
+                "0", false, "", "no data", 5,
+                WeaponTypeConvert.default(), ElementConverter.default(),
+                CharacterPortraitConvert.default()
+            )
+        }
+
         fun fromCharacterResponse(req: CharacterResponse): CharacterConvert {
             val weaponTypes = WeaponTypeConvert.fromWeaponTypeResponse(req.weaponType)
             val element = ElementConverter.fromElementResponse(req.element)

@@ -10,14 +10,22 @@ data class ElementConverter(
     val image: String
 ) {
     fun toElement(): Element {
+        val element = try {
+            Elements.valueOf(this.name.uppercase())
+        } catch (_: Exception) {
+            Elements.NoData
+        }
         return Element(
             this.id,
-            Elements.valueOf(this.name.uppercase()),
+            element,
             this.image
         )
     }
 
     companion object {
+        fun default(): ElementConverter {
+            return ElementConverter("0", "NoData", "")
+        }
         fun fromElementResponse(req: ElementResponse): ElementConverter {
             return ElementConverter(
                 req.id, req.name, req.image

@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxWidth="180dp"
-            android:text="@string/ChunLi" />
+            android:text="@string/no_data" />
 
         <ImageView
             android:id="@+id/stars"
@@ -55,7 +55,7 @@
             android:layout_width="@dimen/info_block_image_size"
             android:layout_height="@dimen/info_block_image_size"
             android:contentDescription="@string/element"
-            android:src="@drawable/element" />
+            android:src="@drawable/question_mark" />
 
         <TextView
             android:id="@+id/element_name"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="100dp"
             android:paddingTop="6dp"
-            android:text="@string/geo"
+            android:text="@string/no_data"
             android:textAlignment="center" />
 
     </LinearLayout>
@@ -86,7 +86,7 @@
             android:layout_height="@dimen/info_block_image_size"
             android:layout_marginStart="4dp"
             android:contentDescription="@string/weapon"
-            android:src="@drawable/weapon" />
+            android:src="@drawable/question_mark" />
 
         <TextView
             android:id="@+id/weapon_name"
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="100dp"
             android:paddingTop="6dp"
-            android:text="@string/polearm"
+            android:text="@string/no_data"
             android:textAlignment="center" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

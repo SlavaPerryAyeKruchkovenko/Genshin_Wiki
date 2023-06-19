@@ -38,7 +38,7 @@
                     android:layout_height="@dimen/image_size"
                     android:contentDescription="@string/profile"
                     android:maxHeight="@dimen/image_size"
-                    android:src="@drawable/profile"
+                    android:src="@drawable/question_mark"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +61,7 @@
                 android:layout_height="60dp"
                 android:gravity="center"
                 android:paddingTop="6dp"
-                android:text="@string/ChunLi"
+                android:text="@string/no_data"
                 android:textSize="@dimen/default_text_size"
                 android:textStyle="bold"
                 android:maxWidth="@dimen/image_size"
@@ -84,7 +84,7 @@
                     android:layout_width="@dimen/small_image_size"
                     android:layout_height="@dimen/small_image_size"
                     android:contentDescription="@string/element"
-                    android:src="@drawable/element" />
+                    android:src="@drawable/question_mark" />
 
                 <ImageView
                     android:id="@+id/weapon_type"
@@ -92,7 +92,7 @@
                     android:layout_height="@dimen/small_image_size"
                     android:layout_marginStart="4dp"
                     android:contentDescription="@string/weapon"
-                    android:src="@drawable/weapon" />
+                    android:src="@drawable/question_mark" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

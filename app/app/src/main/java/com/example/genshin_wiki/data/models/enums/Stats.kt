@@ -8,5 +8,5 @@ enum class Stats(val value: Int) {
     CRIT_RATE(R.string.CRIT_RATE), ER_PER(R.string.ER_PER), HEAL_PER(R.string.HEAL_PER),
     PHYS_DMG(R.string.PHYS_DMG), PYRO_DMG(R.string.PYRO_DMG), DENDRO_DMG(R.string.DENDRO_DMG),
     GEO_DMG(R.string.GEO_DMG), HYDRO_DMG(R.string.HYDRO_DMG), ELECTRO_DMG(R.string.ELECTRO_DMG),
-    ANEMO_DMG(R.string.ANEMO_DMG), CRYO_DMG(R.string.CRYO_DMG)
+    ANEMO_DMG(R.string.ANEMO_DMG), CRYO_DMG(R.string.CRYO_DMG),NoData(R.string.no_data)
 }

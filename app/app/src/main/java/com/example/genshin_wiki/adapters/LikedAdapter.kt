@@ -10,14 +10,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.utils.ProfileUtils
-import com.example.genshin_wiki.databinding.ArtifactProfileLikeableBinding
-import com.example.genshin_wiki.databinding.CharacterProfileLikeableBinding
-import com.example.genshin_wiki.databinding.WeaponProfileLikeableBinding
-import com.example.genshin_wiki.interfaces.listeners.LikedListener
 import com.example.genshin_wiki.data.models.Artifact
 import com.example.genshin_wiki.data.models.Character
 import com.example.genshin_wiki.data.models.Likeable
 import com.example.genshin_wiki.data.models.Weapon
+import com.example.genshin_wiki.databinding.ArtifactProfileLikeableBinding
+import com.example.genshin_wiki.databinding.CharacterProfileLikeableBinding
+import com.example.genshin_wiki.databinding.WeaponProfileLikeableBinding
+import com.example.genshin_wiki.interfaces.listeners.LikedListener
 
 class LikedAdapter(private val listener: LikedListener) :
     ListAdapter<Likeable, RecyclerView.ViewHolder>(MyDiffCallback()) {
@@ -89,11 +89,14 @@ class LikedAdapter(private val listener: LikedListener) :
                         ProfileUtils.getColorByStars(profile.stars)
                     )
                 )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.image),
-                artifact,
-                R.drawable.loader_animation
-            )
+            val portraitImage = ProfileUtils.getImageFromGoogle(profile.image)
+            if (portraitImage != null) {
+                ProfileUtils.loadImage(
+                    portraitImage,
+                    artifact,
+                    R.drawable.loader_animation
+                )
+            }
             stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))
         }
     }
@@ -115,16 +118,22 @@ class LikedAdapter(private val listener: LikedListener) :
                         ProfileUtils.getColorByStars(profile.stars)
                     )
                 )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.image),
-                weapon,
-                R.drawable.loader_animation
-            )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.type.image),
-                weaponType,
-                R.drawable.loader_animation
-            )
+            val image = ProfileUtils.getImageFromGoogle(profile.image)
+            val typeImage = ProfileUtils.getImageFromGoogle(profile.type.image)
+            if (image != null) {
+                ProfileUtils.loadImage(
+                    image,
+                    weapon,
+                    R.drawable.loader_animation
+                )
+            }
+            if (typeImage != null) {
+                ProfileUtils.loadImage(
+                    typeImage,
+                    weaponType,
+                    R.drawable.loader_animation
+                )
+            }
             stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))
         }
     }
@@ -146,21 +155,31 @@ class LikedAdapter(private val listener: LikedListener) :
                         ProfileUtils.getColorByStars(profile.stars)
                     )
                 )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.image),
-                character,
-                R.drawable.loader_animation
-            )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.weaponType.image),
-                weaponType,
-                R.drawable.loader_animation
-            )
-            ProfileUtils.loadImage(
-                ProfileUtils.getImageFromGoogle(profile.element.image),
-                element,
-                R.drawable.loader_animation
-            )
+            val image = ProfileUtils.getImageFromGoogle(profile.image)
+            val typeImage = ProfileUtils.getImageFromGoogle(profile.weaponType.image)
+            val elementImage = ProfileUtils.getImageFromGoogle(profile.element.image)
+            if (image != null) {
+                ProfileUtils.loadImage(
+                    image,
+                    character,
+                    R.drawable.loader_animation
+                )
+            }
+            if (typeImage != null) {
+                ProfileUtils.loadImage(
+                    typeImage,
+                    weaponType,
+                    R.drawable.loader_animation
+                )
+            }
+            if (elementImage != null) {
+                ProfileUtils.loadImage(
+                    elementImage,
+                    element,
+                    R.drawable.loader_animation
+                )
+            }
+
             stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))
         }
     }

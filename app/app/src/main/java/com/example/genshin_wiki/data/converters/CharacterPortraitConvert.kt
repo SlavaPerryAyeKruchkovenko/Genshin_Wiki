@@ -28,6 +28,14 @@ data class CharacterPortraitConvert(
         )
     }
     companion object {
+        fun default(): CharacterPortraitConvert {
+            return CharacterPortraitConvert(
+                "0", "", "no data", false,
+                "no data", "no data", "no data",
+                "no data", "no data"
+            )
+        }
+
         fun fromCharacterPortraitRequestResponse(req: CharacterPortraitResponse): CharacterPortraitConvert {
             return CharacterPortraitConvert(
                 req.id,

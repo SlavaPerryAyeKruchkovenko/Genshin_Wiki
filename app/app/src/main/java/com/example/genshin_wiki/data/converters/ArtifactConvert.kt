@@ -16,6 +16,10 @@ class ArtifactConvert(
         return Artifact(this.id, this.image, this.name, this.stars, this.bonus2, this.bonus4)
     }
     companion object{
+        fun default(): ArtifactConvert {
+            return ArtifactConvert("0", false, "", "no data", 5, "no data", "no data")
+        }
+
         fun fromArtifactResponse(req: ArtifactResponse): ArtifactConvert {
             return ArtifactConvert(
                 req.id,

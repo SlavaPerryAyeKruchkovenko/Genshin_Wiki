@@ -20,12 +20,12 @@ data class WeaponConverter(
         val stat = try {
             Stats.valueOf(this.stat.uppercase())
         } catch (_: Exception) {
-            Stats.ATK
+            Stats.NoData
         }
         val editionStat = try {
             Stats.valueOf(this.editionStat.uppercase())
         } catch (_: Exception) {
-            Stats.ATK
+            Stats.NoData
         }
 
         return Weapon(
@@ -42,6 +42,14 @@ data class WeaponConverter(
     }
 
     companion object {
+        fun default(): WeaponConverter {
+            return WeaponConverter(
+                "0", false, "no data", "no data",
+                WeaponTypeConvert.default(), "no data", 5,
+                "NoData", "NoData", ""
+            )
+        }
+
         fun fromWeaponResponse(req: WeaponResponse): WeaponConverter {
             val type = WeaponTypeConvert.fromWeaponTypeResponse(req.type)
             return WeaponConverter(

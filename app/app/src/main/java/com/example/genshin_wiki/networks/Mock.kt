@@ -360,6 +360,13 @@ class Mock {
                     "https://drive.google.com/file/d/15lCuwX6P62VBVk6V52jq17dY1J3M9bYE/view"
                 )
             }
+            WeaponTypes.NoData -> {
+                WeaponType(
+                    "6",
+                    WeaponTypes.NoData,
+                    "https://drive.google.com/file/d/15lCuwX6P62VBVk6V52jq17dY1J3M9bYE/view"
+                )
+            }
         }
     }
 

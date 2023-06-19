@@ -30,9 +30,14 @@ class ProfileUtils {
             }
         }
 
-        fun getImageFromGoogle(googleImage: String): String {
-            val imageId = googleImage.split("/")[5]
-            return "https://drive.google.com/uc?export=view&id=${imageId}"
+        fun getImageFromGoogle(googleImage: String): String? {
+            val splitArray = googleImage.split("/")
+            return if (splitArray.size >= 6) {
+                val imageId = splitArray[5]
+                "https://drive.google.com/uc?export=view&id=${imageId}"
+            } else {
+                null
+            }
         }
 
         fun loadImage(image: String, imageView: ImageView, placeholder: Int) {

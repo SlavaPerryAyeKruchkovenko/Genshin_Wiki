@@ -51,20 +51,21 @@ class CharacterPortraitFragment : Fragment() {
         val characterObserver = Observer<Character?> { newValue ->
             if (newValue != null) {
                 initInfoBlock(newValue)
-                if (newValue.portrait != null) {
-                    initPortraitBlock(newValue.portrait)
-                }
+                initPortraitBlock(newValue.portrait)
             }
         }
         viewModel.characterPortrait.observe(viewLifecycleOwner, characterObserver)
     }
 
     private fun initPortraitBlock(portrait: CharacterPortrait) {
-        ProfileUtils.loadImage(
-            ProfileUtils.getImageFromGoogle(portrait.image),
-            binding.image,
-            R.drawable.loader_animation
-        )
+        val image = ProfileUtils.getImageFromGoogle(portrait.image)
+        if (image != null) {
+            ProfileUtils.loadImage(
+                image,
+                binding.image,
+                R.drawable.loader_animation
+            )
+        }
         binding.location.text = portrait.location
         binding.gender.text = if (portrait.sex) {
             getString(R.string.male)
@@ -83,16 +84,23 @@ class CharacterPortraitFragment : Fragment() {
         infoBlock.name.text = profile.name
         infoBlock.elementName.text = getString(profile.element.name.text)
         infoBlock.weaponName.text = getString(profile.weaponType.name.value)
-        ProfileUtils.loadImage(
-            ProfileUtils.getImageFromGoogle(profile.element.image),
-            infoBlock.element,
-            R.drawable.loader_animation
-        )
-        ProfileUtils.loadImage(
-            ProfileUtils.getImageFromGoogle(profile.weaponType.image),
-            infoBlock.weaponType,
-            R.drawable.loader_animation
-        )
+
+        val elementImage = ProfileUtils.getImageFromGoogle(profile.element.image)
+        val weaponTypeImage = ProfileUtils.getImageFromGoogle(profile.weaponType.image)
+        if (elementImage != null) {
+            ProfileUtils.loadImage(
+                elementImage,
+                infoBlock.element,
+                R.drawable.loader_animation
+            )
+        }
+        if (weaponTypeImage != null) {
+            ProfileUtils.loadImage(
+                weaponTypeImage,
+                infoBlock.weaponType,
+                R.drawable.loader_animation
+            )
+        }
         if (profile.stars in 4..5) {
             infoBlock.stars.setImageResource(ProfileUtils.getImageByStars(profile.stars))
         } else {
