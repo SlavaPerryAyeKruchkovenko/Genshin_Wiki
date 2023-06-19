@@ -1,4 +1,4 @@
-package com.example.genshin_wiki.repository.weapons
+package com.example.genshin_wiki.repository.weapon
 
 import android.util.Log
 import com.example.genshin_wiki.data.converters.WeaponConverter

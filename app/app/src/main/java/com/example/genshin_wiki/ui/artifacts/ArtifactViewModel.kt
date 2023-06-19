@@ -2,14 +2,23 @@ package com.example.genshin_wiki.ui.artifacts
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Artifact
-import com.example.genshin_wiki.networks.Mock
+import com.example.genshin_wiki.domain.useCase.GetAllArtifactsUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ArtifactViewModel : ViewModel() {
     val liveData = MutableLiveData<List<Artifact>>()
 
     fun init() {
-        val result = Mock().getArtifacts()
-        liveData.postValue(result)
+        viewModelScope.launch {
+            val artifacts = withContext(Dispatchers.IO) {
+                val useCase = GetAllArtifactsUseCase()
+                useCase()
+            }
+            liveData.postValue(artifacts.map { it.toArtifact() })
+        }
     }
 }
