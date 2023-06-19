@@ -10,9 +10,14 @@ class WeaponTypeConvert(
     val image: String
 ) {
     fun toWeaponType(): WeaponType{
+        val type = try {
+            WeaponTypes.valueOf(this.name.uppercase())
+        } catch (_: Exception) {
+            WeaponTypes.CLAYMOR
+        }
         return WeaponType(
             this.id,
-            WeaponTypes.valueOf(this.name.uppercase()),
+            type,
             this.image
         )
     }

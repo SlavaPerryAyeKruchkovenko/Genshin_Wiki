@@ -17,6 +17,17 @@ data class WeaponConverter(
     val image: String,
 ) {
     fun toWeapon(): Weapon {
+        val stat = try {
+            Stats.valueOf(this.stat.uppercase())
+        } catch (_: Exception) {
+            Stats.ATK
+        }
+        val editionStat = try {
+            Stats.valueOf(this.editionStat.uppercase())
+        } catch (_: Exception) {
+            Stats.ATK
+        }
+
         return Weapon(
             this.id,
             this.name,
@@ -24,8 +35,8 @@ data class WeaponConverter(
             this.type.toWeaponType(),
             this.passiveAbility,
             this.stars,
-            Stats.valueOf(this.stat.uppercase()),
-            Stats.valueOf(this.editionStat.uppercase()),
+            stat,
+            editionStat,
             this.image
         )
     }
