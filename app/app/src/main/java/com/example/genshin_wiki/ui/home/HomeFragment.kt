@@ -60,7 +60,7 @@ class HomeFragment : Fragment() {
         val dayOfWeek = Day.values()[calendar.get(Calendar.DAY_OF_WEEK) - 1]
 
         val dayObserver = Observer<Day> { newValue ->
-            viewModel.initDungeonResource()
+            viewModel.initDungeonResource(newValue)
             binding.dayOfWeek.text = getString(newValue.value)
         }
         viewModel.dayOfWeekData.observe(viewLifecycleOwner, dayObserver)
