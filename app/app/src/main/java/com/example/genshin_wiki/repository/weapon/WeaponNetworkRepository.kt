@@ -1,9 +1,9 @@
 package com.example.genshin_wiki.repository.weapon
 
-import com.example.genshin_wiki.data.responses.WeaponResponse
+import com.example.genshin_wiki.data.responses.WeaponDataResponse
 import com.example.genshin_wiki.data.responses.WeaponsListResponse
-import com.example.genshin_wiki.networks.repositories.IWeaponNetworkRepository
 import com.example.genshin_wiki.networks.RetrofitBuilder
+import com.example.genshin_wiki.networks.repositories.IWeaponNetworkRepository
 import retrofit2.Response
 
 class WeaponNetworkRepository: IWeaponNetworkRepository {
@@ -11,7 +11,7 @@ class WeaponNetworkRepository: IWeaponNetworkRepository {
         return RetrofitBuilder.weaponApi.getWeapons()
     }
 
-    override suspend fun getWeapon(id: String): Response<WeaponResponse> {
-        TODO("Not yet implemented")
+    override suspend fun getWeapon(id: String): Response<WeaponDataResponse> {
+        return RetrofitBuilder.weaponApi.getWeapon(id)
     }
 }

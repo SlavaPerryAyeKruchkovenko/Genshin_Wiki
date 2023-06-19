@@ -2,18 +2,28 @@ package com.example.genshin_wiki.ui.character_portrait
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Character
+import com.example.genshin_wiki.domain.useCase.GetArtifactUseCase
+import com.example.genshin_wiki.domain.useCase.GetCharacterUseCase
+import com.example.genshin_wiki.domain.useCase.GetWeaponUseCase
 import com.example.genshin_wiki.networks.Mock
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CharacterPortraitViewModel : ViewModel() {
     val characterPortrait = MutableLiveData<Character?>()
     val isLiked = MutableLiveData(false)
     fun init(characterId: String) {
-        val mock = Mock()
-        val portrait = mock.getCharacterPortraitById(characterId)
-        if (portrait != null) {
-            characterPortrait.postValue(portrait)
-            isLiked.postValue(portrait.isLike)
+        viewModelScope.launch {
+            val characterConvert = withContext(Dispatchers.IO) {
+                val useCase = GetCharacterUseCase()
+                useCase(characterId)
+            }
+            val character = characterConvert.toCharacter()
+            characterPortrait.postValue(character)
+            isLiked.postValue(character.isLike)
         }
     }
 

@@ -2,17 +2,25 @@ package com.example.genshin_wiki.ui.weapon_portrait
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Weapon
-import com.example.genshin_wiki.networks.Mock
+import com.example.genshin_wiki.domain.useCase.GetCharacterUseCase
+import com.example.genshin_wiki.domain.useCase.GetWeaponUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class WeaponPortraitViewModel : ViewModel() {
-    val liveData = MutableLiveData<Weapon?>()
+    val weaponPortrait = MutableLiveData<Weapon?>()
     val isLiked = MutableLiveData<Boolean>()
     fun init(artifactId: String) {
-        val mock = Mock()
-        val weapon = mock.getWeaponById(artifactId)
-        if (weapon != null) {
-            liveData.postValue(weapon)
+        viewModelScope.launch {
+            val weaponConverter = withContext(Dispatchers.IO) {
+                val useCase = GetWeaponUseCase()
+                useCase(artifactId)
+            }
+            val weapon = weaponConverter.toWeapon()
+            weaponPortrait.postValue(weapon)
             isLiked.postValue(weapon.isLike)
         }
     }

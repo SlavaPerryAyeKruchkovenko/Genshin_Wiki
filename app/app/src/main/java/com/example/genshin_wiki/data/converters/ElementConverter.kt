@@ -18,6 +18,9 @@ data class ElementConverter(
     }
 
     companion object {
+        fun default(): ElementConverter {
+            return ElementConverter("0", "PYRO", "")
+        }
         fun fromElementResponse(req: ElementResponse): ElementConverter {
             return ElementConverter(
                 req.id, req.name, req.image

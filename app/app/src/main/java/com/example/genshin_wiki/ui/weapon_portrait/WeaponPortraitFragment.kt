@@ -51,7 +51,7 @@ class WeaponPortraitFragment : Fragment() {
         val weaponObserver = Observer<Weapon?> { newValue ->
             initWeapon(newValue)
         }
-        viewModel.liveData.observe(viewLifecycleOwner, weaponObserver)
+        viewModel.weaponPortrait.observe(viewLifecycleOwner, weaponObserver)
     }
 
     private fun initWeapon(weapon: Weapon) {

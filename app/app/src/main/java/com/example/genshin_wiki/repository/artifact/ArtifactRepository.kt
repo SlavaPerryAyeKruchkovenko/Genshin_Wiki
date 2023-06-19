@@ -19,12 +19,25 @@ class ArtifactRepository : IArtifactRepository {
                 listOf()
             }
         } catch (e: Exception) {
-            Log.e("artifact api error", e.toString())
+            Log.e("artifacts api error", e.toString())
             listOf()
         }
     }
 
     override suspend fun getArtifactById(id: String): ArtifactConvert {
-        TODO("Not yet implemented")
+        return try {
+            val networkRepository = ArtifactNetworkRepository()
+            val res = networkRepository.getArtifact(id)
+            if (res.isSuccessful) {
+                val data = res.body()!!
+                val artifact = data.artifact
+                ArtifactConvert.fromArtifactResponse(artifact)
+            } else {
+                ArtifactConvert.default()
+            }
+        } catch (e: Exception) {
+            Log.e("artifact by id api error", e.toString())
+            ArtifactConvert.default()
+        }
     }
 }

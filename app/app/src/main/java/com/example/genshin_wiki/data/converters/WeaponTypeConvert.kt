@@ -22,6 +22,10 @@ class WeaponTypeConvert(
         )
     }
     companion object {
+        fun default(): WeaponTypeConvert {
+            return WeaponTypeConvert("0", "CLAYMOR", "")
+        }
+
         fun fromWeaponTypeResponse(req: WeaponTypeResponse): WeaponTypeConvert {
             return WeaponTypeConvert(
                 req.id, req.name, req.image

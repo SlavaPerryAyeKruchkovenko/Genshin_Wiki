@@ -42,6 +42,13 @@ data class WeaponConverter(
     }
 
     companion object {
+        fun default(): WeaponConverter {
+            return WeaponConverter(
+                "0", false, "no data", "no data",
+                WeaponTypeConvert.default(), "no data", 5, "ATK", "ATK", ""
+            )
+        }
+
         fun fromWeaponResponse(req: WeaponResponse): WeaponConverter {
             val type = WeaponTypeConvert.fromWeaponTypeResponse(req.type)
             return WeaponConverter(
