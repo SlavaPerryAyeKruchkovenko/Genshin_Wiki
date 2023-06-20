@@ -77,7 +77,7 @@ class ArtifactRepository : IArtifactRepository {
                 ArtifactConvert.fromArtifactEntity(it)
             } ?: listOf()
         } catch (e: Exception) {
-            Log.e("liked weapons error", e.toString())
+            Log.e("liked artifacts error", e.toString())
             listOf()
         }
     }
