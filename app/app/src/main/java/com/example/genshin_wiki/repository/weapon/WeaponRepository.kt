@@ -25,7 +25,6 @@ class WeaponRepository : IWeaponRepository {
                 localRepository.getWeapons()?.map {
                     WeaponConverter.fromWeaponEntity(it)
                 } ?: listOf()
-
             }
         } catch (e: Exception) {
             Log.e("get weapons error", e.toString())

@@ -2,6 +2,8 @@ package com.example.genshin_wiki.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.genshin_wiki.database.dao.ArtifactDao
+import com.example.genshin_wiki.database.dao.CharacterDao
 import com.example.genshin_wiki.database.dao.WeaponDao
 import com.example.genshin_wiki.database.entities.*
 
@@ -12,4 +14,6 @@ import com.example.genshin_wiki.database.entities.*
 )
 abstract class GenshinDataBase: RoomDatabase() {
     abstract fun weaponsDao(): WeaponDao
+    abstract fun artifactsDao(): ArtifactDao
+    abstract fun charactersDao(): CharacterDao
 }

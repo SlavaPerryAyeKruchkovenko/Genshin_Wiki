@@ -10,7 +10,7 @@ interface ArtifactDao {
     suspend fun getAllArtifacts(): List<ArtifactEntity>
 
     @Query("SELECT * FROM ArtifactEntity WHERE id = :id")
-    suspend fun getArtifactById(id: String): WeaponEntity?
+    suspend fun getArtifactById(id: String): ArtifactEntity?
 
     @Query("SELECT * FROM ArtifactEntity WHERE isLike = 1")
     suspend fun getLikedArtifact(): List<ArtifactEntity>
