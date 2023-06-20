@@ -1,7 +1,7 @@
-package com.example.genshin_wiki.domain.interfaces
+package com.example.genshin_wiki.domain.interfaces.character
 
 import com.example.genshin_wiki.data.converters.CharacterConvert
 
-interface IGetAllCharactersUseCase {
+interface IGetLikedCharacterUseCase {
     suspend operator fun invoke(): List<CharacterConvert>
 }

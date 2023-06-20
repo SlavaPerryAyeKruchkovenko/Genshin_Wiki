@@ -1,4 +1,4 @@
-package com.example.genshin_wiki.domain.interfaces
+package com.example.genshin_wiki.domain.interfaces.dungeon_resource
 
 import com.example.genshin_wiki.data.converters.DungeonResourceConvert
 import com.example.genshin_wiki.data.models.enums.Day

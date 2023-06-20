@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
+import com.example.genshin_wiki.database.GenshinDataBase
+import com.example.genshin_wiki.database.dao.ArtifactDao
+import com.example.genshin_wiki.database.dao.CharacterDao
+import com.example.genshin_wiki.database.dao.WeaponDao
 import com.example.genshin_wiki.databinding.ActivityMainBinding
 
 
@@ -18,6 +23,12 @@ class MainActivity : AppCompatActivity() {
         this._binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
+
+        database = Room.databaseBuilder(
+            applicationContext,
+            GenshinDataBase::class.java,
+            "GenshinDataBaseName"
+        ).build()
     }
 
     private fun init() {
@@ -35,5 +46,20 @@ class MainActivity : AppCompatActivity() {
 
     fun showBottomNavigationView() {
         binding.navigationBar.visibility = View.VISIBLE
+    }
+
+    companion object {
+        var database: GenshinDataBase? = null
+        fun getWeaponDao(): WeaponDao? {
+            return database?.weaponsDao()
+        }
+
+        fun getArtifactDao(): ArtifactDao? {
+            return database?.artifactsDao()
+        }
+
+        fun getCharacterDao(): CharacterDao? {
+            return database?.charactersDao()
+        }
     }
 }

@@ -4,17 +4,17 @@ import com.example.genshin_wiki.data.models.Character
 import com.example.genshin_wiki.data.responses.CharacterResponse
 
 data class CharacterConvert(
-    val id: String,
-    val isLike: Boolean,
+    override val id: String,
+    override var isLiked: Boolean,
     val image: String,
     val name: String,
     val stars: Int,
     val weaponType: WeaponTypeConvert,
     val element: ElementConverter,
     val portrait: CharacterPortraitConvert
-) {
+) : Convert(id, isLiked) {
     fun toCharacter(): Character {
-        return Character(
+        val character = Character(
             this.id,
             this.image,
             this.name,
@@ -23,6 +23,12 @@ data class CharacterConvert(
             this.element.toElement(),
             this.portrait.toCharacterPortrait()
         )
+        if (isLiked) {
+            character.like()
+        } else {
+            character.dislike()
+        }
+        return character
     }
     companion object {
         fun default(): CharacterConvert {
