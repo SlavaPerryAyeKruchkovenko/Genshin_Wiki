@@ -10,7 +10,7 @@ import com.example.genshin_wiki.database.entities.*
 @Database(
     entities = [ArtifactEntity::class, CharacterEntity::class, CharacterPortraitEntity::class,
         DungeonResourceEntity::class, ElementEntity::class, WeaponEntity::class,
-        WeaponTypeEntity::class], version = 1
+        WeaponTypeEntity::class], version = 2
 )
 abstract class GenshinDataBase: RoomDatabase() {
     abstract fun weaponsDao(): WeaponDao

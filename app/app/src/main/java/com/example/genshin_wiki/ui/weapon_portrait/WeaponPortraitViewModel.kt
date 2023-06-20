@@ -1,6 +1,5 @@
 package com.example.genshin_wiki.ui.weapon_portrait
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -35,7 +34,6 @@ class WeaponPortraitViewModel : ViewModel() {
             val weapon = weaponPortrait.value
             if (weapon != null) {
                 val weaponConvert = withContext(Dispatchers.IO) {
-                    Log.d("isLike", weapon.isLike.toString())
                     if (weapon.isLike) {
                         dislikeUseCase(WeaponConverter.fromWeapon(weapon))
                     } else {
@@ -43,7 +41,6 @@ class WeaponPortraitViewModel : ViewModel() {
                     }
                 }
                 val newWeapon = weaponConvert.toWeapon()
-                Log.d("isLike", newWeapon.isLike.toString())
                 isLiked.postValue(newWeapon.isLike)
                 weaponPortrait.postValue(newWeapon)
             }

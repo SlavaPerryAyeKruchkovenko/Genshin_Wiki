@@ -57,7 +57,17 @@ class ArtifactConvert(
                 req.bonus4
             )
         }
-
+        fun fromArtifact(artifact:Artifact): ArtifactConvert{
+            return ArtifactConvert(
+                artifact.id,
+                artifact.isLike,
+                artifact.image,
+                artifact.name,
+                artifact.stars,
+                artifact.bonus2,
+                artifact.bonus4
+            )
+        }
         fun fromArtifactEntity(entity: ArtifactEntity): ArtifactConvert {
             val isLike = entity.isLike > 0
             return ArtifactConvert(
