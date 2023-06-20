@@ -10,17 +10,12 @@
     <string name="search" translatable="false">Search</string>
     <string name="filter" translatable="false">filter</string>
     <string name="first_fragment_label" translatable="false">character fragment</string>
-    <string name="home" translatable="false">Home</string>
-    <string name="weapons" translatable="false">Weapons</string>
-    <string name="characters" translatable="false">Characters</string>
-    <string name="artifacts" translatable="false">Artifacts</string>
     <string name="empty" translatable="false" />
     <string name="Homa" translatable="false">Staff of Homa</string>
     <string name="lee_yue" translatable="false">Lee Yue</string>
     <string name="weapons_fragment" translatable="false">weapons fragment</string>
     <string name="pitch" translatable="false">pitch</string>
     <string name="value_example" translatable="false">153</string>
-    <string name="reset" translatable="false">reset</string>
     <string name="emblem" translatable="false">Эмблема рассечённой судьбы</string>
     <string name="resource" translatable="false">resource</string>
     <string name="resource_label_example" translatable="false">Forgotten Canyon, Mondstadt</string>
@@ -33,6 +28,11 @@
     <string name="piece_bonus_4_example" translatable="false">Increases DMG by 30% against opponents with more than 50% HP.</string>
     <string name="description_example_weapon" translatable="false">In a barren ancient time, when the now-verdant land was still but a wasteland, a maiden, barefoot in the snow, followed the footsteps of the Lord of the Tower.</string>
     <string name="passive_ability_example" translatable="false">The Parting Refrain A part of the \'Millennial Movement\' that wanders amidst the winds.</string>
+    <string name="home">Home</string>
+    <string name="weapons">Weapons</string>
+    <string name="characters">Characters</string>
+    <string name="artifacts">Artifacts</string>
+    <string name="reset">Reset</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
