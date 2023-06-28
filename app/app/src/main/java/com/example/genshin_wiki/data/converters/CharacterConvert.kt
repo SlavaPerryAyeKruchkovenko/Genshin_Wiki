@@ -2,6 +2,7 @@ package com.example.genshin_wiki.data.converters
 
 import com.example.genshin_wiki.data.models.Character
 import com.example.genshin_wiki.data.responses.CharacterResponse
+import com.example.genshin_wiki.database.entities.CharacterEntity
 
 data class CharacterConvert(
     override val id: String,
@@ -30,6 +31,25 @@ data class CharacterConvert(
         }
         return character
     }
+
+    fun toCharacterEntity(): CharacterEntity {
+        val isLike = if (this.isLiked) {
+            1
+        } else {
+            0
+        }
+        return CharacterEntity(
+            this.id,
+            isLike,
+            this.image,
+            this.name,
+            this.stars,
+            this.weaponType.toWeaponTypeEntity(),
+            this.element.toElementEntity(),
+            this.portrait.toCharacterPortraitEntity()
+        )
+    }
+
     companion object {
         fun default(): CharacterConvert {
             return CharacterConvert(
@@ -39,14 +59,26 @@ data class CharacterConvert(
             )
         }
 
-        fun fromCharacterResponse(req: CharacterResponse): CharacterConvert {
-            val weaponTypes = WeaponTypeConvert.fromWeaponTypeResponse(req.weaponType)
-            val element = ElementConverter.fromElementResponse(req.element)
+        fun fromCharacterEntity(entity: CharacterEntity): CharacterConvert {
+            val weaponTypes = WeaponTypeConvert.fromWeaponTypeEntity(entity.weaponType)
+            val element = ElementConverter.fromElementEntity(entity.element)
             val portrait =
-                CharacterPortraitConvert.fromCharacterPortraitRequestResponse(req.portrait)
+                CharacterPortraitConvert.fromCharacterPortraitEntity(entity.portrait)
+            val isLike = entity.isLike > 0
             return CharacterConvert(
-                req.id, false, req.image, req.name,
-                req.stars, weaponTypes, element, portrait
+                entity.id, isLike, entity.image, entity.name,
+                entity.stars, weaponTypes, element, portrait
+            )
+        }
+
+        fun fromCharacterResponse(res: CharacterResponse): CharacterConvert {
+            val weaponTypes = WeaponTypeConvert.fromWeaponTypeResponse(res.weaponType)
+            val element = ElementConverter.fromElementResponse(res.element)
+            val portrait =
+                CharacterPortraitConvert.fromCharacterPortraitResponse(res.portrait)
+            return CharacterConvert(
+                res.id, false, res.image, res.name,
+                res.stars, weaponTypes, element, portrait
             )
         }
     }

@@ -11,7 +11,6 @@ import kotlinx.coroutines.withContext
 
 class ArtifactViewModel : ViewModel() {
     val liveData = MutableLiveData<List<Artifact>>()
-
     fun init() {
         viewModelScope.launch {
             val artifacts = withContext(Dispatchers.IO) {
