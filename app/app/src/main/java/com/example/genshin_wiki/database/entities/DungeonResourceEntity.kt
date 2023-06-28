@@ -8,5 +8,6 @@ data class DungeonResourceEntity(
     @PrimaryKey val id: String,
     val location: String,
     val city: String,
-    val image: String
+    val image: String,
+    val dayOfWeek: Int
 )
