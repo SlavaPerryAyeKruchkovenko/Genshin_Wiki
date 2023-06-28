@@ -71,6 +71,22 @@ data class CharacterConvert(
             )
         }
 
+        fun fromCharacter(character: Character): CharacterConvert {
+            val weaponTypes = WeaponTypeConvert.fromWeaponType(character.weaponType)
+            val element = ElementConverter.fromElement(character.element)
+            val portrait =
+                CharacterPortraitConvert.fromCharacterPortrait(character.portrait)
+            return CharacterConvert(
+                character.id,
+                character.isLike,
+                character.image,
+                character.name,
+                character.stars,
+                weaponTypes,
+                element, portrait
+            )
+        }
+
         fun fromCharacterResponse(res: CharacterResponse): CharacterConvert {
             val weaponTypes = WeaponTypeConvert.fromWeaponTypeResponse(res.weaponType)
             val element = ElementConverter.fromElementResponse(res.element)

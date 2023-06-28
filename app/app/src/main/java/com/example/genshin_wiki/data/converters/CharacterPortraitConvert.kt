@@ -72,6 +72,20 @@ data class CharacterPortraitConvert(
             )
         }
 
+        fun fromCharacterPortrait(portrait: CharacterPortrait): CharacterPortraitConvert {
+            return CharacterPortraitConvert(
+                portrait.id,
+                portrait.image,
+                portrait.location,
+                portrait.sex,
+                portrait.birthday,
+                portrait.description,
+                portrait.normalAttack,
+                portrait.elementalSkill,
+                portrait.elementalBurst
+            )
+        }
+
         fun fromCharacterPortraitResponse(res: CharacterPortraitResponse): CharacterPortraitConvert {
             return CharacterPortraitConvert(
                 res.id,

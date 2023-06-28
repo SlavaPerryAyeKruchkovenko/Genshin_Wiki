@@ -11,6 +11,7 @@ import com.example.genshin_wiki.database.GenshinDataBase
 import com.example.genshin_wiki.database.dao.ArtifactDao
 import com.example.genshin_wiki.database.dao.CharacterDao
 import com.example.genshin_wiki.database.dao.WeaponDao
+import com.example.genshin_wiki.database.migrations.ChangeSexTypeMigration
 import com.example.genshin_wiki.databinding.ActivityMainBinding
 
 
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             applicationContext,
             GenshinDataBase::class.java,
             "GenshinDataBaseName"
-        ).build()
+        ).addMigrations(ChangeSexTypeMigration()).build()
     }
 
     private fun init() {

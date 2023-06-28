@@ -38,6 +38,10 @@ data class ElementConverter(
             )
         }
 
+        fun fromElement(element: Element): ElementConverter {
+            return ElementConverter(element.id, element.name.name, element.image)
+        }
+
         fun fromElementResponse(req: ElementResponse): ElementConverter {
             return ElementConverter(
                 req.id, req.name, req.image
