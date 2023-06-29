@@ -1,5 +1,7 @@
 package com.example.genshin_wiki
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +35,8 @@ class MainActivity : AppCompatActivity() {
             "GenshinDataBaseName"
         ).addMigrations(ChangeSexTypeMigration())
             .addMigrations(AddDayOfWeekMigration()).build()
+
+        val prefs = applicationContext.getSharedPreferences("HOME_DATA", Context.MODE_PRIVATE)
     }
 
     private fun init() {
@@ -53,6 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        val prefs: SharedPreferences? = null
         var database: GenshinDataBase? = null
         fun getWeaponDao(): WeaponDao? {
             return database?.weaponsDao()
