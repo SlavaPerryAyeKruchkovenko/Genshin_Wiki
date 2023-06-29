@@ -2,7 +2,6 @@ package com.example.genshin_wiki.database.dao
 
 import androidx.room.*
 import com.example.genshin_wiki.database.entities.ArtifactEntity
-import com.example.genshin_wiki.database.entities.WeaponEntity
 
 @Dao
 interface ArtifactDao {
@@ -17,6 +16,9 @@ interface ArtifactDao {
 
     @Query("Delete from ArtifactEntity")
     suspend fun deleteArtifacts()
+
+    @Query("UPDATE ArtifactEntity SET isLike = 0")
+    suspend fun dislikeAllArtifacts()
 
     @Transaction
     suspend fun softInsertArtifacts(artifacts: List<ArtifactEntity>) {

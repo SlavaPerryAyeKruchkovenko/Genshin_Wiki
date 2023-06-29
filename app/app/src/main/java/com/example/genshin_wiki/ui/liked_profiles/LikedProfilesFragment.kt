@@ -10,12 +10,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.LikedAdapter
-import com.example.genshin_wiki.databinding.FragmentLikedProfilesBinding
-import com.example.genshin_wiki.interfaces.listeners.LikedListener
 import com.example.genshin_wiki.data.models.Artifact
 import com.example.genshin_wiki.data.models.Character
 import com.example.genshin_wiki.data.models.Likeable
 import com.example.genshin_wiki.data.models.Weapon
+import com.example.genshin_wiki.databinding.FragmentLikedProfilesBinding
+import com.example.genshin_wiki.interfaces.listeners.LikedListener
 import com.example.genshin_wiki.ui.NavigationBarHelper
 
 class LikedProfilesFragment : Fragment(), LikedListener {
@@ -48,6 +48,11 @@ class LikedProfilesFragment : Fragment(), LikedListener {
         binding.likedProfiles.adapter = likedAdapter
         val observer = Observer<List<Likeable>> { newValue ->
             likedAdapter.submitList(newValue)
+            if (newValue.isNotEmpty()) {
+                binding.clear.visibility = View.VISIBLE
+            } else {
+                binding.clear.visibility = View.INVISIBLE
+            }
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }

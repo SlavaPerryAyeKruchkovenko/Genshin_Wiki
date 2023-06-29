@@ -8,4 +8,5 @@ interface IWeaponLocalRepository {
     suspend fun getWeapons(): List<WeaponEntity>?
     suspend fun getLikedWeapons(): List<WeaponEntity>?
     suspend fun getWeapon(id: String): WeaponEntity?
+    suspend fun dislikeWeapons()
 }

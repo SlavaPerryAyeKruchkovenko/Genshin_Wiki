@@ -1,8 +1,8 @@
 package com.example.genshin_wiki.data.converters
 
 import com.example.genshin_wiki.data.models.DungeonResource
-import com.example.genshin_wiki.data.responses.CharacterPortraitResponse
 import com.example.genshin_wiki.data.responses.DungeonResourceResponse
+import com.example.genshin_wiki.database.entities.DungeonResourceEntity
 
 data class DungeonResourceConvert(
     val id: String,
@@ -19,6 +19,16 @@ data class DungeonResourceConvert(
         )
     }
 
+    fun toDungeonResourceEntity(dayOfWeek: Int): DungeonResourceEntity {
+        return DungeonResourceEntity(
+            this.id,
+            this.location,
+            this.city,
+            this.image,
+            dayOfWeek
+        )
+    }
+
     companion object {
         fun fromDungeonResourceResponse(req: DungeonResourceResponse): DungeonResourceConvert {
             return DungeonResourceConvert(
@@ -26,6 +36,13 @@ data class DungeonResourceConvert(
                 req.location,
                 req.city,
                 req.image
+            )
+        }
+
+        fun fromDungeonResourceEntity(entity: DungeonResourceEntity): DungeonResourceConvert {
+            return DungeonResourceConvert(
+                entity.id, entity.location, entity.city,
+                entity.image
             )
         }
     }

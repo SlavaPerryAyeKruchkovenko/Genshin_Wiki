@@ -7,4 +7,5 @@ interface IArtifactRepository {
     suspend fun getArtifactById(id: String): ArtifactConvert
     suspend fun updateArtifact(artifact: ArtifactConvert): ArtifactConvert
     suspend fun getLikedArtifacts(): List<ArtifactConvert>
+    suspend fun dislikeArtifacts(): Boolean
 }

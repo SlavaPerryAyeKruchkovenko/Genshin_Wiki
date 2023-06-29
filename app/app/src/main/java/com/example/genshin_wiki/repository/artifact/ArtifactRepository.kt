@@ -81,4 +81,15 @@ class ArtifactRepository : IArtifactRepository {
             listOf()
         }
     }
+
+    override suspend fun dislikeArtifacts(): Boolean {
+        val localRepository = ArtifactLocalRepository()
+        return try {
+            localRepository.dislikeArtifacts()
+            true
+        } catch (e: Exception){
+            Log.e("dislike artifacts error", e.toString())
+            false
+        }
+    }
 }

@@ -7,4 +7,5 @@ interface IWeaponRepository {
     suspend fun getWeaponById(id: String): WeaponConverter
     suspend fun updateWeapon(weapon:WeaponConverter): WeaponConverter
     suspend fun getLikedWeapons(): List<WeaponConverter>
+    suspend fun dislikeWeapons(): Boolean
 }

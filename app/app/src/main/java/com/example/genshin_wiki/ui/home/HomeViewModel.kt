@@ -6,7 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.DungeonResource
 import com.example.genshin_wiki.data.models.enums.Day
 import com.example.genshin_wiki.domain.helpers.ResourceDay
-import com.example.genshin_wiki.domain.useCase.dungeon_resources.GetAllResourcesUceCase
+import com.example.genshin_wiki.domain.useCase.dungeon_resources.GetResourcesByDayUseCase
+import com.example.genshin_wiki.domain.useCase.pitch.ClearPitchValueUseCase
+import com.example.genshin_wiki.domain.useCase.pitch.GetPitchValueUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -17,14 +19,20 @@ class HomeViewModel : ViewModel() {
     val adapterPositionData = MutableLiveData<Int>()
     val dayOfWeekData = MutableLiveData<Day>()
     fun init() {
-        pitchData.postValue(153)
+        viewModelScope.launch {
+            val pitchValue = withContext(Dispatchers.IO) {
+                val useCase = GetPitchValueUseCase()
+                useCase()
+            }
+            pitchData.postValue(pitchValue)
+        }
         adapterPositionData.postValue(0)
     }
 
     fun initDungeonResource(day: Day) {
         viewModelScope.launch {
             val resources = withContext(Dispatchers.IO) {
-                val useCase = GetAllResourcesUceCase()
+                val useCase = GetResourcesByDayUseCase()
                 val resDay = ResourceDay.valueOf(day.name.substring(0, 3))
                 useCase(resDay)
             }
@@ -33,7 +41,13 @@ class HomeViewModel : ViewModel() {
     }
 
     fun resetPitch() {
-        pitchData.postValue(0)
+        viewModelScope.launch {
+            val pitchValue = withContext(Dispatchers.IO) {
+                val useCase = ClearPitchValueUseCase()
+                useCase()
+            }
+            pitchData.postValue(pitchValue)
+        }
     }
 
     fun changeAdapterPosition(position: Int) {

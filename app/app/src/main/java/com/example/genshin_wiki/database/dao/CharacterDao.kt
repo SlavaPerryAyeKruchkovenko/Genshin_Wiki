@@ -16,7 +16,8 @@ interface CharacterDao {
 
     @Query("Delete from CharacterEntity")
     suspend fun deleteCharacters()
-
+    @Query("UPDATE CharacterEntity SET isLike = 0")
+    suspend fun dislikeAllCharacters()
     @Transaction
     suspend fun softInsertCharacters(characters: List<CharacterEntity>) {
         val dbCharacters = getAllCharacters()

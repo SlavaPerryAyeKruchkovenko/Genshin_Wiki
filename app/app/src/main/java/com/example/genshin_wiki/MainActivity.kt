@@ -1,5 +1,7 @@
 package com.example.genshin_wiki
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +12,10 @@ import androidx.room.Room
 import com.example.genshin_wiki.database.GenshinDataBase
 import com.example.genshin_wiki.database.dao.ArtifactDao
 import com.example.genshin_wiki.database.dao.CharacterDao
+import com.example.genshin_wiki.database.dao.DungeonResourceDao
 import com.example.genshin_wiki.database.dao.WeaponDao
+import com.example.genshin_wiki.database.migrations.AddDayOfWeekMigration
+import com.example.genshin_wiki.database.migrations.ChangeSexTypeMigration
 import com.example.genshin_wiki.databinding.ActivityMainBinding
 
 
@@ -28,7 +33,10 @@ class MainActivity : AppCompatActivity() {
             applicationContext,
             GenshinDataBase::class.java,
             "GenshinDataBaseName"
-        ).build()
+        ).addMigrations(ChangeSexTypeMigration())
+            .addMigrations(AddDayOfWeekMigration()).build()
+
+        val prefs = applicationContext.getSharedPreferences("HOME_DATA", Context.MODE_PRIVATE)
     }
 
     private fun init() {
@@ -49,6 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        val prefs: SharedPreferences? = null
         var database: GenshinDataBase? = null
         fun getWeaponDao(): WeaponDao? {
             return database?.weaponsDao()
@@ -60,6 +69,10 @@ class MainActivity : AppCompatActivity() {
 
         fun getCharacterDao(): CharacterDao? {
             return database?.charactersDao()
+        }
+
+        fun getResourceDao(): DungeonResourceDao? {
+            return database?.resourcesDao()
         }
     }
 }
