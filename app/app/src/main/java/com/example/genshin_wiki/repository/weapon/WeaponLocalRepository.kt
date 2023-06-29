@@ -1,6 +1,5 @@
 package com.example.genshin_wiki.repository.weapon
 
-import android.util.Log
 import com.example.genshin_wiki.MainActivity
 import com.example.genshin_wiki.database.entities.WeaponEntity
 import com.example.genshin_wiki.database.repositories.IWeaponLocalRepository
@@ -24,5 +23,9 @@ class WeaponLocalRepository : IWeaponLocalRepository {
 
     override suspend fun getWeapon(id: String): WeaponEntity? {
         return MainActivity.getWeaponDao()?.getWeaponById(id)
+    }
+
+    override suspend fun dislikeWeapons() {
+        MainActivity.getWeaponDao()?.dislikeAllWeapons()
     }
 }

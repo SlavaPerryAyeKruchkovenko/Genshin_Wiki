@@ -25,4 +25,8 @@ class CharacterLocalRepository : ICharacterLocalRepository {
     override suspend fun getCharacter(id: String): CharacterEntity? {
         return MainActivity.getCharacterDao()?.getCharacterById(id)
     }
+
+    override suspend fun dislikeCharacters() {
+        MainActivity.getCharacterDao()?.dislikeAllCharacters()
+    }
 }

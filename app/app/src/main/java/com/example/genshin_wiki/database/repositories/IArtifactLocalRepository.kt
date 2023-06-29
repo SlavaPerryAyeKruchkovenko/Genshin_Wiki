@@ -8,4 +8,5 @@ interface IArtifactLocalRepository {
     suspend fun getArtifacts(): List<ArtifactEntity>?
     suspend fun getLikedArtifacts(): List<ArtifactEntity>?
     suspend fun getArtifact(id: String): ArtifactEntity?
+    suspend fun dislikeArtifacts()
 }

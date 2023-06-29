@@ -2,6 +2,7 @@ package com.example.genshin_wiki.repository.character
 
 import android.util.Log
 import com.example.genshin_wiki.data.converters.CharacterConvert
+import com.example.genshin_wiki.repository.artifact.ArtifactLocalRepository
 import com.example.genshin_wiki.repository.interfaces.ICharacterRepository
 
 class CharacterRepository : ICharacterRepository {
@@ -79,6 +80,17 @@ class CharacterRepository : ICharacterRepository {
         } catch (e: Exception) {
             Log.e("liked characters error", e.toString())
             listOf()
+        }
+    }
+
+    override suspend fun dislikeCharacters(): Boolean {
+        val localRepository = CharacterLocalRepository()
+        return try {
+            localRepository.dislikeCharacters()
+            true
+        } catch (e: Exception){
+            Log.e("dislike characters error", e.toString())
+            false
         }
     }
 }

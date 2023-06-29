@@ -2,6 +2,7 @@ package com.example.genshin_wiki.repository.weapon
 
 import android.util.Log
 import com.example.genshin_wiki.data.converters.WeaponConverter
+import com.example.genshin_wiki.repository.character.CharacterLocalRepository
 import com.example.genshin_wiki.repository.interfaces.IWeaponRepository
 
 class WeaponRepository : IWeaponRepository {
@@ -79,6 +80,17 @@ class WeaponRepository : IWeaponRepository {
         } catch (e: Exception) {
             Log.e("liked weapons error", e.toString())
             listOf()
+        }
+    }
+
+    override suspend fun dislikeWeapons(): Boolean {
+        val localRepository = WeaponLocalRepository()
+        return try {
+            localRepository.dislikeWeapons()
+            true
+        } catch (e: Exception){
+            Log.e("dislike weapons error", e.toString())
+            false
         }
     }
 }

@@ -25,4 +25,7 @@ class ArtifactLocalRepository : IArtifactLocalRepository {
         return MainActivity.getArtifactDao()?.getArtifactById(id)
     }
 
+    override suspend fun dislikeArtifacts() {
+        MainActivity.getArtifactDao()?.dislikeAllArtifacts()
+    }
 }

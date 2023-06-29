@@ -17,6 +17,8 @@ interface WeaponDao {
     @Query("Delete from WeaponEntity")
     suspend fun deleteWeapons()
 
+    @Query("UPDATE WeaponEntity SET isLike = 0")
+    suspend fun dislikeAllWeapons()
     @Transaction
     suspend fun softInsertWeapons(weapons: List<WeaponEntity>) {
         val dbWeapons = getAllWeapons()

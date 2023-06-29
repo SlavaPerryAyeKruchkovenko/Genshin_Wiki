@@ -8,4 +8,5 @@ interface ICharacterLocalRepository {
     suspend fun getCharacters(): List<CharacterEntity>?
     suspend fun getLikedCharacters(): List<CharacterEntity>?
     suspend fun getCharacter(id: String): CharacterEntity?
+    suspend fun dislikeCharacters()
 }
