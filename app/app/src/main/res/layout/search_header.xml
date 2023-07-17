@@ -1,41 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/colorPrimaryVariant">
+    android:background="?attr/colorPrimaryVariant"
+    android:orientation="horizontal">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight=".90"
-        android:background="?attr/colorPrimaryVariant"
-        app:layout_constraintEnd_toStartOf="@+id/filter_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.search.SearchBar
-            android:id="@+id/search_bar"
-            style="@style/Widget.Material3.SearchBar.person"
-            android:layout_width="match_parent"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".90"
+            android:background="?attr/colorPrimaryVariant"
+            app:layout_constraintEnd_toStartOf="@+id/filter_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.search.SearchBar
+                android:id="@+id/search_bar"
+                style="@style/Widget.Material3.SearchBar.person"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:text="@string/search" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ImageView
+            android:id="@+id/filter_btn"
+            android:layout_width="0dp"
             android:layout_height="43dp"
-            android:text="@string/search" />
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight=".10"
+            android:backgroundTintMode="multiply"
+            android:contentDescription="@string/filter"
+            android:src="@drawable/filter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/app_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorPrimaryFixed" />
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/filter_btn"
-        android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_weight=".10"
-        android:backgroundTintMode="multiply"
-        android:contentDescription="@string/filter"
-        android:src="@drawable/filter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/app_bar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="?attr/colorPrimaryFixed" />
+    <com.google.android.material.search.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/search"
+        app:layout_anchor="@id/search_bar" />
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

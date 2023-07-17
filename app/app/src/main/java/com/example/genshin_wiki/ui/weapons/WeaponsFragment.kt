@@ -1,6 +1,7 @@
 package com.example.genshin_wiki.ui.weapons
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.example.genshin_wiki.adapters.WeaponsAdapter
 import com.example.genshin_wiki.databinding.FragmentWeaponsBinding
 import com.example.genshin_wiki.interfaces.listeners.WeaponListener
 import com.example.genshin_wiki.data.models.Weapon
+import com.google.android.material.search.SearchBar
 
 class WeaponsFragment : Fragment(), WeaponListener {
     private var _binding: FragmentWeaponsBinding? = null
@@ -41,6 +43,9 @@ class WeaponsFragment : Fragment(), WeaponListener {
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
 
+    private fun initSearchBar(){
+
+    }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
