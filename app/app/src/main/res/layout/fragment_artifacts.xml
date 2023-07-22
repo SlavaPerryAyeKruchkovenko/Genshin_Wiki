@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.artifacts.ArtifactsFragment">
-
     <include
         android:id="@+id/search_appbar"
         layout="@layout/search_header"

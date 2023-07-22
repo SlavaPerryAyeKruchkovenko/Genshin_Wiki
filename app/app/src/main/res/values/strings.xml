@@ -7,7 +7,6 @@
     <string name="ChunLi" translatable="false">Чжун Ли</string>
     <string name="element" translatable="false">element</string>
     <string name="weapon" translatable="false">weapon</string>
-    <string name="search" translatable="false">Search</string>
     <string name="filter" translatable="false">filter</string>
     <string name="first_fragment_label" translatable="false">character fragment</string>
     <string name="empty" translatable="false" />
@@ -92,4 +91,5 @@
     <string name="cryo">Cryo</string>
     <string name="passive_ability">Passive ability:</string>
     <string name="no_data">No Data</string>
+    <string name="search">Search</string>
 </resources>

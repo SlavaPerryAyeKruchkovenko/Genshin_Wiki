@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Widget.Material3.SearchBar.person" parent="Widget.Material3.SearchBar">
-        <item name="android:textAppearance">@style/TextAppearance.Material3.SearchBar.MyTitle</item>
-        <item name="android:backgroundTint">?attr/colorSecondary</item>
-        <item name="tintNavigationIcon">false</item>
+    <style name="Widget.AppCompat.SearchView.person" parent="Widget.AppCompat.SearchView">
+        <item name="android:background">@drawable/search_bar_bg</item>
     </style>
 
     <style name="Widget.Material3.AppBarLayout.Default" parent="Widget.Material3.AppBarLayout">
@@ -16,6 +14,7 @@
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:textColorHint">?attr/colorOnSecondary</item>
     </style>
+
     <style name="BigText" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">Inter</item>
         <item name="android:textSize">44sp</item>
