@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,12 +14,13 @@ import com.example.genshin_wiki.adapters.CharacterAdapter
 import com.example.genshin_wiki.databinding.FragmentCharactersBinding
 import com.example.genshin_wiki.interfaces.listeners.CharacterListener
 import com.example.genshin_wiki.data.models.Character
+import com.example.genshin_wiki.ui.weapons.WeaponsViewModel
 
 class CharactersFragment : Fragment(), CharacterListener {
     private var _binding: FragmentCharactersBinding? = null
     private val binding get() = _binding!!
     private val characterAdapter = CharacterAdapter(this)
-    private val viewModel = CharactersViewModel()
+    private val viewModel by viewModels<CharactersViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

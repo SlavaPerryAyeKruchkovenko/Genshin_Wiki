@@ -8,21 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.DungeonAdapter
-import com.example.genshin_wiki.databinding.FragmentHomeBinding
-import com.example.genshin_wiki.layouts.DungeonLayout
 import com.example.genshin_wiki.data.models.DungeonResource
 import com.example.genshin_wiki.data.models.enums.Day
+import com.example.genshin_wiki.databinding.FragmentHomeBinding
+import com.example.genshin_wiki.layouts.DungeonLayout
 import com.google.android.material.button.MaterialButton
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel = HomeViewModel()
+    private val viewModel by viewModels<HomeViewModel>()
     private val dungeonAdapter = DungeonAdapter()
     private var canScroll = true
     override fun onCreateView(
@@ -42,7 +43,6 @@ class HomeFragment : Fragment() {
         initAdapterBtn()
         initAppBar()
     }
-
     private fun initAppBar() {
         binding.homeAppbar.toolBar.setOnMenuItemClickListener {
             when (it?.itemId) {
