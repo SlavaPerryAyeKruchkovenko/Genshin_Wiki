@@ -11,13 +11,20 @@ import kotlinx.coroutines.withContext
 
 class WeaponsViewModel: ViewModel(){
     val liveData = MutableLiveData<List<Weapon>>()
-    fun init(){
+    private var liveDataCopy: List<Weapon> = listOf()
+    fun init() {
         viewModelScope.launch {
             val weapons = withContext(Dispatchers.IO) {
                 val useCase = GetAllWeaponsUseCase()
                 useCase()
             }
-            liveData.postValue(weapons.map { it.toWeapon() })
+            liveDataCopy = weapons.map { it.toWeapon() }
+            liveData.postValue(liveDataCopy)
         }
+    }
+
+    fun filterWeaponsByName(query: String) {
+        liveData.postValue(liveDataCopy.filter
+        { x -> x.name.lowercase().startsWith(query.lowercase()) })
     }
 }

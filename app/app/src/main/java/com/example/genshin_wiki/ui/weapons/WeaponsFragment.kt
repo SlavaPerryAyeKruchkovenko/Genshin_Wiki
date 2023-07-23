@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -20,17 +21,24 @@ class WeaponsFragment : Fragment(), WeaponListener {
     private val binding get() = _binding!!
     private val weaponsAdapter = WeaponsAdapter(this)
     private val viewModel by viewModels<WeaponsViewModel>()
+    private var searchView: SearchView? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentWeaponsBinding.inflate(inflater, container, false)
+        searchView = binding.searchAppbar.searchBar
         init()
         viewModel.init()
         return binding.root
     }
 
     private fun init() {
+        initWeaponsRecycle()
+        initSearchBar()
+    }
+
+    private fun initWeaponsRecycle() {
         binding.weapons.layoutManager = GridLayoutManager(
             context,
             2
@@ -42,10 +50,23 @@ class WeaponsFragment : Fragment(), WeaponListener {
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
 
-    private fun initSearchBar(){
+    private fun initSearchBar() {
+        this.searchView?.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(value: String): Boolean {
+                searchView?.clearFocus()
+                return false
+            }
 
+            override fun onQueryTextChange(value: String): Boolean {
+                viewModel.filterWeaponsByName(value)
+                return false
+            }
+        })
     }
+
     override fun onDestroy() {
+        searchView?.clearFocus()
         super.onDestroy()
         _binding = null
     }

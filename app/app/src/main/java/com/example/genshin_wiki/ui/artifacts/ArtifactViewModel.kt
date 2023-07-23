@@ -11,13 +11,20 @@ import kotlinx.coroutines.withContext
 
 class ArtifactViewModel : ViewModel() {
     val liveData = MutableLiveData<List<Artifact>>()
+    private var liveDataCopy: List<Artifact> = listOf()
     fun init() {
         viewModelScope.launch {
             val artifacts = withContext(Dispatchers.IO) {
                 val useCase = GetAllArtifactsUseCase()
                 useCase()
             }
-            liveData.postValue(artifacts.map { it.toArtifact() })
+            liveDataCopy = artifacts.map { it.toArtifact() }
+            liveData.postValue(liveDataCopy)
         }
+    }
+
+    fun filterArtifactsByName(query: String) {
+        liveData.postValue(liveDataCopy.filter
+        { x -> x.name.lowercase().startsWith(query.lowercase()) })
     }
 }

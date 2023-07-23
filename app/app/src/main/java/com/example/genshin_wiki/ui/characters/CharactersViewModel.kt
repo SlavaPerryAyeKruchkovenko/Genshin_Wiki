@@ -11,13 +11,20 @@ import kotlinx.coroutines.withContext
 
 class CharactersViewModel : ViewModel(){
     val liveData = MutableLiveData<List<Character>>()
+    private var liveDataCopy: List<Character> = listOf()
     fun init() {
         viewModelScope.launch {
             val characters = withContext(Dispatchers.IO) {
                 val useCase = GetAllCharactersUseCase()
                 useCase()
             }
-            liveData.postValue(characters.map { it.toCharacter() })
+            liveDataCopy = characters.map { it.toCharacter() }
+            liveData.postValue(liveDataCopy)
         }
+    }
+
+    fun filterCharactersByName(query: String) {
+        liveData.postValue(liveDataCopy.filter
+        { x -> x.name.lowercase().startsWith(query.lowercase()) })
     }
 }
