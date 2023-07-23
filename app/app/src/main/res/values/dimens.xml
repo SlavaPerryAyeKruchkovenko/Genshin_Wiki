@@ -22,4 +22,5 @@
     <dimen name="liked_info_margin">24dp</dimen>
     <dimen name="portrait_image_padding">20dp</dimen>
     <dimen name="portrait_image_size">200dp</dimen>
+    <dimen name="recycle_padding_bottom">80dp</dimen>
 </resources>
