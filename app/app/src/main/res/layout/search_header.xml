@@ -15,12 +15,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.search.SearchBar
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/search_bar"
-            style="@style/Widget.Material3.SearchBar.person"
+            style="@style/Widget.AppCompat.SearchView.person"
+            android:theme="@style/TextAppearance.Material3.SearchBar.MyTitle"
             android:layout_width="match_parent"
-            android:layout_height="43dp"
-            android:text="@string/search" />
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:closeIcon="@drawable/close_24"
+            app:iconifiedByDefault="false"
+            app:queryHint="@string/search"
+            app:queryBackground="@null"
+            app:searchIcon="@drawable/search_24" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
@@ -37,5 +45,4 @@
         app:layout_constraintStart_toEndOf="@+id/app_bar"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="?attr/colorPrimaryFixed" />
-
 </LinearLayout>

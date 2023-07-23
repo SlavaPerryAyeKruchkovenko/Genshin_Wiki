@@ -63,4 +63,5 @@
     <string name="cryo">Крио</string>
     <string name="passive_ability">Пасивная способность:</string>
     <string name="no_data">Нет Данных</string>
+    <string name="search">Поиск</string>
 </resources>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.genshin_wiki.R
@@ -19,7 +20,7 @@ import com.example.genshin_wiki.ui.NavigationBarHelper
 class CharacterPortraitFragment : Fragment() {
     private var _binding: FragmentCharacterPortraitBinding? = null
     private val binding get() = _binding!!
-    private val viewModel = CharacterPortraitViewModel()
+    private val viewModel by viewModels<CharacterPortraitViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
