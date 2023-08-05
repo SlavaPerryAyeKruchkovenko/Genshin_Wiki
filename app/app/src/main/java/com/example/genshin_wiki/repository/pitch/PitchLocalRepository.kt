@@ -1,5 +1,6 @@
 package com.example.genshin_wiki.repository.pitch
 
+import android.util.Log
 import com.example.genshin_wiki.MainActivity
 import com.example.genshin_wiki.database.repositories.IPitchLocalRepository
 
