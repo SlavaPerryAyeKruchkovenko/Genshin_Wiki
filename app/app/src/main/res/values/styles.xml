@@ -12,6 +12,7 @@
     <style name="TextAppearance.Material3.SearchBar.MyTitle" parent="TextAppearance.Material3.SearchBar">
         <item name="android:textSize">@dimen/big_text_size</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:editTextColor">@color/black</item>
         <item name="android:textColorHint">?attr/colorOnSecondary</item>
     </style>
 
