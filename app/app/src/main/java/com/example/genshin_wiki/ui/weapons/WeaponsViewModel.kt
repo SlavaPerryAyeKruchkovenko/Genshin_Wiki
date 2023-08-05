@@ -3,6 +3,7 @@ package com.example.genshin_wiki.ui.weapons
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.genshin_wiki.data.models.OutputOf
 import com.example.genshin_wiki.data.models.Weapon
 import com.example.genshin_wiki.domain.useCase.weapon.GetAllWeaponsUseCase
 import kotlinx.coroutines.Dispatchers
@@ -10,21 +11,36 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class WeaponsViewModel: ViewModel(){
-    val liveData = MutableLiveData<List<Weapon>>()
+    val liveData = MutableLiveData<OutputOf<List<Weapon>>>()
     private var liveDataCopy: List<Weapon> = listOf()
     fun init() {
+        liveData.postValue(OutputOf.Loader())
         viewModelScope.launch {
-            val weapons = withContext(Dispatchers.IO) {
-                val useCase = GetAllWeaponsUseCase()
-                useCase()
+            try {
+                val weapons = withContext(Dispatchers.IO) {
+                    val useCase = GetAllWeaponsUseCase()
+                    useCase()
+                }
+                liveDataCopy = weapons.map { it.toWeapon() }
+                liveData.postValue(
+                    if (liveDataCopy.isNotEmpty())
+                        OutputOf.Success(liveDataCopy)
+                    else
+                        OutputOf.Error.NotFoundError()
+                )
+            } catch (e: Exception) {
+                liveData.postValue(OutputOf.Failure(e.message ?: "Fatal error"))
             }
-            liveDataCopy = weapons.map { it.toWeapon() }
-            liveData.postValue(liveDataCopy)
         }
     }
 
     fun filterWeaponsByName(query: String) {
-        liveData.postValue(liveDataCopy.filter
-        { x -> x.name.lowercase().startsWith(query.lowercase()) })
+        val result = liveDataCopy.filter { x -> x.name.lowercase().startsWith(query.lowercase()) }
+        liveData.postValue(
+            if (result.isNotEmpty())
+                OutputOf.Success(result)
+            else
+                OutputOf.Error.NotFoundError()
+        )
     }
 }

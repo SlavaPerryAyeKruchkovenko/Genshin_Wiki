@@ -74,7 +74,6 @@ class ArtifactsFragment : Fragment(), ArtifactListener {
 
                 }
             }
-
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }

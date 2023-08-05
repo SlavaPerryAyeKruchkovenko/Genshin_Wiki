@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".ui.weapons.WeaponsFragment">
 
     <include
@@ -13,6 +13,7 @@
         android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:paddingBottom="@dimen/recycle_padding_bottom"
         android:id="@+id/weapons"
         android:layout_width="match_parent"
@@ -26,4 +27,27 @@
         app:spanCount="2"
         tools:listitem="@layout/weapon_profile" />
 
+    <TextView
+        android:id="@+id/error_text"
+        style="@style/BigTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/recycle_margin"
+        android:text="@string/no_data"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_appbar" />
+
+    <include
+        android:id="@+id/loader"
+        layout="@layout/loader"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_appbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

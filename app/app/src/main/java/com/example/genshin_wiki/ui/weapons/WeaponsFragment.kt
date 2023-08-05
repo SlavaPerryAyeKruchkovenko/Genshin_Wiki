@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.WeaponsAdapter
+import com.example.genshin_wiki.data.models.OutputOf
 import com.example.genshin_wiki.data.models.Weapon
 import com.example.genshin_wiki.databinding.FragmentWeaponsBinding
 import com.example.genshin_wiki.interfaces.listeners.WeaponListener
@@ -44,8 +45,35 @@ class WeaponsFragment : Fragment(), WeaponListener {
             2
         )
         binding.weapons.adapter = weaponsAdapter
-        val observer = Observer<List<Weapon>> { newValue ->
-            weaponsAdapter.submitList(newValue)
+        val observer = Observer<OutputOf<List<Weapon>>> { newValue ->
+            when (newValue) {
+                is OutputOf.Success -> {
+                    binding.weapons.visibility = View.VISIBLE
+                    binding.loader.root.visibility = View.GONE
+                    binding.errorText.visibility = View.GONE
+                    weaponsAdapter.submitList(newValue.value)
+                }
+                is OutputOf.Error.NotFoundError -> {
+                    binding.weapons.visibility = View.GONE
+                    binding.loader.root.visibility = View.GONE
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = getString(R.string.not_found)
+                }
+                is OutputOf.Error -> {
+                    binding.weapons.visibility = View.GONE
+                    binding.loader.root.visibility = View.GONE
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = newValue.message
+                }
+                is OutputOf.Loader -> {
+                    binding.weapons.visibility = View.GONE
+                    binding.loader.root.visibility = View.VISIBLE
+                    binding.errorText.visibility = View.GONE
+                }
+                else -> {
+
+                }
+            }
         }
         viewModel.liveData.observe(viewLifecycleOwner, observer)
     }
