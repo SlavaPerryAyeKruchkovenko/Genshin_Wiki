@@ -9,10 +9,14 @@ class GetResourcesByDayUseCase : IGetResourcesByDayUseCase {
     override suspend fun invoke(day: ResourceDay): List<DungeonResourceConvert> {
         val repository = DungeonResourceRepository()
         val resources = repository.getResources(day)
-        val mondstadt = resources.filter { it.city.lowercase() == "mondstadt" }
-        val liYue = resources.filter { it.city.lowercase() == "li yue" }
-        val inadzuma = resources.filter { it.city.lowercase() == "inadzuma" }
-        val sumeru = resources.filter { it.city.lowercase() == "sumeru" }
-        return mondstadt + liYue + inadzuma + sumeru
+        return if (resources.any { it.location == "all" }) {
+            listOf(resources.filter { it.location == "all" }.first())
+        } else {
+            val mondstadt = resources.filter { it.city.lowercase() == "mondstadt" }
+            val liYue = resources.filter { it.city.lowercase() == "li yue" }
+            val inadzuma = resources.filter { it.city.lowercase() == "inadzuma" }
+            val sumeru = resources.filter { it.city.lowercase() == "sumeru" }
+            mondstadt + liYue + inadzuma + sumeru
+        }
     }
 }

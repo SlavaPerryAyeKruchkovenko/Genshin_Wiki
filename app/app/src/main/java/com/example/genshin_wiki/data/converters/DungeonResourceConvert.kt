@@ -30,6 +30,14 @@ data class DungeonResourceConvert(
     }
 
     companion object {
+        fun sunday(): DungeonResourceConvert{
+            return DungeonResourceConvert(
+               "0",
+                "all",
+                "all",
+                "all"
+            )
+        }
         fun fromDungeonResourceResponse(req: DungeonResourceResponse): DungeonResourceConvert {
             return DungeonResourceConvert(
                 req.id,

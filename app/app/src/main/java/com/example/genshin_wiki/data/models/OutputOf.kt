@@ -7,6 +7,7 @@ sealed class OutputOf<out T> {
     ) : OutputOf<R>()
 
     sealed class Error<out R>(val message: String) : OutputOf<R>(){
+        class SundayError<out R> : Error<R>("not found")
         class NotFoundError<out R> : Error<R>("not found")
     }
     class Loader<out R> : OutputOf<R>()

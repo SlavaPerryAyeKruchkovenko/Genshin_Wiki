@@ -94,4 +94,5 @@
     <string name="search">Search</string>
     <string name="loader" translatable="false">loader</string>
     <string name="not_found">Not found</string>
+    <string name="available">All resources are available</string>
 </resources>

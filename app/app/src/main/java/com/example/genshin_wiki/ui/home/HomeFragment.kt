@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.genshin_wiki.R
 import com.example.genshin_wiki.adapters.DungeonAdapter
 import com.example.genshin_wiki.data.models.DungeonResource
+import com.example.genshin_wiki.data.models.OutputOf
 import com.example.genshin_wiki.data.models.enums.Day
 import com.example.genshin_wiki.databinding.FragmentHomeBinding
 import com.example.genshin_wiki.layouts.DungeonLayout
@@ -94,8 +95,46 @@ class HomeFragment : Fragment() {
             addOnScrollListener(scrollListener)
             isNestedScrollingEnabled = false
         }
-        val dungeonObserver = Observer<List<DungeonResource>> { newValue ->
-            dungeonAdapter.submitList(newValue)
+        val dungeonObserver = Observer<OutputOf<List<DungeonResource>>> { newValue ->
+            when (newValue) {
+                is OutputOf.Success -> {
+                    binding.resources.visibility = View.VISIBLE
+                    binding.dungeonButtons.visibility = View.VISIBLE
+                    binding.loader.root.visibility = View.GONE
+                    binding.errorText.visibility = View.GONE
+                    dungeonAdapter.submitList(newValue.value)
+                }
+                is OutputOf.Error.NotFoundError -> {
+                    binding.resources.visibility = View.GONE
+                    binding.dungeonButtons.visibility = View.GONE
+                    binding.loader.root.visibility = View.GONE
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = getString(R.string.not_found)
+                }
+                is OutputOf.Error.SundayError -> {
+                    binding.resources.visibility = View.GONE
+                    binding.dungeonButtons.visibility = View.GONE
+                    binding.loader.root.visibility = View.GONE
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = getString(R.string.available)
+                }
+                is OutputOf.Error -> {
+                    binding.resources.visibility = View.GONE
+                    binding.dungeonButtons.visibility = View.GONE
+                    binding.loader.root.visibility = View.GONE
+                    binding.errorText.visibility = View.VISIBLE
+                    binding.errorText.text = newValue.message
+                }
+                is OutputOf.Loader -> {
+                    binding.resources.visibility = View.GONE
+                    binding.dungeonButtons.visibility = View.GONE
+                    binding.loader.root.visibility = View.VISIBLE
+                    binding.errorText.visibility = View.GONE
+                }
+                else -> {
+
+                }
+            }
         }
         viewModel.liveData.observe(viewLifecycleOwner, dungeonObserver)
     }

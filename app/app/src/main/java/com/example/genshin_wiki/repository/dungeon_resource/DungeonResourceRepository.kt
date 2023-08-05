@@ -5,6 +5,7 @@ import com.example.genshin_wiki.data.converters.CharacterConvert
 import com.example.genshin_wiki.data.converters.DungeonResourceConvert
 import com.example.genshin_wiki.domain.helpers.ResourceDay
 import com.example.genshin_wiki.repository.interfaces.IDungeonResourceRepository
+import java.net.UnknownHostException
 
 class DungeonResourceRepository : IDungeonResourceRepository {
     override suspend fun getResources(day: ResourceDay): List<DungeonResourceConvert> {
@@ -35,13 +36,13 @@ class DungeonResourceRepository : IDungeonResourceRepository {
                         DungeonResourceConvert.fromDungeonResourceEntity(it)
                     } ?: listOf()
                 }
-            } catch (e: Exception) {
+            } catch (e: UnknownHostException) {
                 Log.e("dungeon resources api error", e.toString())
                 localRepository.getResources(entityDay)?.map {
                     DungeonResourceConvert.fromDungeonResourceEntity(it)
                 } ?: listOf()
             }
         }
-        return listOf()
+        return listOf(DungeonResourceConvert.sunday())
     }
 }
