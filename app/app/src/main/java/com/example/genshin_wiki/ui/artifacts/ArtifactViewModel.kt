@@ -4,27 +4,43 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Artifact
+import com.example.genshin_wiki.data.models.OutputOf
 import com.example.genshin_wiki.domain.useCase.artifact.GetAllArtifactsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ArtifactViewModel : ViewModel() {
-    val liveData = MutableLiveData<List<Artifact>>()
+    val liveData = MutableLiveData<OutputOf<List<Artifact>>>()
     private var liveDataCopy: List<Artifact> = listOf()
     fun init() {
+        liveData.postValue(OutputOf.Loader())
         viewModelScope.launch {
-            val artifacts = withContext(Dispatchers.IO) {
-                val useCase = GetAllArtifactsUseCase()
-                useCase()
+            try {
+                val artifacts = withContext(Dispatchers.IO) {
+                    val useCase = GetAllArtifactsUseCase()
+                    useCase()
+                }
+                liveDataCopy = artifacts.map { it.toArtifact() }
+                liveData.postValue(
+                    if (liveDataCopy.isNotEmpty())
+                        OutputOf.Success(liveDataCopy)
+                    else
+                        OutputOf.Error.NotFoundError()
+                )
+            } catch (e: Exception) {
+                liveData.postValue(OutputOf.Failure(e.message ?: "Fatal error"))
             }
-            liveDataCopy = artifacts.map { it.toArtifact() }
-            liveData.postValue(liveDataCopy)
         }
     }
 
     fun filterArtifactsByName(query: String) {
-        liveData.postValue(liveDataCopy.filter
-        { x -> x.name.lowercase().startsWith(query.lowercase()) })
+        val result = liveDataCopy.filter { x -> x.name.lowercase().startsWith(query.lowercase()) }
+        liveData.postValue(
+            if (result.isNotEmpty())
+                OutputOf.Success(result)
+            else
+                OutputOf.Error.NotFoundError()
+        )
     }
 }

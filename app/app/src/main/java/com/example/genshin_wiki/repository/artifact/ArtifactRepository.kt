@@ -3,6 +3,7 @@ package com.example.genshin_wiki.repository.artifact
 import android.util.Log
 import com.example.genshin_wiki.data.converters.ArtifactConvert
 import com.example.genshin_wiki.repository.interfaces.IArtifactRepository
+import java.net.UnknownHostException
 
 class ArtifactRepository : IArtifactRepository {
     override suspend fun getAllArtifacts(): List<ArtifactConvert> {
@@ -26,7 +27,7 @@ class ArtifactRepository : IArtifactRepository {
                     ArtifactConvert.fromArtifactEntity(it)
                 } ?: listOf()
             }
-        } catch (e: Exception) {
+        } catch (e: UnknownHostException) {
             Log.e("get all artifacts error", e.toString())
             localRepository.getArtifacts()?.map {
                 ArtifactConvert.fromArtifactEntity(it)
@@ -43,7 +44,7 @@ class ArtifactRepository : IArtifactRepository {
             } else {
                 ArtifactConvert.default()
             }
-        } catch (e: Exception) {
+        } catch (e: UnknownHostException) {
             Log.e("get artifact by id error", e.toString())
             ArtifactConvert.default()
         }

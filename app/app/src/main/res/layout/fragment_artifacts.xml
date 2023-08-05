@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".ui.artifacts.ArtifactsFragment">
     <include
         android:id="@+id/search_appbar"
@@ -12,6 +12,7 @@
         android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:paddingBottom="@dimen/recycle_padding_bottom"
         android:id="@+id/artifacts"
         android:layout_width="match_parent"
@@ -25,4 +26,27 @@
         app:spanCount="2"
         tools:listitem="@layout/artifact_profile" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/error_text"
+        android:layout_marginHorizontal="@dimen/recycle_margin"
+        android:layout_height="wrap_content"
+        android:text="@string/no_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_appbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="center"
+        style="@style/BigTitle"/>
+
+    <include
+        android:id="@+id/loader"
+        android:visibility="gone"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_appbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/loader" />
 </androidx.constraintlayout.widget.ConstraintLayout>

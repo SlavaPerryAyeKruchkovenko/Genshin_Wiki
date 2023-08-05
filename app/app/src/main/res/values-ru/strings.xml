@@ -64,4 +64,5 @@
     <string name="passive_ability">Пасивная способность:</string>
     <string name="no_data">Нет Данных</string>
     <string name="search">Поиск</string>
+    <string name="not_found">Не найдено</string>
 </resources>

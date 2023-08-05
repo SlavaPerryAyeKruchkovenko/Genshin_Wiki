@@ -92,4 +92,6 @@
     <string name="passive_ability">Passive ability:</string>
     <string name="no_data">No Data</string>
     <string name="search">Search</string>
+    <string name="loader" translatable="false">loader</string>
+    <string name="not_found">Not found</string>
 </resources>
