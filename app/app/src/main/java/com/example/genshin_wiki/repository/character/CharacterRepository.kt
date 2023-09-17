@@ -2,15 +2,17 @@ package com.example.genshin_wiki.repository.character
 
 import android.util.Log
 import com.example.genshin_wiki.data.converters.CharacterConvert
-import com.example.genshin_wiki.repository.artifact.ArtifactLocalRepository
+import com.example.genshin_wiki.database.repositories.ICharacterLocalRepository
+import com.example.genshin_wiki.networks.repositories.ICharacterNetworkRepository
 import com.example.genshin_wiki.repository.interfaces.ICharacterRepository
 
-class CharacterRepository : ICharacterRepository {
+class CharacterRepository(
+    private val local: ICharacterLocalRepository,
+    private val network: ICharacterNetworkRepository
+) : ICharacterRepository {
     override suspend fun getAllCharacters(): List<CharacterConvert> {
-        val networkRepository = CharacterNetworkRepository()
-        val localRepository = CharacterLocalRepository()
         return try {
-            val res = networkRepository.getCharacters()
+            val res = network.getCharacters()
             if (res.isSuccessful) {
                 val response = res.body()!!
                 val resCharacters = response.characters
@@ -20,25 +22,24 @@ class CharacterRepository : ICharacterRepository {
                 val charactersEntity = characters.map {
                     it.toCharacterEntity()
                 }
-                localRepository.addCharacters(charactersEntity)
+                local.addCharacters(charactersEntity)
                 characters
             } else {
-                localRepository.getCharacters()?.map {
+                local.getCharacters()?.map {
                     CharacterConvert.fromCharacterEntity(it)
                 } ?: listOf()
             }
         } catch (e: Exception) {
             Log.e("get all characters error", e.toString())
-            localRepository.getCharacters()?.map {
+            local.getCharacters()?.map {
                 CharacterConvert.fromCharacterEntity(it)
             } ?: listOf()
         }
     }
 
     override suspend fun getCharacterById(id: String): CharacterConvert {
-        val localRepository = CharacterLocalRepository()
         return try {
-            val characterEntity = localRepository.getCharacter(id)
+            val characterEntity = local.getCharacter(id)
             if (characterEntity != null) {
                 CharacterConvert.fromCharacterEntity(characterEntity)
             } else {
@@ -51,16 +52,15 @@ class CharacterRepository : ICharacterRepository {
     }
 
     override suspend fun updateCharacter(character: CharacterConvert): CharacterConvert {
-        val localRepository = CharacterLocalRepository()
         return try {
-            val characterEntity = localRepository.getCharacter(character.id)
+            val characterEntity = local.getCharacter(character.id)
             if (characterEntity != null) {
                 characterEntity.isLike = if (character.isLiked) {
                     1
                 } else {
                     0
                 }
-                localRepository.updateArtifact(characterEntity)
+                local.updateArtifact(characterEntity)
                 CharacterConvert.fromCharacterEntity(characterEntity)
             } else {
                 CharacterConvert.default()
@@ -72,9 +72,8 @@ class CharacterRepository : ICharacterRepository {
     }
 
     override suspend fun getLikedCharacters(): List<CharacterConvert> {
-        val localRepository = CharacterLocalRepository()
         return try {
-            localRepository.getLikedCharacters()?.map {
+            local.getLikedCharacters()?.map {
                 CharacterConvert.fromCharacterEntity(it)
             } ?: listOf()
         } catch (e: Exception) {
@@ -84,9 +83,8 @@ class CharacterRepository : ICharacterRepository {
     }
 
     override suspend fun dislikeCharacters(): Boolean {
-        val localRepository = CharacterLocalRepository()
         return try {
-            localRepository.dislikeCharacters()
+            local.dislikeCharacters()
             true
         } catch (e: Exception){
             Log.e("dislike characters error", e.toString())

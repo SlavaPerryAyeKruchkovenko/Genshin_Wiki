@@ -1,32 +1,32 @@
 package com.example.genshin_wiki.repository.character
 
-import com.example.genshin_wiki.MainActivity
+import com.example.genshin_wiki.database.dao.CharacterDao
 import com.example.genshin_wiki.database.entities.CharacterEntity
 import com.example.genshin_wiki.database.repositories.ICharacterLocalRepository
 
-class CharacterLocalRepository : ICharacterLocalRepository {
+class CharacterLocalRepository(private val dao: CharacterDao) : ICharacterLocalRepository {
 
     override suspend fun addCharacters(characters: List<CharacterEntity>) {
-        MainActivity.getCharacterDao()?.softInsertCharacters(characters)
+        dao.softInsertCharacters(characters)
     }
 
     override suspend fun updateArtifact(character: CharacterEntity) {
-        MainActivity.getCharacterDao()?.update(character)
+        dao.update(character)
     }
 
-    override suspend fun getCharacters(): List<CharacterEntity>? {
-        return MainActivity.getCharacterDao()?.getAllCharacters()
+    override suspend fun getCharacters(): List<CharacterEntity> {
+        return dao.getAllCharacters()
     }
 
-    override suspend fun getLikedCharacters(): List<CharacterEntity>? {
-        return MainActivity.getCharacterDao()?.getLikedCharacter()
+    override suspend fun getLikedCharacters(): List<CharacterEntity> {
+        return dao.getLikedCharacter()
     }
 
     override suspend fun getCharacter(id: String): CharacterEntity? {
-        return MainActivity.getCharacterDao()?.getCharacterById(id)
+        return dao.getCharacterById(id)
     }
 
     override suspend fun dislikeCharacters() {
-        MainActivity.getCharacterDao()?.dislikeAllCharacters()
+        dao.dislikeAllCharacters()
     }
 }

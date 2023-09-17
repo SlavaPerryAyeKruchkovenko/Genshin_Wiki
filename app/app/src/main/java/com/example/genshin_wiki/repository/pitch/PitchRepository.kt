@@ -1,19 +1,18 @@
 package com.example.genshin_wiki.repository.pitch
 
+import com.example.genshin_wiki.database.repositories.IPitchLocalRepository
 import com.example.genshin_wiki.repository.interfaces.IPitchRepository
 
-class PitchRepository : IPitchRepository {
+class PitchRepository(private val local: IPitchLocalRepository) : IPitchRepository {
     override suspend fun updatePitchValue(value: Int): Int {
-        val localRepository = PitchLocalRepository()
         if (value in 0..160) {
-            localRepository.updatePitchValue(value)
+            local.updatePitchValue(value)
         }
-        return localRepository.getPitchValue()
+        return local.getPitchValue()
     }
 
     override suspend fun getPitchValue(): Int {
-        val localRepository = PitchLocalRepository()
-        return localRepository.getPitchValue()
+        return local.getPitchValue()
     }
 
 }

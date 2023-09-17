@@ -2,15 +2,17 @@ package com.example.genshin_wiki.repository.weapon
 
 import android.util.Log
 import com.example.genshin_wiki.data.converters.WeaponConverter
-import com.example.genshin_wiki.repository.character.CharacterLocalRepository
+import com.example.genshin_wiki.database.repositories.IWeaponLocalRepository
+import com.example.genshin_wiki.networks.repositories.IWeaponNetworkRepository
 import com.example.genshin_wiki.repository.interfaces.IWeaponRepository
 
-class WeaponRepository : IWeaponRepository {
+class WeaponRepository(
+    private val local: IWeaponLocalRepository,
+    private val network: IWeaponNetworkRepository
+) : IWeaponRepository {
     override suspend fun getAllWeapons(): List<WeaponConverter> {
-        val networkRepository = WeaponNetworkRepository()
-        val localRepository = WeaponLocalRepository()
         return try {
-            val res = networkRepository.getWeapons()
+            val res = network.getWeapons()
             if (res.isSuccessful) {
                 val response = res.body()!!
                 val resWeapons = response.weapons
@@ -20,25 +22,24 @@ class WeaponRepository : IWeaponRepository {
                 val weaponsEntity = weapons.map {
                     it.toWeaponEntity()
                 }
-                localRepository.addWeapons(weaponsEntity)
+                local.addWeapons(weaponsEntity)
                 weapons
             } else {
-                localRepository.getWeapons()?.map {
+                local.getWeapons()?.map {
                     WeaponConverter.fromWeaponEntity(it)
                 } ?: listOf()
             }
         } catch (e: Exception) {
             Log.e("get weapons error", e.toString())
-            localRepository.getWeapons()?.map {
+            local.getWeapons()?.map {
                 WeaponConverter.fromWeaponEntity(it)
             } ?: listOf()
         }
     }
 
     override suspend fun getWeaponById(id: String): WeaponConverter {
-        val localRepository = WeaponLocalRepository()
         return try {
-            val weaponEntity = localRepository.getWeapon(id)
+            val weaponEntity = local.getWeapon(id)
             if (weaponEntity != null) {
                 WeaponConverter.fromWeaponEntity(weaponEntity)
             } else {
@@ -51,16 +52,15 @@ class WeaponRepository : IWeaponRepository {
     }
 
     override suspend fun updateWeapon(weapon: WeaponConverter): WeaponConverter {
-        val localRepository = WeaponLocalRepository()
         return try {
-            val weaponEntity = localRepository.getWeapon(weapon.id)
+            val weaponEntity = local.getWeapon(weapon.id)
             if (weaponEntity != null) {
                 weaponEntity.isLike = if (weapon.isLiked) {
                     1
                 } else {
                     0
                 }
-                localRepository.updateWeapon(weaponEntity)
+                local.updateWeapon(weaponEntity)
                 WeaponConverter.fromWeaponEntity(weaponEntity)
             } else {
                 WeaponConverter.default()
@@ -72,9 +72,8 @@ class WeaponRepository : IWeaponRepository {
     }
 
     override suspend fun getLikedWeapons(): List<WeaponConverter> {
-        val localRepository = WeaponLocalRepository()
         return try {
-            localRepository.getLikedWeapons()?.map {
+            local.getLikedWeapons()?.map {
                 WeaponConverter.fromWeaponEntity(it)
             } ?: listOf()
         } catch (e: Exception) {
@@ -84,9 +83,8 @@ class WeaponRepository : IWeaponRepository {
     }
 
     override suspend fun dislikeWeapons(): Boolean {
-        val localRepository = WeaponLocalRepository()
         return try {
-            localRepository.dislikeWeapons()
+            local.dislikeWeapons()
             true
         } catch (e: Exception){
             Log.e("dislike weapons error", e.toString())

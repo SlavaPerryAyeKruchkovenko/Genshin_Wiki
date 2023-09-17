@@ -2,15 +2,18 @@ package com.example.genshin_wiki.repository.artifact
 
 import android.util.Log
 import com.example.genshin_wiki.data.converters.ArtifactConvert
+import com.example.genshin_wiki.database.repositories.IArtifactLocalRepository
+import com.example.genshin_wiki.networks.repositories.IArtifactNetworkRepository
 import com.example.genshin_wiki.repository.interfaces.IArtifactRepository
 import java.net.UnknownHostException
 
-class ArtifactRepository : IArtifactRepository {
+class ArtifactRepository(
+    private val local: IArtifactLocalRepository,
+    private val network: IArtifactNetworkRepository
+) : IArtifactRepository {
     override suspend fun getAllArtifacts(): List<ArtifactConvert> {
-        val networkRepository = ArtifactNetworkRepository()
-        val localRepository = ArtifactLocalRepository()
         return try {
-            val res = networkRepository.getArtifacts()
+            val res = network.getArtifacts()
             if (res.isSuccessful) {
                 val response = res.body()!!
                 val resArtifacts = response.artifacts
@@ -20,25 +23,24 @@ class ArtifactRepository : IArtifactRepository {
                 val artifactsEntity = artifacts.map {
                     it.toArtifactEntity()
                 }
-                localRepository.addArtifacts(artifactsEntity)
+                local.addArtifacts(artifactsEntity)
                 artifacts
             } else {
-                localRepository.getArtifacts()?.map {
+                local.getArtifacts()?.map {
                     ArtifactConvert.fromArtifactEntity(it)
                 } ?: listOf()
             }
         } catch (e: UnknownHostException) {
             Log.e("get all artifacts error", e.toString())
-            localRepository.getArtifacts()?.map {
+            local.getArtifacts()?.map {
                 ArtifactConvert.fromArtifactEntity(it)
             } ?: listOf()
         }
     }
 
     override suspend fun getArtifactById(id: String): ArtifactConvert {
-        val localRepository = ArtifactLocalRepository()
         return try {
-            val artifactEntity = localRepository.getArtifact(id)
+            val artifactEntity = local.getArtifact(id)
             if (artifactEntity != null) {
                 ArtifactConvert.fromArtifactEntity(artifactEntity)
             } else {
@@ -51,16 +53,15 @@ class ArtifactRepository : IArtifactRepository {
     }
 
     override suspend fun updateArtifact(artifact: ArtifactConvert): ArtifactConvert {
-        val localRepository = ArtifactLocalRepository()
         return try {
-            val artifactEntity = localRepository.getArtifact(artifact.id)
+            val artifactEntity = local.getArtifact(artifact.id)
             if (artifactEntity != null) {
                 artifactEntity.isLike = if (artifact.isLiked) {
                     1
                 } else {
                     0
                 }
-                localRepository.updateArtifact(artifactEntity)
+                local.updateArtifact(artifactEntity)
                 ArtifactConvert.fromArtifactEntity(artifactEntity)
             } else {
                 ArtifactConvert.default()
@@ -72,9 +73,8 @@ class ArtifactRepository : IArtifactRepository {
     }
 
     override suspend fun getLikedArtifacts(): List<ArtifactConvert> {
-        val localRepository = ArtifactLocalRepository()
         return try {
-            localRepository.getLikedArtifacts()?.map {
+            local.getLikedArtifacts()?.map {
                 ArtifactConvert.fromArtifactEntity(it)
             } ?: listOf()
         } catch (e: Exception) {
@@ -84,9 +84,8 @@ class ArtifactRepository : IArtifactRepository {
     }
 
     override suspend fun dislikeArtifacts(): Boolean {
-        val localRepository = ArtifactLocalRepository()
         return try {
-            localRepository.dislikeArtifacts()
+            local.dislikeArtifacts()
             true
         } catch (e: Exception){
             Log.e("dislike artifacts error", e.toString())

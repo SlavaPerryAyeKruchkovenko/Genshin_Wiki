@@ -1,31 +1,31 @@
 package com.example.genshin_wiki.repository.weapon
 
-import com.example.genshin_wiki.MainActivity
+import com.example.genshin_wiki.database.dao.WeaponDao
 import com.example.genshin_wiki.database.entities.WeaponEntity
 import com.example.genshin_wiki.database.repositories.IWeaponLocalRepository
 
-class WeaponLocalRepository : IWeaponLocalRepository {
+class WeaponLocalRepository(private val dao: WeaponDao) : IWeaponLocalRepository {
     override suspend fun addWeapons(weapons: List<WeaponEntity>) {
-        MainActivity.getWeaponDao()?.softInsertWeapons(weapons)
+        dao.softInsertWeapons(weapons)
     }
 
     override suspend fun updateWeapon(weapon: WeaponEntity) {
-        MainActivity.getWeaponDao()?.update(weapon)
+        dao.update(weapon)
     }
 
-    override suspend fun getWeapons(): List<WeaponEntity>? {
-        return MainActivity.getWeaponDao()?.getAllWeapons()
+    override suspend fun getWeapons(): List<WeaponEntity> {
+        return dao.getAllWeapons()
     }
 
-    override suspend fun getLikedWeapons(): List<WeaponEntity>? {
-        return MainActivity.getWeaponDao()?.getLikedWeapons()
+    override suspend fun getLikedWeapons(): List<WeaponEntity> {
+        return dao.getLikedWeapons()
     }
 
     override suspend fun getWeapon(id: String): WeaponEntity? {
-        return MainActivity.getWeaponDao()?.getWeaponById(id)
+        return dao.getWeaponById(id)
     }
 
     override suspend fun dislikeWeapons() {
-        MainActivity.getWeaponDao()?.dislikeAllWeapons()
+        dao.dislikeAllWeapons()
     }
 }
