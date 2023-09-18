@@ -10,7 +10,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ArtifactViewModel : ViewModel() {
+class ArtifactViewModel(
+    private val getArtifacts: GetAllArtifactsUseCase,
+) : ViewModel() {
     val liveData = MutableLiveData<OutputOf<List<Artifact>>>()
     private var liveDataCopy: List<Artifact> = listOf()
     fun init() {
@@ -18,8 +20,7 @@ class ArtifactViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val artifacts = withContext(Dispatchers.IO) {
-                    val useCase = GetAllArtifactsUseCase()
-                    useCase()
+                    getArtifacts()
                 }
                 liveDataCopy = artifacts.map { it.toArtifact() }
                 liveData.postValue(

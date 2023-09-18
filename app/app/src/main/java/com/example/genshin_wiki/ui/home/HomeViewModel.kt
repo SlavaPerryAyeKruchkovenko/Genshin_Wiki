@@ -14,7 +14,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(
+    private val getPitch: GetPitchValueUseCase,
+    private val clearPitch: ClearPitchValueUseCase,
+    private val getResourcesByDay: GetResourcesByDayUseCase
+) : ViewModel() {
     val liveData = MutableLiveData<OutputOf<List<DungeonResource>>>()
     val pitchData = MutableLiveData<Int>()
     val adapterPositionData = MutableLiveData<Int>()
@@ -22,8 +26,7 @@ class HomeViewModel : ViewModel() {
     fun init() {
         viewModelScope.launch {
             val pitchValue = withContext(Dispatchers.IO) {
-                val useCase = GetPitchValueUseCase()
-                useCase()
+                getPitch()
             }
             pitchData.postValue(pitchValue)
         }
@@ -35,9 +38,8 @@ class HomeViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val resources = withContext(Dispatchers.IO) {
-                    val useCase = GetResourcesByDayUseCase()
                     val resDay = ResourceDay.valueOf(day.name.substring(0, 3))
-                    useCase(resDay)
+                    getResourcesByDay(resDay)
                 }
                 val result = resources.map { it.toDungeonResource() }
                 liveData.postValue(
@@ -59,8 +61,7 @@ class HomeViewModel : ViewModel() {
     fun resetPitch() {
         viewModelScope.launch {
             val pitchValue = withContext(Dispatchers.IO) {
-                val useCase = ClearPitchValueUseCase()
-                useCase()
+                clearPitch()
             }
             pitchData.postValue(pitchValue)
         }

@@ -5,4 +5,5 @@ import org.koin.core.module.Module
 val appModules: List<Module> = listOf(
     retrofitModule,
     dataBaseModule,
-) + dataModules
+    viewModelsModule
+) + dataModules + domainModule

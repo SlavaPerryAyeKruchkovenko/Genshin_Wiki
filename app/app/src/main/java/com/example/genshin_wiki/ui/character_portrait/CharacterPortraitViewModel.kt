@@ -12,14 +12,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CharacterPortraitViewModel : ViewModel() {
+class CharacterPortraitViewModel(
+    private val getCharacter: GetCharacterUseCase,
+    private val likeCharacter: LikeCharacterUseCase,
+    private val dislikeCharacter: DislikeCharacterUseCase
+) : ViewModel() {
     val characterPortrait = MutableLiveData<Character?>()
     val isLiked = MutableLiveData(false)
     fun init(characterId: String) {
         viewModelScope.launch {
             val characterConvert = withContext(Dispatchers.IO) {
-                val useCase = GetCharacterUseCase()
-                useCase(characterId)
+                getCharacter(characterId)
             }
             val character = characterConvert.toCharacter()
             characterPortrait.postValue(character)
@@ -29,15 +32,13 @@ class CharacterPortraitViewModel : ViewModel() {
 
     fun changeLike() {
         viewModelScope.launch {
-            val likeUseCase = LikeCharacterUseCase()
-            val dislikeUseCase = DislikeCharacterUseCase()
             val character = characterPortrait.value
             if (character != null) {
                 val characterConvert = withContext(Dispatchers.IO) {
                     if (character.isLike) {
-                        dislikeUseCase(CharacterConvert.fromCharacter(character))
+                        dislikeCharacter(CharacterConvert.fromCharacter(character))
                     } else {
-                        likeUseCase(CharacterConvert.fromCharacter(character))
+                        likeCharacter(CharacterConvert.fromCharacter(character))
                     }
                 }
                 val newCharacter = characterConvert.toCharacter()

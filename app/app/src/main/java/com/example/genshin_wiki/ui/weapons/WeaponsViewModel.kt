@@ -5,12 +5,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.OutputOf
 import com.example.genshin_wiki.data.models.Weapon
+import com.example.genshin_wiki.domain.useCase.weapon.DislikeWeaponUseCase
 import com.example.genshin_wiki.domain.useCase.weapon.GetAllWeaponsUseCase
+import com.example.genshin_wiki.domain.useCase.weapon.GetWeaponUseCase
+import com.example.genshin_wiki.domain.useCase.weapon.LikeWeaponUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class WeaponsViewModel: ViewModel(){
+class WeaponsViewModel(
+    private val getWeapons: GetAllWeaponsUseCase,
+) : ViewModel(){
     val liveData = MutableLiveData<OutputOf<List<Weapon>>>()
     private var liveDataCopy: List<Weapon> = listOf()
     fun init() {
@@ -18,8 +23,7 @@ class WeaponsViewModel: ViewModel(){
         viewModelScope.launch {
             try {
                 val weapons = withContext(Dispatchers.IO) {
-                    val useCase = GetAllWeaponsUseCase()
-                    useCase()
+                    getWeapons()
                 }
                 liveDataCopy = weapons.map { it.toWeapon() }
                 liveData.postValue(

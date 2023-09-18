@@ -6,22 +6,22 @@ import com.example.genshin_wiki.domain.useCase.artifact.*
 import org.koin.dsl.module
 
 val artifactDomainModule = module {
-    single<IDislikeAllArtifactsUseCase> {
+    factory<IDislikeAllArtifactsUseCase> {
         DislikeAllArtifactsUseCase(repository = get())
     }
-    single<IDislikeArtifactUseCase> {
+    factory<IDislikeArtifactUseCase> {
         DislikeArtifactUseCase(repository = get())
     }
-    single<IGetAllArtifactsUseCase> {
+    factory<IGetAllArtifactsUseCase> {
         GetAllArtifactsUseCase(repository = get())
     }
-    single<IGetArtifactUseCase> {
+    factory<IGetArtifactUseCase> {
         GetArtifactUseCase(repository = get())
     }
-    single<IGetLikedArtifactsUseCase> {
+    factory<IGetLikedArtifactsUseCase> {
         GetLikedArtifactsUseCase(repository = get())
     }
-    single<ILikeArtifactUseCase> {
+    factory<ILikeArtifactUseCase> {
         LikeArtifactUseCase(repository = get())
     }
 }

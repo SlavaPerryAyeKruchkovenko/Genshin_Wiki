@@ -6,17 +6,20 @@ import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Likeable
 import com.example.genshin_wiki.domain.useCase.DislikeAllObjectsUseCase
 import com.example.genshin_wiki.domain.useCase.GetLikedObjectsUseCase
+import com.example.genshin_wiki.domain.useCase.character.GetAllCharactersUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class LikedProfilesViewModel : ViewModel() {
+class LikedProfilesViewModel(
+    private val getLiked: GetLikedObjectsUseCase,
+    private val dislikeAll: DislikeAllObjectsUseCase,
+) : ViewModel() {
     val liveData = MutableLiveData<List<Likeable>>()
     fun init() {
         viewModelScope.launch {
             val likes = withContext(Dispatchers.IO) {
-                val useCase = GetLikedObjectsUseCase()
-                useCase()
+                getLiked()
             }
             liveData.postValue(likes.map {
                 it.toLikeable()
@@ -27,8 +30,7 @@ class LikedProfilesViewModel : ViewModel() {
     fun clearLiked() {
         viewModelScope.launch {
             val isClear = withContext(Dispatchers.IO) {
-                val useCase = DislikeAllObjectsUseCase()
-                useCase()
+                dislikeAll()
             }
             if (isClear) {
                 liveData.postValue(listOf())

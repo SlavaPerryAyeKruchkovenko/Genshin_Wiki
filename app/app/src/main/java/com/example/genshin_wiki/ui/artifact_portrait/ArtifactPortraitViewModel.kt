@@ -12,14 +12,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ArtifactPortraitViewModel : ViewModel() {
+class ArtifactPortraitViewModel(
+    private val getArtifact: GetArtifactUseCase,
+    private val likeArtifact: LikeArtifactUseCase,
+    private val dislikeArtifact: DislikeArtifactUseCase
+) : ViewModel() {
     val artifactPortrait = MutableLiveData<Artifact?>()
     val isLiked = MutableLiveData<Boolean>()
     fun init(artifactId: String) {
         viewModelScope.launch {
             val artifactConvert = withContext(Dispatchers.IO) {
-                val useCase = GetArtifactUseCase()
-                useCase(artifactId)
+                getArtifact(artifactId)
             }
             val artifact = artifactConvert.toArtifact()
             artifactPortrait.postValue(artifact)
@@ -29,15 +32,13 @@ class ArtifactPortraitViewModel : ViewModel() {
 
     fun changeLike() {
         viewModelScope.launch {
-            val likeUseCase = LikeArtifactUseCase()
-            val dislikeUseCase = DislikeArtifactUseCase()
             val artifact = artifactPortrait.value
             if (artifact != null) {
                 val artifactConvert = withContext(Dispatchers.IO) {
                     if (artifact.isLike) {
-                        dislikeUseCase(ArtifactConvert.fromArtifact(artifact))
+                        dislikeArtifact(ArtifactConvert.fromArtifact(artifact))
                     } else {
-                        likeUseCase(ArtifactConvert.fromArtifact(artifact))
+                        likeArtifact(ArtifactConvert.fromArtifact(artifact))
                     }
                 }
                 val newArtifact = artifactConvert.toArtifact()

@@ -4,8 +4,9 @@ import com.example.genshin_wiki.data.converters.CharacterConvert
 import com.example.genshin_wiki.domain.interfaces.character.IGetLikedCharacterUseCase
 import com.example.genshin_wiki.repository.character.CharacterRepository
 
-class GetLikedCharactersUseCase : IGetLikedCharacterUseCase {
+class GetLikedCharactersUseCase(private val repository: CharacterRepository) :
+    IGetLikedCharacterUseCase {
     override suspend fun invoke(): List<CharacterConvert> {
-        return CharacterRepository().getLikedCharacters()
+        return repository.getLikedCharacters()
     }
 }

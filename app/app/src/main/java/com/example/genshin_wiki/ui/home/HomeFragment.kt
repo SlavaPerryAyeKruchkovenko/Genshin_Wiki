@@ -20,11 +20,12 @@ import com.example.genshin_wiki.data.models.enums.Day
 import com.example.genshin_wiki.databinding.FragmentHomeBinding
 import com.example.genshin_wiki.layouts.DungeonLayout
 import com.google.android.material.button.MaterialButton
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<HomeViewModel>()
+    private val viewModel by lazy { getViewModel<HomeViewModel>() }
     private val dungeonAdapter = DungeonAdapter()
     private var canScroll = true
     override fun onCreateView(

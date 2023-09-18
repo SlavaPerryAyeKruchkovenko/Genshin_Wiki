@@ -1,18 +1,19 @@
 package com.example.genshin_wiki
 
 import android.app.Application
+import com.example.genshin_wiki.di.modules.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 class GenshinWikiApp : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin {
-            // Log Koin into Android logger
-            androidLogger()
-            // Reference Android context
+            androidLogger(Level.ERROR)
             androidContext(this@GenshinWikiApp)
+            modules(appModules)
         }
     }
 }

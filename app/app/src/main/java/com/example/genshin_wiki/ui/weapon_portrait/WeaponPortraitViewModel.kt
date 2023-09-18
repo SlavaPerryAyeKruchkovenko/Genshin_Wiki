@@ -12,14 +12,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class WeaponPortraitViewModel : ViewModel() {
+class WeaponPortraitViewModel(
+    private val getWeapon: GetWeaponUseCase,
+    private val likeWeapon: LikeWeaponUseCase,
+    private val dislikeWeapon: DislikeWeaponUseCase,
+) : ViewModel() {
     val weaponPortrait = MutableLiveData<Weapon?>()
     val isLiked = MutableLiveData<Boolean>()
     fun init(artifactId: String) {
         viewModelScope.launch {
             val weaponConverter = withContext(Dispatchers.IO) {
-                val useCase = GetWeaponUseCase()
-                useCase(artifactId)
+                getWeapon(artifactId)
             }
             val weapon = weaponConverter.toWeapon()
             weaponPortrait.postValue(weapon)
@@ -29,15 +32,13 @@ class WeaponPortraitViewModel : ViewModel() {
 
     fun changeLike() {
         viewModelScope.launch {
-            val likeUseCase = LikeWeaponUseCase()
-            val dislikeUseCase = DislikeWeaponUseCase()
             val weapon = weaponPortrait.value
             if (weapon != null) {
                 val weaponConvert = withContext(Dispatchers.IO) {
                     if (weapon.isLike) {
-                        dislikeUseCase(WeaponConverter.fromWeapon(weapon))
+                        dislikeWeapon(WeaponConverter.fromWeapon(weapon))
                     } else {
-                        likeUseCase(WeaponConverter.fromWeapon(weapon))
+                        likeWeapon(WeaponConverter.fromWeapon(weapon))
                     }
                 }
                 val newWeapon = weaponConvert.toWeapon()
