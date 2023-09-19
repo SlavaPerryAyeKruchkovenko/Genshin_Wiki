@@ -22,6 +22,6 @@ val localDataModule = module {
         WeaponLocalRepository(dao = get())
     }
     single<IPitchLocalRepository> {
-        PitchLocalRepository(prefs = get())
+        PitchLocalRepository()
     }
 }

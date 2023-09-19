@@ -1,7 +1,5 @@
 package com.example.genshin_wiki.di.modules
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.room.Room
 import com.example.genshin_wiki.database.GenshinDataBase
 import com.example.genshin_wiki.database.migrations.AddDayOfWeekMigration
@@ -29,7 +27,7 @@ val dataBaseModule = module {
     single {
         get<GenshinDataBase>().resourcesDao()
     }
-    single<SharedPreferences> {
+/*    single<SharedPreferences> {
         get<Context>().getSharedPreferences("HOME_DATA", Context.MODE_PRIVATE)
-    }
+    }*/
 }

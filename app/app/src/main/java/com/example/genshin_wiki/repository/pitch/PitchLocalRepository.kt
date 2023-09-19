@@ -2,17 +2,18 @@ package com.example.genshin_wiki.repository.pitch
 
 import android.content.SharedPreferences
 import android.util.Log
+import com.example.genshin_wiki.GenshinWikiApp
 import com.example.genshin_wiki.MainActivity
 import com.example.genshin_wiki.database.repositories.IPitchLocalRepository
 
-class PitchLocalRepository(private val prefs: SharedPreferences) : IPitchLocalRepository {
+class PitchLocalRepository() : IPitchLocalRepository {
 
     override suspend fun updatePitchValue(value: Int) {
-        prefs.edit()?.putInt(PITCH_PREF_NAME, value)?.apply()
+        GenshinWikiApp.prefs?.edit()?.putInt(PITCH_PREF_NAME, value)?.apply()
     }
 
     override suspend fun getPitchValue(): Int {
-        return prefs.getInt(PITCH_PREF_NAME, 0)
+        return GenshinWikiApp.prefs?.getInt(PITCH_PREF_NAME, 0) ?: 0
     }
 
     companion object {
