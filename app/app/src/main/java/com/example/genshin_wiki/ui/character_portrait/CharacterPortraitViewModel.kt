@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.converters.CharacterConvert
 import com.example.genshin_wiki.data.models.Character
+import com.example.genshin_wiki.domain.interfaces.character.IDislikeCharacterUseCase
+import com.example.genshin_wiki.domain.interfaces.character.IGetCharacterUseCase
+import com.example.genshin_wiki.domain.interfaces.character.ILikeCharacterUseCase
 import com.example.genshin_wiki.domain.useCase.character.DislikeCharacterUseCase
 import com.example.genshin_wiki.domain.useCase.character.GetCharacterUseCase
 import com.example.genshin_wiki.domain.useCase.character.LikeCharacterUseCase
@@ -13,9 +16,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CharacterPortraitViewModel(
-    private val getCharacter: GetCharacterUseCase,
-    private val likeCharacter: LikeCharacterUseCase,
-    private val dislikeCharacter: DislikeCharacterUseCase
+    private val getCharacter: IGetCharacterUseCase,
+    private val likeCharacter: ILikeCharacterUseCase,
+    private val dislikeCharacter: IDislikeCharacterUseCase
 ) : ViewModel() {
     val characterPortrait = MutableLiveData<Character?>()
     val isLiked = MutableLiveData(false)

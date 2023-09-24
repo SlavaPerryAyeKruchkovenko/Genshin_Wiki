@@ -4,16 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Likeable
-import com.example.genshin_wiki.domain.useCase.DislikeAllObjectsUseCase
-import com.example.genshin_wiki.domain.useCase.GetLikedObjectsUseCase
-import com.example.genshin_wiki.domain.useCase.character.GetAllCharactersUseCase
+import com.example.genshin_wiki.domain.interfaces.IDislikeAllObjectsUseCase
+import com.example.genshin_wiki.domain.interfaces.IGetLikedObjectsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class LikedProfilesViewModel(
-    private val getLiked: GetLikedObjectsUseCase,
-    private val dislikeAll: DislikeAllObjectsUseCase,
+    private val getLiked: IGetLikedObjectsUseCase,
+    private val dislikeAll: IDislikeAllObjectsUseCase,
 ) : ViewModel() {
     val liveData = MutableLiveData<List<Likeable>>()
     fun init() {

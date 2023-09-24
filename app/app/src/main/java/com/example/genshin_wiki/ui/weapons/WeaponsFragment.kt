@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,12 +15,13 @@ import com.example.genshin_wiki.data.models.OutputOf
 import com.example.genshin_wiki.data.models.Weapon
 import com.example.genshin_wiki.databinding.FragmentWeaponsBinding
 import com.example.genshin_wiki.interfaces.listeners.WeaponListener
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class WeaponsFragment : Fragment(), WeaponListener {
     private var _binding: FragmentWeaponsBinding? = null
     private val binding get() = _binding!!
     private val weaponsAdapter = WeaponsAdapter(this)
-    private val viewModel by viewModels<WeaponsViewModel>()
+    private val viewModel by lazy { getViewModel<WeaponsViewModel>() }
     private var searchView: SearchView? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

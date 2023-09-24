@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,11 +17,12 @@ import com.example.genshin_wiki.data.models.Weapon
 import com.example.genshin_wiki.databinding.FragmentLikedProfilesBinding
 import com.example.genshin_wiki.interfaces.listeners.LikedListener
 import com.example.genshin_wiki.ui.NavigationBarHelper
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class LikedProfilesFragment : Fragment(), LikedListener {
     private var _binding: FragmentLikedProfilesBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<LikedProfilesViewModel>()
+    private val viewModel by lazy { getViewModel<LikedProfilesViewModel>() }
     private val likedAdapter = LikedAdapter(this)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

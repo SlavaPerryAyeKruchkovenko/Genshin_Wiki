@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.genshin_wiki.R
@@ -15,11 +14,12 @@ import com.example.genshin_wiki.adapters.utils.ProfileUtils
 import com.example.genshin_wiki.data.models.Artifact
 import com.example.genshin_wiki.databinding.FragmentArtifactPortraitBinding
 import com.example.genshin_wiki.ui.NavigationBarHelper
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class ArtifactPortraitFragment : Fragment() {
     private var _binding: FragmentArtifactPortraitBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<ArtifactPortraitViewModel>()
+    private val viewModel by lazy { getViewModel<ArtifactPortraitViewModel>() }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

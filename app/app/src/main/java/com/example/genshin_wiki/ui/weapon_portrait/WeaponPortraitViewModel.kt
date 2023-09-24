@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.converters.WeaponConverter
 import com.example.genshin_wiki.data.models.Weapon
+import com.example.genshin_wiki.domain.interfaces.weapon.IDislikeWeaponUseCase
+import com.example.genshin_wiki.domain.interfaces.weapon.IGetWeaponUseCase
+import com.example.genshin_wiki.domain.interfaces.weapon.ILikeWeaponUseCase
 import com.example.genshin_wiki.domain.useCase.weapon.DislikeWeaponUseCase
 import com.example.genshin_wiki.domain.useCase.weapon.GetWeaponUseCase
 import com.example.genshin_wiki.domain.useCase.weapon.LikeWeaponUseCase
@@ -13,9 +16,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class WeaponPortraitViewModel(
-    private val getWeapon: GetWeaponUseCase,
-    private val likeWeapon: LikeWeaponUseCase,
-    private val dislikeWeapon: DislikeWeaponUseCase,
+    private val getWeapon: IGetWeaponUseCase,
+    private val likeWeapon: ILikeWeaponUseCase,
+    private val dislikeWeapon: IDislikeWeaponUseCase,
 ) : ViewModel() {
     val weaponPortrait = MutableLiveData<Weapon?>()
     val isLiked = MutableLiveData<Boolean>()

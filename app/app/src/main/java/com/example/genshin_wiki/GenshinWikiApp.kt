@@ -15,7 +15,7 @@ class GenshinWikiApp : Application() {
         super.onCreate()
         prefs = applicationContext.getSharedPreferences("HOME_DATA", Context.MODE_PRIVATE)
         startKoin {
-            androidLogger()
+            androidLogger(Level.ERROR)
             androidContext(this@GenshinWikiApp)
             modules(appModules)
         }

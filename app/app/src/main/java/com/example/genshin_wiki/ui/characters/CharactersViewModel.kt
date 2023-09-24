@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.models.Character
 import com.example.genshin_wiki.data.models.OutputOf
+import com.example.genshin_wiki.domain.interfaces.character.IGetAllCharactersUseCase
 import com.example.genshin_wiki.domain.useCase.artifact.DislikeArtifactUseCase
 import com.example.genshin_wiki.domain.useCase.artifact.GetArtifactUseCase
 import com.example.genshin_wiki.domain.useCase.artifact.LikeArtifactUseCase
@@ -14,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CharactersViewModel(
-    private val getCharacters: GetAllCharactersUseCase,
+    private val getCharacters: IGetAllCharactersUseCase,
 ) : ViewModel(){
     val liveData = MutableLiveData<OutputOf<List<Character>>>()
     private var liveDataCopy: List<Character> = listOf()

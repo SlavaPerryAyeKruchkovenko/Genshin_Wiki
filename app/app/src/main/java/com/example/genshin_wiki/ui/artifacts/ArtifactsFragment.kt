@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,12 +15,13 @@ import com.example.genshin_wiki.data.models.Artifact
 import com.example.genshin_wiki.data.models.OutputOf
 import com.example.genshin_wiki.databinding.FragmentArtifactsBinding
 import com.example.genshin_wiki.interfaces.listeners.ArtifactListener
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class ArtifactsFragment : Fragment(), ArtifactListener {
     private var _binding: FragmentArtifactsBinding? = null
     private val binding get() = _binding!!
     private val characterAdapter = ArtifactAdapter(this)
-    private val viewModel by viewModels<ArtifactViewModel>()
+    private val viewModel by lazy { getViewModel<ArtifactViewModel>() }
     private var searchView: SearchView? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

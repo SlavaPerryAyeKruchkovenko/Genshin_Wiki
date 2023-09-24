@@ -5,17 +5,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.genshin_wiki.data.converters.ArtifactConvert
 import com.example.genshin_wiki.data.models.Artifact
-import com.example.genshin_wiki.domain.useCase.artifact.DislikeArtifactUseCase
-import com.example.genshin_wiki.domain.useCase.artifact.GetArtifactUseCase
-import com.example.genshin_wiki.domain.useCase.artifact.LikeArtifactUseCase
+import com.example.genshin_wiki.domain.interfaces.artifact.IDislikeArtifactUseCase
+import com.example.genshin_wiki.domain.interfaces.artifact.IGetArtifactUseCase
+import com.example.genshin_wiki.domain.interfaces.artifact.ILikeArtifactUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ArtifactPortraitViewModel(
-    private val getArtifact: GetArtifactUseCase,
-    private val likeArtifact: LikeArtifactUseCase,
-    private val dislikeArtifact: DislikeArtifactUseCase
+    private val getArtifact: IGetArtifactUseCase,
+    private val likeArtifact: ILikeArtifactUseCase,
+    private val dislikeArtifact: IDislikeArtifactUseCase
 ) : ViewModel() {
     val artifactPortrait = MutableLiveData<Artifact?>()
     val isLiked = MutableLiveData<Boolean>()

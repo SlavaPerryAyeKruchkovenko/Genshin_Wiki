@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -16,12 +15,13 @@ import com.example.genshin_wiki.data.models.Character
 import com.example.genshin_wiki.data.models.OutputOf
 import com.example.genshin_wiki.databinding.FragmentCharactersBinding
 import com.example.genshin_wiki.interfaces.listeners.CharacterListener
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class CharactersFragment : Fragment(), CharacterListener {
     private var _binding: FragmentCharactersBinding? = null
     private val binding get() = _binding!!
     private val characterAdapter = CharacterAdapter(this)
-    private val viewModel by viewModels<CharactersViewModel>()
+    private val viewModel by lazy { getViewModel<CharactersViewModel>() }
     private var searchView: SearchView? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
