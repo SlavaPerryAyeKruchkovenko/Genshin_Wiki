@@ -3,7 +3,6 @@ package com.example.genshin_wiki
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import com.example.genshin_wiki.di.modules.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

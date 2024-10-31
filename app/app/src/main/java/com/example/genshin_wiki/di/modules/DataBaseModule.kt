@@ -12,8 +12,7 @@ val dataBaseModule = module {
             get(),
             GenshinDataBase::class.java,
             "GenshinDataBaseName"
-        ).addMigrations(ChangeSexTypeMigration())
-            .addMigrations(AddDayOfWeekMigration()).build()
+        ).addMigrations(ChangeSexTypeMigration(),AddDayOfWeekMigration()).build()
     }
     single {
         get<GenshinDataBase>().artifactsDao()
