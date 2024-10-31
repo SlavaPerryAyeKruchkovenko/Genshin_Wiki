@@ -18,4 +18,8 @@ abstract class GenshinDataBase: RoomDatabase() {
     abstract fun artifactsDao(): ArtifactDao
     abstract fun charactersDao(): CharacterDao
     abstract fun resourcesDao(): DungeonResourceDao
+
+		companion object{
+			 const val DATABASE_NAME = "GenshinDataBaseName"
+		}
 }

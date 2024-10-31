@@ -2,6 +2,7 @@ package com.example.genshin_wiki.di.modules
 
 import androidx.room.Room
 import com.example.genshin_wiki.database.GenshinDataBase
+import com.example.genshin_wiki.database.GenshinDataBase.Companion.DATABASE_NAME
 import com.example.genshin_wiki.database.migrations.AddDayOfWeekMigration
 import com.example.genshin_wiki.database.migrations.ChangeSexTypeMigration
 import org.koin.dsl.module
@@ -11,7 +12,7 @@ val dataBaseModule = module {
         Room.databaseBuilder(
             get(),
             GenshinDataBase::class.java,
-            "GenshinDataBaseName"
+						DATABASE_NAME
         ).addMigrations(ChangeSexTypeMigration(),AddDayOfWeekMigration()).build()
     }
     single {
